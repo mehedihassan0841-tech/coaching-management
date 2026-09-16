@@ -15,6 +15,11 @@ import Exams from "./pages/Exams";
 import Notices from "./pages/Notices";
 import Login from "./pages/Login";
 import StudentDashboard from "./pages/StudentDashboard";
+import StudentCourses from "./pages/StudentCourses";
+import StudentExams from "./pages/StudentExams";
+import StudentAttendance from "./pages/StudentAttendance";
+import StudentNotices from "./pages/StudentNotices";
+import StudentFees from "./pages/StudentFees";
 
 function App() {
   return (
@@ -44,8 +49,31 @@ function App() {
 
         <Route
           path="/student-dashboard"
-          element={<StudentDashboard />}
-        />
+           element={<StudentDashboard />}
+          />
+
+        <Route
+          path="/student-courses"
+          element={<StudentCourses />}
+          />
+
+         <Route
+           path="/student-exams"
+           element={<StudentExams />}
+          />
+          <Route
+             path="/student-attendance"
+             element={<StudentAttendance />}
+           />
+           <Route
+              path="/student-notices"
+              element={<StudentNotices />}
+             />
+
+              <Route
+                path="/student-fees"
+                element={<StudentFees />}
+              />
 
       </Route>
 

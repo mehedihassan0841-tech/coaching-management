@@ -1,3 +1,4 @@
+
 /* =========================
    GLOBAL
 ========================= */
@@ -28,7 +29,6 @@ a {
   color: inherit;
 }
 
-
 /* =========================
    APP SHELL (sidebar + main)
 ========================= */
@@ -57,7 +57,6 @@ a {
   flex-direction: column;
   gap: 24px;
 }
-
 
 /* =========================
    SIDEBAR
@@ -153,6 +152,9 @@ a {
   display: none;
 }
 
+.bottom-nav {
+  display: none;
+}
 
 /* =========================
    TOP NAVBAR
@@ -289,7 +291,6 @@ a {
   font-size: 12px;
 }
 
-
 /* =========================
    STUDENTS PAGE
 ========================= */
@@ -299,7 +300,6 @@ a {
   flex-direction: column;
   gap: 24px;
 }
-
 
 /* =========================
    HEADER
@@ -324,7 +324,6 @@ a {
   color: #64748b;
 }
 
-
 /* =========================
    ADD STUDENT BUTTON
 ========================= */
@@ -346,7 +345,6 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 12px 25px rgba(108, 99, 255, 0.3);
 }
-
 
 /* =========================
    SUMMARY BOXES
@@ -385,7 +383,6 @@ a {
   color: #172033;
 }
 
-
 /* =========================
    STUDENTS CONTAINER
 ========================= */
@@ -417,7 +414,6 @@ a {
   color: #94a3b8;
 }
 
-
 /* =========================
    SEARCH
 ========================= */
@@ -442,7 +438,6 @@ a {
   color: #a0aec0;
 }
 
-
 /* =========================
    STUDENT LIST
 ========================= */
@@ -450,7 +445,6 @@ a {
 .students-list {
   padding: 8px 26px;
 }
-
 
 /* =========================
    STUDENT CARD
@@ -475,7 +469,6 @@ a {
   padding-right: 8px;
 }
 
-
 /* =========================
    AVATAR
 ========================= */
@@ -493,7 +486,6 @@ a {
   font-weight: 600;
   flex-shrink: 0;
 }
-
 
 /* =========================
    STUDENT INFO
@@ -514,7 +506,6 @@ a {
   font-size: 12px;
   color: #94a3b8;
 }
-
 
 /* =========================
    STATUS
@@ -537,7 +528,6 @@ a {
   color: #ea580c;
 }
 
-
 /* =========================
    HEADER ACTIONS / EMPTY STATE
 ========================= */
@@ -553,7 +543,6 @@ a {
   text-align: center;
   color: #94a3b8;
 }
-
 
 /* =========================
    DATA TABLE
@@ -618,7 +607,6 @@ a {
   flex-shrink: 0;
 }
 
-
 /* =========================
    BADGES & PILLS
 ========================= */
@@ -656,7 +644,6 @@ a {
   color: #64748b;
 }
 
-
 /* =========================
    PROGRESS BAR
 ========================= */
@@ -680,7 +667,6 @@ a {
   height: 100%;
   border-radius: 20px;
 }
-
 
 /* =========================
    TABS
@@ -708,7 +694,6 @@ a {
   background: linear-gradient(135deg, #6c63ff, #5a52e8);
   color: white;
 }
-
 
 /* =========================
    MODAL
@@ -804,7 +789,6 @@ a {
   font-weight: 600;
   cursor: pointer;
 }
-
 
 /* =========================
    DASHBOARD
@@ -920,7 +904,6 @@ a {
   margin-top: 2px;
 }
 
-
 /* =========================
    BATCHES
 ========================= */
@@ -980,7 +963,6 @@ a {
   color: #334155;
 }
 
-
 /* =========================
    NOTICES
 ========================= */
@@ -1022,7 +1004,6 @@ a {
   font-size: 11.5px;
   color: #a0aec0;
 }
-
 
 /* =========================
    LOGIN PAGE
@@ -1135,144 +1116,6 @@ a {
   width: 100%;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1024px) {
-  .sidebar {
-    position: fixed;
-    left: -270px;
-    top: 0;
-    z-index: 40;
-    transition: left 0.25s ease;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
-  }
-
-  .sidebar-open {
-    left: 0;
-  }
-
-  .sidebar-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.45);
-    z-index: 30;
-  }
-
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mobile-logo {
-    display: flex;
-  }
-
-  .page-heading {
-    display: none;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .batch-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .app-content {
-    padding: 25px 18px 50px;
-  }
-
-  .students-header {
-    align-items: flex-start;
-    gap: 20px;
-    flex-direction: column;
-  }
-
-  .students-header h1 {
-    font-size: 27px;
-  }
-
-  .add-student-btn {
-    width: 100%;
-  }
-
-  .student-summary {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .students-container-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
-  }
-
-  .header-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .student-search {
-    width: 100%;
-  }
-
-  .students-list {
-    padding: 8px 18px;
-  }
-
-  .top-navbar {
-    padding: 16px 18px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .app-content {
-    padding: 20px 14px 40px;
-  }
-
-  .students-header h1 {
-    font-size: 24px;
-  }
-
-  .summary-box {
-    padding: 20px;
-  }
-
-  .summary-box strong {
-    font-size: 26px;
-  }
-
-  .student-card {
-    gap: 11px;
-  }
-
-  .student-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
-  }
-
-  .student-status {
-    font-size: 10px;
-    padding: 5px 8px;
-  }
-}
 /* =========================================================
    STUDENT DASHBOARD ONLY
    ========================================================= */
@@ -1295,6 +1138,25 @@ a {
   padding: 28px 32px 40px;
 }
 
+.student-sidebar-backdrop {
+  display: none;
+}
+
+.student-menu-toggle {
+  display: none;
+  border: none;
+  background: #f6f8fc;
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.student-bottom-nav {
+  display: none;
+}
 
 /* =========================================================
    STUDENT SIDEBAR
@@ -1313,7 +1175,6 @@ a {
   z-index: 1000;
   padding: 24px 16px;
 }
-
 
 /* ---------- Sidebar Brand ---------- */
 
@@ -1353,7 +1214,6 @@ a {
   color: #94a3b8;
   font-weight: 500;
 }
-
 
 /* ---------- Sidebar Navigation ---------- */
 
@@ -1411,7 +1271,6 @@ a {
   color: #6c63ff;
 }
 
-
 /* ---------- Sidebar Profile ---------- */
 
 .student-sidebar-profile {
@@ -1457,7 +1316,6 @@ a {
   font-size: 11px;
 }
 
-
 /* ---------- Logout ---------- */
 
 .student-logout-btn {
@@ -1482,7 +1340,6 @@ a {
   background: #fef2f2;
   border-color: #fecaca;
 }
-
 
 /* =========================================================
    STUDENT NAVBAR
@@ -1531,7 +1388,6 @@ a {
   justify-content: center;
   font-weight: 700;
 }
-
 
 /* ---------- Navbar Right ---------- */
 
@@ -1619,7 +1475,6 @@ a {
   color: #ef4444;
 }
 
-
 /* =========================================================
    STUDENT DASHBOARD
    ========================================================= */
@@ -1629,7 +1484,6 @@ a {
   max-width: 1500px;
   margin: 0 auto;
 }
-
 
 /* ---------- Welcome ---------- */
 
@@ -1709,7 +1563,6 @@ a {
   font-size: 15px;
 }
 
-
 /* =========================================================
    STUDENT STATS
    ========================================================= */
@@ -1768,7 +1621,6 @@ a {
   font-size: 10px;
 }
 
-
 /* =========================================================
    DASHBOARD GRIDS
    ========================================================= */
@@ -1786,7 +1638,6 @@ a {
   gap: 20px;
   margin-top: 20px;
 }
-
 
 /* =========================================================
    COMMON PANEL
@@ -1833,7 +1684,6 @@ a {
   font-size: 10px;
   font-weight: 600;
 }
-
 
 /* =========================================================
    COURSES
@@ -1928,7 +1778,6 @@ a {
   background: #6c63ff;
 }
 
-
 /* =========================================================
    EXAMS
    ========================================================= */
@@ -2022,7 +1871,6 @@ a {
   margin: 0;
   font-size: 11px;
 }
-
 
 /* =========================================================
    ATTENDANCE
@@ -2124,7 +1972,6 @@ a {
   line-height: 1.5;
 }
 
-
 /* =========================================================
    NOTICES
    ========================================================= */
@@ -2192,7 +2039,6 @@ a {
 .pill-muted {
   flex-shrink: 0;
 }
-
 
 /* =========================================================
    FEE NOTICE
@@ -2283,19 +2129,1003 @@ a {
   font-weight: 600;
 }
 
-
 /* =========================================================
    TABLET
    ========================================================= */
 
-@media (max-width: 1100px) {
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+/* ================================
+   STUDENT COURSES PAGE
+================================ */
+
+.student-page {
+  padding: 28px;
+  min-height: 100%;
+}
+
+.student-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.student-page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.student-page-header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Course Grid */
+
+.student-course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Course Card */
+
+.student-course-card {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.student-course-card h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.student-course-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.student-course-card span {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+/* ================================
+   MOBILE
+================================ */
+
+/* ================================
+   STUDENT EXAMS PAGE
+================================ */
+
+.student-exam-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.student-exam-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-exam-summary-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f3ff;
+  font-size: 22px;
+}
+
+.student-exam-summary-card span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.student-exam-summary-card strong {
+  display: block;
+  font-size: 23px;
+  color: #1f2937;
+}
+
+/* ================================
+   EXAM SECTION
+================================ */
+
+.student-exam-section {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-exam-section-header {
+  margin-bottom: 20px;
+}
+
+.student-exam-section-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.student-exam-section-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ================================
+   EXAM CARD
+================================ */
+
+.student-exam-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.student-exam-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 18px;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.student-exam-card:hover {
+  transform: translateY(-2px);
+  border-color: #d9dcff;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+.student-exam-subject-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.student-exam-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.student-exam-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.student-exam-title-row h3 {
+  margin: 0;
+  font-size: 17px;
+  color: #1f2937;
+}
+
+.student-exam-info p {
+  margin: 5px 0 10px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.student-exam-status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #ecfdf3;
+  color: #16834d;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.student-exam-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.student-exam-details span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+/* ================================
+   MOBILE
+================================ */
+
+/* ================================
+   STUDENT ATTENDANCE PAGE
+================================ */
+
+.student-attendance-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.student-attendance-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-attendance-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.student-attendance-summary-card span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.student-attendance-summary-card strong {
+  display: block;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+/* ================================
+   ATTENDANCE SECTION
+================================ */
+
+.student-attendance-section {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-attendance-section-header {
+  margin-bottom: 22px;
+}
+
+.student-attendance-section-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.student-attendance-section-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ================================
+   ATTENDANCE LIST
+================================ */
+
+.student-attendance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.student-attendance-card {
+  display: grid;
+  grid-template-columns: 230px 1fr 70px;
+  align-items: center;
+  gap: 25px;
+  padding: 18px;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.student-attendance-card:hover {
+  transform: translateY(-2px);
+  border-color: #d9dcff;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ================================
+   SUBJECT
+================================ */
+
+.student-attendance-subject {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.student-attendance-subject-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.student-attendance-subject h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.student-attendance-subject p {
+  margin: 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ================================
+   PROGRESS
+================================ */
+
+.student-attendance-progress-area {
+  min-width: 0;
+}
+
+.student-attendance-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.student-attendance-progress-top span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.student-attendance-progress-top strong {
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.student-attendance-progress {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  background: #eef0f4;
+  border-radius: 20px;
+}
+
+.student-attendance-progress-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: #5b5bd6;
+  transition: width 0.4s ease;
+}
+
+/* ================================
+   TOTAL CLASSES
+================================ */
+
+.student-attendance-classes {
+  text-align: center;
+}
+
+.student-attendance-classes span {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.student-attendance-classes small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+/* ================================
+   MOBILE
+================================ */
+
+/* ================================
+   STUDENT NOTICES
+================================ */
+
+.student-notices-section {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-notices-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.student-notices-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.student-notices-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.student-notice-count {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.student-notices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.student-notice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.student-notice-card:hover {
+  transform: translateY(-2px);
+  border-color: #d9dcff;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+.student-notice-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-notice-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.student-notice-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.student-notice-title-row h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.student-notice-type {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #f8f9fb;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.student-notice-content p {
+  margin: 8px 0 10px;
+  max-width: 800px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.student-notice-date {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Mobile */
+
+/* ================================
+   STUDENT FEES
+================================ */
+
+.student-fees-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.student-fee-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-fee-icon {
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-fee-summary-card span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.student-fee-summary-card strong {
+  display: block;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+/* ================================
+   FEES SECTION
+================================ */
+
+.student-fees-section {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.student-fees-section-header {
+  margin-bottom: 22px;
+}
+
+.student-fees-section-header h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+.student-fees-section-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ================================
+   FEE LIST
+================================ */
+
+.student-fees-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.student-fee-card {
+  display: grid;
+  grid-template-columns: 1.7fr 0.7fr 0.7fr 0.7fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 17px;
+  border: 1px solid #eceef3;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.student-fee-card:hover {
+  transform: translateY(-2px);
+  border-color: #d9dcff;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Month */
+
+.student-fee-month {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-fee-month-icon {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: #f1f3ff;
+  color: #5b5bd6;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.student-fee-month h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.student-fee-month p {
+  margin: 0;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Amount / Paid / Due */
+
+.student-fee-amount span,
+.student-fee-paid span,
+.student-fee-due span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.student-fee-amount strong,
+.student-fee-paid strong,
+.student-fee-due strong {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.student-fee-due strong {
+  color: #dc2626;
+}
+
+/* Status */
+
+.student-fee-status {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.student-fee-status-paid {
+  background: #ecfdf3;
+  color: #16834d;
+}
+
+.student-fee-status-partial {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+/* ================================
+   MOBILE
+================================ */
+
+
+/* =========================
+   RESPONSIVE (ALL MEDIA QUERIES)
+========================= */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    left: -270px;
+    top: 0;
+    z-index: 40;
+    transition: left 0.25s ease;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .sidebar-open {
+    left: 0;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 30;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-logo {
+    display: flex;
+  }
+
+  .page-heading {
+    display: none;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .batch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 25px 18px 100px;
+  }
+
+  .students-header {
+    align-items: flex-start;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .students-header h1 {
+    font-size: 27px;
+  }
+
+  .add-student-btn {
+    width: 100%;
+  }
+
+  .student-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .students-container-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .student-search {
+    width: 100%;
+  }
+
+  .students-list {
+    padding: 8px 18px;
+  }
+
+  .top-navbar {
+    padding: 16px 18px;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    background: #ffffff;
+    border-top: 1px solid #edf0f6;
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.06);
+    z-index: 900;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border: none;
+    background: none;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .bottom-nav-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .bottom-nav-link-active {
+    color: #6c63ff;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content {
+    padding: 20px 14px 100px;
+  }
+
+  .students-header h1 {
+    font-size: 24px;
+  }
+
+  .summary-box {
+    padding: 20px;
+  }
+
+  .summary-box strong {
+    font-size: 26px;
+  }
+
+  .student-card {
+    gap: 11px;
+  }
+
+  .student-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+  }
+
+  .student-status {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 1024px) {
 
   .student-sidebar {
-    width: 230px;
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 260px;
+    z-index: 1000;
+    transition: left 0.25s ease;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .student-sidebar-open {
+    left: 0;
+  }
+
+  .student-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 999;
   }
 
   .student-app-main {
-    margin-left: 230px;
+    margin-left: 0;
+  }
+
+  .student-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .student-mobile-logo {
+    display: flex;
   }
 
   .student-app-content {
@@ -2319,24 +3149,10 @@ a {
   }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media (max-width: 768px) {
 
-  .student-sidebar {
-    width: 210px;
-    padding: 18px 12px;
-  }
-
-  .student-app-main {
-    margin-left: 210px;
-  }
-
   .student-app-content {
-    padding: 18px 14px 30px;
+    padding: 18px 14px 100px;
   }
 
   .student-navbar {
@@ -2463,25 +3279,52 @@ a {
   .student-fee-btn {
     width: 100%;
   }
+
+  .student-bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.06);
+    z-index: 900;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+
+  .student-bottom-nav-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border: none;
+    background: none;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .student-bottom-nav-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .student-bottom-nav-link-active {
+    color: #5b52e8;
+  }
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
 
 @media (max-width: 480px) {
 
-  .student-sidebar {
-    width: 190px;
-  }
-
-  .student-app-main {
-    margin-left: 190px;
-  }
-
   .student-app-content {
-    padding: 13px 10px 25px;
+    padding: 13px 10px 100px;
   }
 
   .student-navbar {
@@ -2585,5 +3428,268 @@ a {
 
   .student-fee-action {
     margin-left: 52px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .student-course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .student-page {
+    padding: 20px 16px;
+  }
+
+  .student-page-header {
+    margin-bottom: 20px;
+  }
+
+  .student-page-header h1 {
+    font-size: 23px;
+  }
+
+  .student-page-header p {
+    font-size: 13px;
+  }
+
+  .student-course-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .student-course-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .student-course-card h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .student-exam-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .student-page {
+    padding: 20px 16px;
+  }
+
+  .student-exam-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .student-exam-summary-card {
+    padding: 17px;
+  }
+
+  .student-exam-section {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .student-exam-card {
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .student-exam-subject-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .student-exam-title-row {
+    align-items: flex-start;
+  }
+
+  .student-exam-title-row h3 {
+    font-size: 15px;
+  }
+
+  .student-exam-status {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .student-exam-details {
+    gap: 8px 14px;
+  }
+
+  .student-exam-details span {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .student-attendance-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .student-attendance-card {
+    grid-template-columns: 200px 1fr 60px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .student-page {
+    padding: 20px 16px;
+  }
+
+  .student-attendance-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .student-attendance-summary-card {
+    padding: 17px;
+  }
+
+  .student-attendance-section {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .student-attendance-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .student-attendance-subject {
+    width: 100%;
+  }
+
+  .student-attendance-progress-area {
+    width: 100%;
+  }
+
+  .student-attendance-classes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .student-attendance-classes span {
+    font-size: 17px;
+  }
+
+  .student-attendance-classes small {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-notices-section {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .student-notices-header {
+    align-items: flex-start;
+  }
+
+  .student-notices-header h2 {
+    font-size: 18px;
+  }
+
+  .student-notice-count {
+    font-size: 10px;
+  }
+
+  .student-notice-card {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .student-notice-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+  }
+
+  .student-notice-title-row {
+    align-items: flex-start;
+  }
+
+  .student-notice-title-row h3 {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .student-notice-type {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+
+  .student-notice-content p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .student-fees-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .student-fee-card {
+    grid-template-columns: 1.5fr 0.7fr 0.7fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .student-fees-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .student-fee-summary-card {
+    padding: 17px;
+  }
+
+  .student-fees-section {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .student-fee-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .student-fee-month {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eef0f4;
+  }
+
+  .student-fee-amount,
+  .student-fee-paid,
+  .student-fee-due {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .student-fee-amount span,
+  .student-fee-paid span,
+  .student-fee-due span {
+    margin: 0;
+  }
+
+  .student-fee-status {
+    text-align: center;
   }
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/navbar";
+import BottomNav from "../components/BottomNav";
 
 const pageMeta = {
   "/": { title: "Dashboard", subtitle: "Overview of your coaching center." },
@@ -32,6 +33,8 @@ function MainLayout() {
         <div className="app-content">
           <Outlet />
         </div>
+
+        <BottomNav onMoreClick={() => setSidebarOpen(true)} />
       </div>
     </div>
   );

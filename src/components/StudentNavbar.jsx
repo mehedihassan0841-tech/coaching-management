@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function StudentNavbar() {
+function StudentNavbar({ onMenuClick }) {
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -12,6 +12,10 @@ function StudentNavbar() {
     <header className="student-navbar">
 
       <div className="student-navbar-left">
+        <button className="student-menu-toggle" onClick={onMenuClick} aria-label="Open menu">
+          ☰
+        </button>
+
         <div className="student-mobile-logo">
           E
         </div>
