@@ -483,36 +483,175 @@
 
 }
 
-@media (max-width: 760px) {
+/* =========================================================
+   TEACHER STUDENTS — PURE MOBILE RESPONSIVE (320px - 768px)
+   Static Floating Glass & Responsive Layout (No Motion)
+========================================================= */
 
+@media (max-width: 768px) {
+
+  /* Page Container & Background Radial Glow */
+  .teacher-students-page {
+    padding: 16px 12px 80px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  /* 1. Header Layout */
   .teacher-students-header {
-    align-items: flex-start;
-
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
   }
 
   .teacher-students-attendance-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 12px 0 !important;
+    font-size: 14px !important;
+    border-radius: 12px !important;
+    justify-content: center !important;
+  }
+
+  /* 2. Summary Cards Grid (2x2 Grid on Mobile for Perfect Balance) */
+  .teacher-students-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-student-summary-card {
+    padding: 14px 12px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 16px !important;
+    /* Static Layered Depth Shadow */
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.15),
+                0 4px 10px -4px rgba(0, 0, 0, 0.05),
+                inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .teacher-student-summary-card span {
+    font-size: 11px !important;
+    color: #3b82f6 !important;
+  }
+
+  .teacher-student-summary-card strong {
+    font-size: 22px !important;
+    margin: 4px 0 !important;
+  }
+
+  .teacher-student-summary-card small {
+    font-size: 10px !important;
+    color: #64748b !important;
+  }
+
+  /* 3. Search & Filter Section */
+  .teacher-students-filter-panel {
+    padding: 12px 14px !important;
+    margin-bottom: 18px !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 24px -6px rgba(31, 38, 135, 0.12) !important;
   }
 
   .teacher-students-filter {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .teacher-students-search {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
   }
 
   .teacher-students-filter select {
-    width: 100%;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 12px !important;
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+  }
+
+  /* 4. Student Table Glass Container & Horizontal Scroll */
+  .teacher-students-panel {
+    padding: 16px 12px !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 32px -8px rgba(31, 38, 135, 0.15),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .teacher-students-panel .panel-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .teacher-students-count {
+    align-self: flex-start !important;
+    font-size: 11px !important;
+  }
+
+  /* Smooth Touch Scroll for Mobile Tables */
+  .teacher-students-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 12px !important;
+  }
+
+  .teacher-students-table {
+    min-width: 600px !important; /* Ensures table columns don't squish unreadably */
+  }
+
+  .teacher-students-table th,
+  .teacher-students-table td {
+    padding: 10px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* Disable all Motion & Hover effects */
+  .teacher-student-summary-card:hover,
+  .teacher-students-panel:hover,
+  .teacher-students-table tr:hover {
+    transform: none !important;
+    background: inherit !important;
   }
 
 }
 
-@media (max-width: 430px) {
+/* Protection for Very Small Mobile Screens (Galaxy Fold, iPhone SE <= 360px) */
+@media (max-width: 360px) {
 
   .teacher-students-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Stack summary 1-by-1 on tiny screens */
   }
 
   .teacher-student-summary-card {
-    min-height: 90px;
+    min-height: 80px !important;
   }
 
 }

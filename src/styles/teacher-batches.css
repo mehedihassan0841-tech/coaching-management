@@ -387,77 +387,193 @@
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 1100px) {
+/* =========================================================
+   PURE MOBILE RESPONSIVE (320px - 768px)
+   Static Floating Glass & Deep Layered Shadows (No Motion)
+========================================================= */
 
-  .teacher-batches-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+@media (max-width: 768px) {
+
+  /* Page Container & Background Radial Glow (Essential for Glass Reflection) */
+  .teacher-batches-page {
+    padding: 16px 12px 80px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
   }
 
-}
-
-@media (max-width: 760px) {
-
+  /* Header Section Adjustment */
   .teacher-batches-header {
-    align-items: flex-start;
-
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
   }
 
+  .teacher-dashboard-eyebrow {
+    font-size: 11px !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .teacher-batches-header h1 {
+    font-size: 22px !important;
+  }
+
+  /* 1. Square Stat Cards (Static Floating Glass) */
   .teacher-batches-header-stats {
-    width: 100%;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
 
-  .teacher-batches-header-stats > div {
-    flex: 1;
+  .teacher-batches-stat-card {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important; /* Perfect Square */
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 18px !important;
+    /* Static Soft Ambient & Elevation Shadow */
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.18),
+                0 8px 10px -6px rgba(0, 0, 0, 0.05),
+                inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important; /* Forces zero movement */
   }
 
+  .teacher-batches-stat-card span {
+    font-size: 11px !important;
+    color: #3b82f6 !important;
+  }
+
+  .teacher-batches-stat-card strong {
+    font-size: 26px !important;
+  }
+
+  /* 2. Filter Panel Glass & Mobile Layout */
   .teacher-batches-filter-panel {
-    align-items: flex-start;
-
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 14px 16px !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 12px 28px -6px rgba(31, 38, 135, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
   }
 
   .teacher-batches-filter-right {
-    width: 100%;
-
-    justify-content: space-between;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
 
   .teacher-batches-filter-right select {
-    flex: 1;
+    flex: 1 !important;
+    margin-left: 10px !important;
+    padding: 8px 12px !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 12px !important;
+    outline: none !important;
   }
 
+  /* 3. Batch Card Grid & Pure Static Floating Depth Shadow */
   .teacher-batches-grid {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .teacher-batch-card {
+    padding: 18px !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.95) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.95) !important;
+    border-radius: 20px !important;
+    /* Layered Floating Shadow (Mone hobe background theke 3D-te bhashche) */
+    box-shadow: 0 16px 32px -8px rgba(31, 38, 135, 0.15),
+                0 4px 12px 0 rgba(37, 99, 235, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+    transform: none !important; /* No Hover/Movement */
+    transition: none !important;
+  }
+
+  /* Completely Disable Hover / Active Animations */
+  .teacher-batch-card:hover,
+  .teacher-batches-stat-card:hover,
+  .teacher-batch-card:active,
+  .teacher-batches-stat-card:active {
+    transform: none !important;
+    box-shadow: 0 16px 32px -8px rgba(31, 38, 135, 0.15),
+                0 4px 12px 0 rgba(37, 99, 235, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  }
+
+  /* Inner Card Info Box - Semi-Transparent Frosted Sub-layer */
+  .teacher-batch-info {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px !important;
+    background: rgba(239, 246, 255, 0.35) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 14px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  }
+
+  .teacher-batch-info-row strong {
+    font-size: 11px !important;
+    word-break: break-word !important;
+  }
+
+  /* Action Buttons */
+  .teacher-batch-actions button {
+    padding: 11px 0 !important;
+    font-size: 12px !important;
+    border-radius: 12px !important;
   }
 
 }
 
-@media (max-width: 430px) {
-
-  .teacher-batches-header-stats {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .teacher-batches-header-stats > div {
-    min-width: 0;
-  }
-
-  .teacher-batches-filter-right {
-    align-items: flex-start;
-
-    flex-direction: column;
-  }
-
-  .teacher-batches-filter-right select {
-    width: 100%;
-  }
+/* Protection for Extremely Small Screens (Galaxy Fold, iPhone SE <= 360px) */
+@media (max-width: 360px) {
 
   .teacher-batch-info {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+
+  .teacher-batches-filter-right {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+  }
+
+  .teacher-batches-filter-right select {
+    margin-left: 0 !important;
+    width: 100% !important;
   }
 
 }

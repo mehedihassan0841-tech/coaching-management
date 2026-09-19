@@ -378,44 +378,266 @@
 
 }
 
-@media (max-width: 700px) {
+/* =========================================================
+   TEACHER ATTENDANCE — PURE MOBILE RESPONSIVE (320px - 768px)
+   Large Typography, Static Glass & High Usability (No Motion)
+========================================================= */
 
+@media (max-width: 768px) {
+
+  /* Page Layout & Background Glow */
+  .teacher-attendance-page {
+    padding: 16px 12px 90px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  /* 1. Header Section */
   .teacher-attendance-header {
-    align-items: flex-start;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-dashboard-eyebrow {
+    font-size: 16px !important; /* Larger Eyebrow Text */
+    font-weight: 700 !important;
+    color: #312e81 !important;
   }
 
   .teacher-mark-all-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important; /* Larger Action Button Font */
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* 2. Filters Section */
+  .teacher-attendance-filter-panel {
+    padding: 16px 14px !important;
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 24px -6px rgba(31, 38, 135, 0.12) !important;
   }
 
   .teacher-attendance-filter {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
   }
 
+  .teacher-attendance-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .teacher-attendance-field label {
+    font-size: 14px !important; /* Larger Field Label */
+    font-weight: 600 !important;
+    color: #1e293b !important;
+  }
+
+  .teacher-attendance-field select,
+  .teacher-attendance-field input {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 15px !important; /* Larger Input Text */
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+  }
+
+  /* 3. Summary Grid (2 Columns on Mobile) */
   .teacher-attendance-summary {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
   }
 
+  .teacher-attendance-summary-card {
+    padding: 16px 12px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .teacher-attendance-summary-card span {
+    font-size: 13px !important; /* Larger Card Label */
+    font-weight: 600 !important;
+    color: #475569 !important;
+  }
+
+  .teacher-attendance-summary-card strong {
+    font-size: 24px !important; /* Larger Card Metric Value */
+    font-weight: 700 !important;
+    margin-top: 4px !important;
+    display: block !important;
+  }
+
+  /* 4. Student Table Panel & Inner Elements */
+  .teacher-attendance-panel {
+    padding: 16px 12px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 32px -8px rgba(31, 38, 135, 0.15) !important;
+  }
+
+  .teacher-attendance-panel .panel-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .teacher-attendance-panel .panel-header h2 {
+    font-size: 18px !important; /* Larger Section Header */
+    font-weight: 700 !important;
+  }
+
+  .teacher-attendance-panel .panel-header p {
+    font-size: 13px !important;
+    color: #475569 !important;
+  }
+
+  .teacher-attendance-count {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    padding: 4px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Table Wrapper for Horizontal Scroll */
+  .teacher-attendance-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 12px !important;
+  }
+
+  .teacher-attendance-table {
+    min-width: 580px !important; /* Ensures clean layout on small screens */
+  }
+
+  .teacher-attendance-table th {
+    font-size: 13px !important;
+    padding: 12px 10px !important;
+  }
+
+  .teacher-attendance-table td {
+    padding: 12px 10px !important;
+    font-size: 14px !important; /* Larger Table Row Text */
+  }
+
+  .teacher-roll-badge {
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+  }
+
+  .teacher-student-id {
+    font-size: 13px !important;
+  }
+
+  /* Attendance Status Buttons Inside Table */
+  .teacher-attendance-actions {
+    display: flex !important;
+    gap: 6px !important;
+  }
+
+  .attendance-status-btn {
+    padding: 8px 12px !important;
+    font-size: 13px !important; /* Larger Status Button Text */
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* 5. Footer & Submit Section */
   .teacher-attendance-footer {
-    align-items: stretch;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
+
+  .teacher-attendance-footer strong {
+    font-size: 15px !important; /* Larger Summary Text */
+    display: block !important;
+    margin-bottom: 2px !important;
+  }
+
+  .teacher-attendance-footer span {
+    font-size: 13px !important;
+    color: #64748b !important;
   }
 
   .teacher-submit-attendance-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 16px !important; /* Prominent Submit Button */
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Disable Hover Motion & Scale Effects on Mobile */
+  .teacher-attendance-summary-card:hover,
+  .teacher-attendance-panel:hover,
+  .teacher-attendance-table tr:hover,
+  .attendance-status-btn:hover,
+  .teacher-submit-attendance-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 
 }
 
-@media (max-width: 420px) {
+/* Support for Extra Small Devices (<= 360px) */
+@media (max-width: 360px) {
 
   .teacher-attendance-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Single column summary for tiny devices */
   }
 
-  .teacher-attendance-summary-card {
-    min-height: 90px;
+  .teacher-attendance-summary-card strong {
+    font-size: 22px !important;
+  }
+
+  .attendance-status-btn {
+    padding: 6px 8px !important;
+    font-size: 12px !important;
   }
 
 }

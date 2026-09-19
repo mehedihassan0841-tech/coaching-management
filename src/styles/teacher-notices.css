@@ -375,51 +375,269 @@
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 700px) {
+/* =========================================================
+   TEACHER NOTICES — PURE MOBILE RESPONSIVE (320px - 768px)
+   Large Typography, High Readability & Pure Glass Styling
+========================================================= */
 
+@media (max-width: 768px) {
+
+  /* Page Base Layout & Background Glow */
+  .teacher-notices-page {
+    padding: 16px 12px 90px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  /* Header Section */
+  .teacher-notices-header {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-dashboard-eyebrow {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #312e81 !important;
+    margin: 0 !important;
+  }
+
+  /* Base Panels (Create Notice & Notice List) */
+  .teacher-create-notice-panel,
+  .teacher-notice-list-panel {
+    padding: 18px 14px !important;
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 28px -6px rgba(31, 38, 135, 0.12) !important;
+  }
+
+  /* Panel Header Text & Badges */
+  .teacher-create-notice-panel .panel-header,
+  .teacher-notice-list-panel .panel-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-create-notice-panel h2,
+  .teacher-notice-list-panel h2 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 4px 0 !important;
+  }
+
+  .teacher-create-notice-panel p,
+  .teacher-notice-list-panel p {
+    font-size: 13px !important;
+    color: #475569 !important;
+    margin: 0 !important;
+  }
+
+  .teacher-notice-create-badge,
+  .teacher-notice-count {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #4338ca !important;
+  }
+
+  /* Create Notice Form Controls */
   .teacher-notice-form {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
   }
 
-  .teacher-notice-field.full {
-    grid-column: auto;
+  .teacher-notice-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: 100% !important;
   }
 
+  .teacher-notice-field label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+  }
+
+  .teacher-notice-field input[type="text"],
+  .teacher-notice-field select,
+  .teacher-notice-field textarea {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 15px !important; /* Easy-to-type input box for mobile */
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .teacher-notice-field textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Form Footer & Publish Button */
   .teacher-notice-form-footer {
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
 
-    flex-direction: column;
+  .teacher-notice-form-footer span {
+    font-size: 13px !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
   }
 
   .teacher-publish-notice-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3) !important;
+  }
+
+  /* Notice Cards List */
+  .teacher-notice-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+
+  .teacher-notice-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    padding: 16px 14px !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 20px -4px rgba(31, 38, 135, 0.08) !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .teacher-notice-pin {
+    font-size: 18px !important;
+    line-height: 1 !important;
+    padding-top: 2px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .teacher-notice-card-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
 
   .teacher-notice-card-top {
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
 
-    gap: 9px;
+  .teacher-notice-card-top h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .teacher-notice-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .teacher-notice-meta span {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
+
+  .teacher-notice-status {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 4px 10px !important;
+    border-radius: 8px !important;
+    background: #dcfce7 !important;
+    color: #15803d !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+  }
+
+  .teacher-notice-card-content p {
+    font-size: 14px !important;
+    color: #334155 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    word-break: break-word !important;
+  }
+
+  /* Disable Motions on Hover for Mobile */
+  .teacher-notice-card:hover,
+  .teacher-publish-notice-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 
 }
 
-@media (max-width: 500px) {
+/* Support for Extra Small Devices (<= 360px) */
+@media (max-width: 360px) {
 
-  .teacher-notice-card {
-    gap: 11px;
-
-    padding: 14px;
+  .teacher-notice-card-top h3 {
+    font-size: 15px !important;
   }
 
-  .teacher-notice-pin {
-    width: 38px;
-    height: 38px;
-
-    font-size: 15px;
+  .teacher-notice-field input[type="text"],
+  .teacher-notice-field select,
+  .teacher-notice-field textarea {
+    font-size: 14px !important;
+    padding: 10px 12px !important;
   }
 
-  .teacher-notice-card-content > p {
-    font-size: 9px;
+  .teacher-notice-card-content p {
+    font-size: 13px !important;
   }
 
 }

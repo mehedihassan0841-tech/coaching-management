@@ -456,42 +456,279 @@
 
 }
 
-@media (max-width: 700px) {
+/* =========================================================
+   TEACHER EXAMS — PURE MOBILE RESPONSIVE (320px - 768px)
+   Large Typography, Static Glass & High Usability (No Motion)
+========================================================= */
 
+@media (max-width: 768px) {
+
+  /* Page Layout & Background Glow */
+  .teacher-exams-page {
+    padding: 16px 12px 90px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  /* 1. Header Section */
   .teacher-exams-header {
-    align-items: flex-start;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-bottom: 18px !important;
+  }
 
-    flex-direction: column;
+  .teacher-dashboard-eyebrow {
+    font-size: 16px !important; /* Larger Eyebrow Text */
+    font-weight: 700 !important;
+    color: #312e81 !important;
   }
 
   .teacher-save-results-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important; /* Larger Save Button Font */
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* 2. Controls Section (Exam, Batch, Subject, Total Marks) */
+  .teacher-exam-control-panel {
+    padding: 16px 14px !important;
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 24px -6px rgba(31, 38, 135, 0.12) !important;
   }
 
   .teacher-exam-controls {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
   }
 
+  .teacher-exam-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .teacher-exam-field label {
+    font-size: 14px !important; /* Larger Label */
+    font-weight: 600 !important;
+    color: #1e293b !important;
+  }
+
+  .teacher-exam-field select {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 15px !important; /* Larger Input Selection Text */
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+  }
+
+  .teacher-total-marks {
+    padding: 12px 14px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border-radius: 12px !important;
+    color: #4338ca !important;
+  }
+
+  /* 3. Summary Grid (2 Columns on Mobile) */
   .teacher-exam-summary {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
   }
 
+  .teacher-exam-summary-card {
+    padding: 16px 12px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .teacher-exam-summary-card span {
+    font-size: 13px !important; /* Larger Metric Label */
+    font-weight: 600 !important;
+    color: #475569 !important;
+  }
+
+  .teacher-exam-summary-card strong {
+    font-size: 24px !important; /* Larger Metric Value */
+    font-weight: 700 !important;
+    margin: 4px 0 2px !important;
+    display: block !important;
+  }
+
+  .teacher-exam-summary-card small {
+    font-size: 11px !important;
+    color: #64748b !important;
+  }
+
+  /* 4. Results Table Panel & Inner Elements */
+  .teacher-exam-results-panel {
+    padding: 16px 12px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 16px 32px -8px rgba(31, 38, 135, 0.15) !important;
+  }
+
+  .teacher-exam-results-panel .panel-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .teacher-exam-results-panel .panel-header h2 {
+    font-size: 18px !important; /* Larger Header */
+    font-weight: 700 !important;
+  }
+
+  .teacher-exam-results-panel .panel-header p {
+    font-size: 13px !important;
+    color: #475569 !important;
+  }
+
+  .teacher-exam-student-count {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    padding: 4px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Table Wrapper for Horizontal Touch Scroll */
+  .teacher-exam-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 12px !important;
+  }
+
+  .teacher-exam-table {
+    min-width: 680px !important; /* Prevents cell overlap for multi-column inputs */
+  }
+
+  .teacher-exam-table th {
+    font-size: 13px !important;
+    padding: 12px 10px !important;
+  }
+
+  .teacher-exam-table td {
+    padding: 12px 10px !important;
+    font-size: 14px !important; /* Larger Cell Text */
+  }
+
+  .teacher-position-badge {
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+  }
+
+  .teacher-exam-roll,
+  .teacher-exam-student-id {
+    font-size: 13px !important;
+  }
+
+  .teacher-exam-student-name {
+    font-size: 14px !important;
+  }
+
+  .teacher-marks-input {
+    width: 75px !important;
+    padding: 8px 10px !important;
+    font-size: 15px !important; /* Easy-to-type input box for mobile */
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: center !important;
+  }
+
+  .teacher-exam-percentage {
+    font-size: 14px !important;
+  }
+
+  .teacher-result-badge {
+    font-size: 13px !important;
+    padding: 5px 10px !important;
+    border-radius: 8px !important;
+  }
+
+  /* 5. Footer & Submit Action */
   .teacher-exam-footer {
-    align-items: stretch;
-
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
   }
 
-  .teacher-exam-footer .teacher-save-results-btn {
-    width: 100%;
+  .teacher-exam-footer strong {
+    font-size: 15px !important;
+    display: block !important;
+    margin-bottom: 2px !important;
+  }
+
+  .teacher-exam-footer span {
+    font-size: 13px !important;
+    color: #64748b !important;
+  }
+
+  /* Disable Hover Motion & Scale Effects on Mobile */
+  .teacher-exam-summary-card:hover,
+  .teacher-exam-results-panel:hover,
+  .teacher-exam-table tr:hover,
+  .teacher-save-results-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 
 }
 
-@media (max-width: 430px) {
+/* Support for Extra Small Devices (<= 360px) */
+@media (max-width: 360px) {
 
-  .teacher-exam-summary-card {
-    min-height: 90px;
+  .teacher-exam-summary {
+    grid-template-columns: 1fr !important; /* Single column summary for tiny screens */
+  }
+
+  .teacher-exam-summary-card strong {
+    font-size: 22px !important;
+  }
+
+  .teacher-marks-input {
+    width: 65px !important;
+    padding: 6px 8px !important;
+    font-size: 14px !important;
   }
 
 }

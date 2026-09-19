@@ -414,68 +414,305 @@
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 900px) {
+/* =========================================================
+   TEACHER ASSIGNMENTS — PURE MOBILE RESPONSIVE (320px - 768px)
+   Large Typography, Touch-Friendly Forms & Pure Glass Styling
+========================================================= */
 
+@media (max-width: 768px) {
+
+  /* Page Base Layout & Global Glow */
+  .teacher-assignments-page {
+    padding: 16px 12px 90px !important;
+    background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  /* Header Section */
+  .teacher-assignments-header {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-dashboard-eyebrow {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #312e81 !important;
+    margin: 0 !important;
+  }
+
+  /* Panels (Create & List) Base Styling */
+  .teacher-create-assignment-panel,
+  .teacher-assignment-list-panel {
+    padding: 18px 14px !important;
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 28px -6px rgba(31, 38, 135, 0.12) !important;
+  }
+
+  /* Panel Header Text & Badges */
+  .teacher-create-assignment-panel .panel-header,
+  .teacher-assignment-list-panel .panel-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .teacher-create-assignment-panel h2,
+  .teacher-assignment-list-panel h2 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 4px 0 !important;
+  }
+
+  .teacher-create-assignment-panel p,
+  .teacher-assignment-list-panel p {
+    font-size: 13px !important;
+    color: #475569 !important;
+    margin: 0 !important;
+  }
+
+  .teacher-assignment-create-badge,
+  .teacher-assignment-count {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #4338ca !important;
+  }
+
+  /* Create Assignment Form Grid */
   .teacher-assignment-form {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
   }
 
-  .teacher-assignment-card {
-    grid-template-columns:
-      46px minmax(0, 1fr);
+  .teacher-assignment-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: 100% !important;
   }
 
-  .teacher-assignment-submissions {
-    grid-column: 2;
+  .teacher-assignment-field label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
   }
 
-}
-
-@media (max-width: 650px) {
-
-  .teacher-assignment-form {
-    grid-template-columns: 1fr;
+  .teacher-assignment-field input[type="text"],
+  .teacher-assignment-field input[type="date"],
+  .teacher-assignment-field select,
+  .teacher-assignment-field textarea {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 15px !important; /* Touch-friendly legible inputs */
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+    outline: none !important;
+    box-sizing: border-box !important;
   }
 
-  .teacher-assignment-field.full {
-    grid-column: auto;
+  .teacher-assignment-field textarea {
+    min-height: 110px !important;
+    resize: vertical !important;
   }
 
+  /* Form Actions & Publishing */
   .teacher-assignment-form-footer {
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
 
-    flex-direction: column;
+  .teacher-assignment-form-footer span {
+    font-size: 13px !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
   }
 
   .teacher-publish-assignment-btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3) !important;
+  }
+
+  /* Assignment List Cards Stack */
+  .teacher-assignment-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
   }
 
   .teacher-assignment-card {
-    grid-template-columns: 42px minmax(0, 1fr);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 16px 14px !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 20px -4px rgba(31, 38, 135, 0.08) !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
-    gap: 11px;
+  .teacher-assignment-card-icon {
+    display: none !important; /* Hide redundant icon on narrow mobile screens to preserve vertical space */
+  }
+
+  .teacher-assignment-card-main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
 
   .teacher-assignment-card-title {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 5px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
   }
 
+  .teacher-assignment-card-title h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .teacher-assignment-status {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    display: inline-block !important;
+  }
+
+  .teacher-assignment-status.published {
+    background: #dcfce7 !important;
+    color: #15803d !important;
+  }
+
+  .teacher-assignment-status.draft {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+  }
+
+  /* Card Meta Info Tags */
+  .teacher-assignment-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .teacher-assignment-meta span {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  }
+
+  /* Submission Progress Tracker */
   .teacher-assignment-submissions {
-    grid-column: 1 / -1;
+    padding-top: 10px !important;
+    border-top: 1px dashed rgba(203, 213, 225, 0.8) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .teacher-assignment-submissions div:first-child {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .teacher-assignment-submissions strong {
+    font-size: 14px !important;
+    color: #1e293b !important;
+  }
+
+  .teacher-assignment-submissions span {
+    font-size: 12px !important;
+    color: #64748b !important;
+  }
+
+  .teacher-submission-progress {
+    width: 100% !important;
+    height: 8px !important;
+    background: #e2e8f0 !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+  }
+
+  .teacher-submission-progress span {
+    height: 100% !important;
+    background: #6366f1 !important;
+    display: block !important;
+    border-radius: 4px !important;
+  }
+
+  .teacher-assignment-submissions small {
+    font-size: 12px !important;
+    color: #64748b !important;
+    text-align: right !important;
+  }
+
+  /* Disable Motions on Hover for Mobile */
+  .teacher-assignment-card:hover,
+  .teacher-publish-assignment-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 
 }
 
-@media (max-width: 430px) {
+/* Support for Extra Small Devices (<= 360px) */
+@media (max-width: 360px) {
 
-  .teacher-assignment-card {
-    padding: 13px;
+  .teacher-assignment-card-title h3 {
+    font-size: 15px !important;
+  }
+
+  .teacher-assignment-field input[type="text"],
+  .teacher-assignment-field input[type="date"],
+  .teacher-assignment-field select,
+  .teacher-assignment-field textarea {
+    font-size: 14px !important;
+    padding: 10px 12px !important;
   }
 
 }
