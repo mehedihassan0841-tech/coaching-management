@@ -51,6 +51,25 @@ function Login() {
       navigate("/student-dashboard");
       return;
     }
+    // Teacher Login
+    if (
+      form.email === "teacher@educare.com" &&
+      form.password === "teacher123"
+    ) {
+      localStorage.setItem(
+        "educareUser",
+        JSON.stringify({
+          role: "teacher",
+          email: form.email,
+          name: "Mr. Rahman",
+          teacherId: "T-001",
+          subject: "Physics",
+        })
+      );
+
+      navigate("/teacher-dashboard");
+      return;
+    }
 
     // Wrong Login
     setError("Invalid email or password.");

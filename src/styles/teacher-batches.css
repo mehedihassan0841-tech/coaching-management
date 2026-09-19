@@ -1,0 +1,463 @@
+/* =========================================================
+   TEACHER BATCHES
+========================================================= */
+
+.teacher-batches-page {
+  width: 100%;
+}
+
+/* Header */
+
+.teacher-batches-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.teacher-batches-header-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.teacher-batches-header-stats > div {
+  min-width: 125px;
+  padding: 13px 16px;
+
+  border: 1px solid #e7eaf0;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 7px 20px rgba(15, 23, 42, 0.035);
+}
+
+.teacher-batches-header-stats span {
+  display: block;
+
+  color: #8a93a5;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.teacher-batches-header-stats strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #293246;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+/* Filter */
+
+.teacher-batches-filter-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.teacher-batches-filter-left h2 {
+  margin: 0;
+
+  color: #293246;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.teacher-batches-filter-left p {
+  margin: 5px 0 0;
+
+  color: #929aaa;
+
+  font-size: 10px;
+}
+
+.teacher-batches-filter-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.teacher-batches-filter-right label {
+  color: #697386;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.teacher-batches-filter-right select {
+  min-width: 150px;
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #e1e6ee;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #343d50;
+
+  font-family: inherit;
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.teacher-batches-filter-right select:focus {
+  border-color: #a5a4ff;
+
+  box-shadow:
+    0 0 0 3px rgba(79, 70, 229, 0.08);
+}
+
+/* Batch Grid */
+
+.teacher-batches-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 17px;
+
+  padding-bottom: 30px;
+}
+
+/* Batch Card */
+
+.teacher-batch-card {
+  position: relative;
+
+  padding: 19px;
+
+  border: 1px solid #e7eaf0;
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.teacher-batch-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed
+  );
+}
+
+.teacher-batch-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #dcdff2;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+/* Card Top */
+
+.teacher-batch-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.teacher-batch-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #f1f2ff;
+  color: #4f46e5;
+
+  font-size: 20px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(79, 70, 229, 0.05);
+}
+
+.teacher-batch-status {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 25px;
+
+  padding: 0 9px;
+
+  border: 1px solid #ccebd7;
+  border-radius: 99px;
+
+  background: #edf9f1;
+  color: #198754;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* Title */
+
+.teacher-batch-title {
+  margin-bottom: 17px;
+}
+
+.teacher-batch-title h2 {
+  margin: 0;
+
+  color: #293246;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.teacher-batch-title p {
+  margin: 5px 0 0;
+
+  color: #8a93a5;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Info */
+
+.teacher-batch-info {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  padding: 14px 0;
+
+  border-top: 1px solid #edf0f4;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.teacher-batch-info-row {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+.teacher-batch-info-row > span {
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f8f9fc;
+  color: #687386;
+
+  font-size: 12px;
+}
+
+.teacher-batch-info-row small {
+  display: block;
+
+  color: #9aa2b1;
+
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.teacher-batch-info-row strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #4c5669;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* Actions */
+
+.teacher-batch-actions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+.teacher-batch-actions button {
+  height: 35px;
+
+  border: 1px solid #e1e5ec;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #596477;
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.teacher-batch-actions button:hover {
+  transform: translateY(-1px);
+
+  border-color: #cfd2f8;
+
+  background: #f7f7ff;
+
+  color: #4f46e5;
+}
+
+.teacher-batch-actions button:last-child {
+  border-color: #4f46e5;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 15px rgba(79, 70, 229, 0.16);
+}
+
+.teacher-batch-actions button:last-child:hover {
+  background: #4338ca;
+
+  border-color: #4338ca;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .teacher-batches-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 760px) {
+
+  .teacher-batches-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .teacher-batches-header-stats {
+    width: 100%;
+  }
+
+  .teacher-batches-header-stats > div {
+    flex: 1;
+  }
+
+  .teacher-batches-filter-panel {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .teacher-batches-filter-right {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .teacher-batches-filter-right select {
+    flex: 1;
+  }
+
+  .teacher-batches-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  .teacher-batches-header-stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .teacher-batches-header-stats > div {
+    min-width: 0;
+  }
+
+  .teacher-batches-filter-right {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .teacher-batches-filter-right select {
+    width: 100%;
+  }
+
+  .teacher-batch-info {
+    grid-template-columns: 1fr;
+  }
+
+}
