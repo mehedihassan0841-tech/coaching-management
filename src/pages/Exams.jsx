@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import {
@@ -18,7 +19,6 @@ import {
 
 import { exams, examResults } from "../data/mockData";
 import "../styles/admin-exams.css";
-
 
 // ======================================================
 // DEMO CHART DATA
@@ -84,6 +84,7 @@ const examTypeSuggestions = [
 ];
 
 const classSuggestions = [
+  "Class 5",
   "Class 6",
   "Class 7",
   "Class 8",
@@ -93,88 +94,116 @@ const classSuggestions = [
   "Class 12",
 ];
 
+const groupSuggestions = [
+  "Science",
+  "Business Studies",
+  "Humanities",
+  "General",
+];
 
 // ======================================================
-// INITIAL ASSESSMENT CONFIGURATION
+// INITIAL EXAM TYPES
 // ======================================================
 
-const initialAssessmentTypes = [
+const initialExamTypes = [
   {
-    id: "ASM-001",
+    id: "EXAMTYPE-001",
     name: "CT",
     description: "Class Test",
-    totalMarks: 15,
-    components: [
-      {
-        id: "CMP-001",
-        name: "Written",
-        marks: 15,
-      },
-    ],
     status: "Active",
   },
-
   {
-    id: "ASM-002",
+    id: "EXAMTYPE-002",
     name: "MT",
     description: "Monthly Test",
-    totalMarks: 20,
-    components: [
-      {
-        id: "CMP-002",
-        name: "Written",
-        marks: 20,
-      },
-    ],
     status: "Active",
   },
-
   {
-    id: "ASM-003",
+    id: "EXAMTYPE-003",
     name: "Mid Term",
     description: "Mid Term Examination",
-    totalMarks: 30,
-    components: [
-      {
-        id: "CMP-003",
-        name: "MCQ",
-        marks: 10,
-      },
-      {
-        id: "CMP-004",
-        name: "Written",
-        marks: 20,
-      },
-    ],
     status: "Active",
   },
-
   {
-    id: "ASM-004",
+    id: "EXAMTYPE-004",
     name: "Annual",
     description: "Annual Examination",
-    totalMarks: 100,
-    components: [
-      {
-        id: "CMP-005",
-        name: "MCQ",
-        marks: 25,
-      },
-      {
-        id: "CMP-006",
-        name: "Written",
-        marks: 50,
-      },
-      {
-        id: "CMP-007",
-        name: "Practical",
-        marks: 25,
-      },
-    ],
     status: "Active",
   },
 ];
 
+// ======================================================
+// INITIAL MARK STRUCTURES
+// ======================================================
+
+const initialMarkStructures = [
+  {
+    id: "STRUCT-001",
+    examType: "CT",
+    className: "Class 9",
+    group: "Science",
+    subject: "Physics",
+    components: [
+      { id: "C-001", name: "Written", marks: 15 },
+    ],
+    totalMarks: 15,
+  },
+  {
+    id: "STRUCT-002",
+    examType: "Mid Term",
+    className: "Class 9",
+    group: "Science",
+    subject: "Physics",
+    components: [
+      { id: "C-002", name: "MCQ", marks: 10 },
+      { id: "C-003", name: "Written", marks: 15 },
+      { id: "C-004", name: "Practical", marks: 5 },
+    ],
+    totalMarks: 30,
+  },
+  {
+    id: "STRUCT-003",
+    examType: "Mid Term",
+    className: "Class 9",
+    group: "Science",
+    subject: "Bangla 2nd",
+    components: [
+      { id: "C-005", name: "Written", marks: 60 },
+    ],
+    totalMarks: 60,
+  },
+  {
+    id: "STRUCT-004",
+    examType: "Annual",
+    className: "Class 9",
+    group: "Science",
+    subject: "Physics",
+    components: [
+      { id: "C-006", name: "MCQ", marks: 25 },
+      { id: "C-007", name: "Written", marks: 50 },
+      { id: "C-008", name: "Practical", marks: 25 },
+    ],
+    totalMarks: 100,
+  },
+];
+
+// ======================================================
+// INITIAL RESULT RULES
+// ======================================================
+
+const initialResultRules = [
+  {
+    id: "RULE-001",
+    name: "Annual Final Result",
+    description: "Combined yearly academic result",
+    components: [
+      { id: "R-001", examType: "CT", weight: 20 },
+      { id: "R-002", examType: "MT", weight: 20 },
+      { id: "R-003", examType: "Mid Term", weight: 20 },
+      { id: "R-004", examType: "Annual", weight: 40 },
+    ],
+  },
+];
 
 // ======================================================
 // COMPONENT
@@ -182,7 +211,7 @@ const initialAssessmentTypes = [
 
 function Exams() {
   // ----------------------------------------------------
-  // EXISTING PAGE STATE
+  // MAIN PAGE STATE
   // ----------------------------------------------------
 
   const [tab, setTab] = useState("overview");
@@ -201,20 +230,38 @@ function Exams() {
 
   const [activeSuggestion, setActiveSuggestion] = useState(null);
 
-
   // ----------------------------------------------------
-  // NEW ASSESSMENT SETUP STATE
+  // EXAM TYPE STATE
   // ----------------------------------------------------
 
-  const [assessmentTypes, setAssessmentTypes] = useState(
-    initialAssessmentTypes
-  );
+  const [examTypes, setExamTypes] = useState(initialExamTypes);
 
-  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
+  const [showExamTypeModal, setShowExamTypeModal] =
+    useState(false);
 
-  const [assessmentForm, setAssessmentForm] = useState({
+  const [examTypeForm, setExamTypeForm] = useState({
     name: "",
     description: "",
+  });
+
+  const [examTypeError, setExamTypeError] = useState("");
+
+  // ----------------------------------------------------
+  // MARK STRUCTURE STATE
+  // ----------------------------------------------------
+
+  const [markStructures, setMarkStructures] = useState(
+    initialMarkStructures
+  );
+
+  const [showStructureModal, setShowStructureModal] =
+    useState(false);
+
+  const [structureForm, setStructureForm] = useState({
+    examType: "",
+    className: "",
+    group: "",
+    subject: "",
     components: [
       {
         id: Date.now(),
@@ -224,54 +271,96 @@ function Exams() {
     ],
   });
 
-  const [assessmentError, setAssessmentError] = useState("");
+  const [structureError, setStructureError] = useState("");
 
+  // ----------------------------------------------------
+  // RESULT RULE STATE
+  // ----------------------------------------------------
+
+  const [resultRules, setResultRules] = useState(
+    initialResultRules
+  );
+
+  const [showRuleModal, setShowRuleModal] = useState(false);
+
+  const [ruleForm, setRuleForm] = useState({
+    name: "",
+    description: "",
+    components: [
+      {
+        id: Date.now(),
+        examType: "",
+        weight: "",
+      },
+    ],
+  });
+
+  const [ruleError, setRuleError] = useState("");
 
   // ====================================================
-  // EXISTING EXAM FILTER
+  // EXAM FILTER
   // ====================================================
 
   const filteredExams = exams.filter((exam) => {
-    const text = `${exam.name || ""} ${exam.type || ""}`.toLowerCase();
+    const text = `${exam.name || ""} ${
+      exam.type || ""
+    }`.toLowerCase();
 
     const examTypeMatch =
       !examSearch.examType.trim() ||
-      text.includes(examSearch.examType.trim().toLowerCase());
+      text.includes(
+        examSearch.examType.trim().toLowerCase()
+      );
 
     const classMatch =
       !examSearch.className.trim() ||
       String(exam.className || "")
         .toLowerCase()
-        .includes(examSearch.className.trim().toLowerCase());
+        .includes(
+          examSearch.className.trim().toLowerCase()
+        );
 
     const sectionMatch =
       !examSearch.section.trim() ||
       String(exam.section || "")
         .toLowerCase()
-        .includes(examSearch.section.trim().toLowerCase());
+        .includes(
+          examSearch.section.trim().toLowerCase()
+        );
 
     const groupMatch =
       !examSearch.group.trim() ||
       String(exam.group || "")
         .toLowerCase()
-        .includes(examSearch.group.trim().toLowerCase());
+        .includes(
+          examSearch.group.trim().toLowerCase()
+        );
 
     const subjectMatch =
       !examSearch.subject.trim() ||
       String(exam.subject || "")
         .toLowerCase()
-        .includes(examSearch.subject.trim().toLowerCase());
+        .includes(
+          examSearch.subject.trim().toLowerCase()
+        );
 
     const teacherMatch =
       !examSearch.teacher.trim() ||
       String(exam.teacher || "")
         .toLowerCase()
-        .includes(examSearch.teacher.trim().toLowerCase());
+        .includes(
+          examSearch.teacher.trim().toLowerCase()
+        );
 
     const statusMatch =
       examSearch.status === "All" ||
       String(exam.status || "").toLowerCase() ===
         examSearch.status.toLowerCase();
+
+    const typeDropdownMatch =
+      typeFilter === "All" ||
+      String(exam.type || "").toLowerCase() ===
+        typeFilter.toLowerCase();
 
     return (
       examTypeMatch &&
@@ -280,10 +369,10 @@ function Exams() {
       groupMatch &&
       subjectMatch &&
       teacherMatch &&
-      statusMatch
+      statusMatch &&
+      typeDropdownMatch
     );
   });
-
 
   const upcomingExams = filteredExams.filter(
     (exam) =>
@@ -300,17 +389,91 @@ function Exams() {
 
   const totalExams = filteredExams.length;
 
-
   // ====================================================
-  // ASSESSMENT FORM FUNCTIONS
+  // EXAM TYPE FUNCTIONS
   // ====================================================
 
-  const openAssessmentModal = () => {
-    setAssessmentError("");
+  const openExamTypeModal = () => {
+    setExamTypeError("");
 
-    setAssessmentForm({
+    setExamTypeForm({
       name: "",
       description: "",
+    });
+
+    setShowExamTypeModal(true);
+  };
+
+  const closeExamTypeModal = () => {
+    setShowExamTypeModal(false);
+    setExamTypeError("");
+  };
+
+  const createExamType = (e) => {
+    e.preventDefault();
+
+    setExamTypeError("");
+
+    const name = examTypeForm.name.trim();
+
+    if (!name) {
+      setExamTypeError("Exam type name is required.");
+      return;
+    }
+
+    const duplicate = examTypes.some(
+      (item) =>
+        item.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (duplicate) {
+      setExamTypeError(
+        "This exam type already exists."
+      );
+      return;
+    }
+
+    const newExamType = {
+      id: `EXAMTYPE-${Date.now()}`,
+      name,
+      description:
+        examTypeForm.description.trim() ||
+        "Custom academic assessment",
+      status: "Active",
+    };
+
+    setExamTypes((prev) => [
+      ...prev,
+      newExamType,
+    ]);
+
+    closeExamTypeModal();
+  };
+
+  const deleteExamType = (id) => {
+    const confirmed = window.confirm(
+      "Remove this exam type?"
+    );
+
+    if (!confirmed) return;
+
+    setExamTypes((prev) =>
+      prev.filter((item) => item.id !== id)
+    );
+  };
+
+  // ====================================================
+  // MARK STRUCTURE FUNCTIONS
+  // ====================================================
+
+  const openStructureModal = () => {
+    setStructureError("");
+
+    setStructureForm({
+      examType: examTypes[0]?.name || "",
+      className: "",
+      group: "",
+      subject: "",
       components: [
         {
           id: Date.now(),
@@ -320,26 +483,27 @@ function Exams() {
       ],
     });
 
-    setShowAssessmentModal(true);
+    setShowStructureModal(true);
   };
 
-
-  const closeAssessmentModal = () => {
-    setShowAssessmentModal(false);
-    setAssessmentError("");
+  const closeStructureModal = () => {
+    setShowStructureModal(false);
+    setStructureError("");
   };
 
-
-  const handleAssessmentBasicChange = (field, value) => {
-    setAssessmentForm((prev) => ({
+  const updateStructureField = (field, value) => {
+    setStructureForm((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-
-  const handleComponentChange = (id, field, value) => {
-    setAssessmentForm((prev) => ({
+  const updateStructureComponent = (
+    id,
+    field,
+    value
+  ) => {
+    setStructureForm((prev) => ({
       ...prev,
       components: prev.components.map((component) =>
         component.id === id
@@ -352,9 +516,8 @@ function Exams() {
     }));
   };
 
-
-  const addComponent = () => {
-    setAssessmentForm((prev) => ({
+  const addStructureComponent = () => {
+    setStructureForm((prev) => ({
       ...prev,
       components: [
         ...prev.components,
@@ -367,114 +530,304 @@ function Exams() {
     }));
   };
 
-
-  const removeComponent = (id) => {
-    if (assessmentForm.components.length === 1) {
-      setAssessmentError("At least one component is required.");
+  const removeStructureComponent = (id) => {
+    if (structureForm.components.length === 1) {
+      setStructureError(
+        "At least one mark component is required."
+      );
       return;
     }
 
-    setAssessmentForm((prev) => ({
+    setStructureForm((prev) => ({
       ...prev,
       components: prev.components.filter(
         (component) => component.id !== id
       ),
     }));
 
-    setAssessmentError("");
+    setStructureError("");
   };
 
-
-  const calculateComponentTotal = () => {
-    return assessmentForm.components.reduce(
-      (total, component) => total + Number(component.marks || 0),
+  const calculateStructureTotal = () => {
+    return structureForm.components.reduce(
+      (total, component) =>
+        total + Number(component.marks || 0),
       0
     );
   };
 
-
-  const createAssessment = (e) => {
+  const createMarkStructure = (e) => {
     e.preventDefault();
 
-    setAssessmentError("");
+    setStructureError("");
 
-    const name = assessmentForm.name.trim();
-
-    if (!name) {
-      setAssessmentError("Assessment name is required.");
+    if (!structureForm.examType) {
+      setStructureError("Select an exam type.");
       return;
     }
 
-    const hasEmptyComponent = assessmentForm.components.some(
-      (component) =>
-        !component.name.trim() ||
-        component.marks === "" ||
-        Number(component.marks) <= 0
-    );
+    if (!structureForm.className.trim()) {
+      setStructureError("Class is required.");
+      return;
+    }
 
-    if (hasEmptyComponent) {
-      setAssessmentError(
-        "Every component needs a name and valid marks."
+    if (!structureForm.subject.trim()) {
+      setStructureError("Subject is required.");
+      return;
+    }
+
+    const invalidComponent =
+      structureForm.components.some(
+        (component) =>
+          !component.name.trim() ||
+          component.marks === "" ||
+          Number(component.marks) <= 0
+      );
+
+    if (invalidComponent) {
+      setStructureError(
+        "Every component needs a valid name and marks."
       );
       return;
     }
 
-    const totalMarks = calculateComponentTotal();
-
-    if (totalMarks <= 0) {
-      setAssessmentError("Total marks must be greater than 0.");
-      return;
-    }
-
-    const duplicate = assessmentTypes.some(
-      (assessment) =>
-        assessment.name.toLowerCase() === name.toLowerCase()
+    const duplicate = markStructures.some(
+      (structure) =>
+        structure.examType.toLowerCase() ===
+          structureForm.examType.toLowerCase() &&
+        structure.className.toLowerCase() ===
+          structureForm.className
+            .trim()
+            .toLowerCase() &&
+        structure.group.toLowerCase() ===
+          structureForm.group
+            .trim()
+            .toLowerCase() &&
+        structure.subject.toLowerCase() ===
+          structureForm.subject
+            .trim()
+            .toLowerCase()
     );
 
     if (duplicate) {
-      setAssessmentError(
-        "This assessment type already exists."
+      setStructureError(
+        "A mark structure already exists for this exam, class, group and subject."
       );
       return;
     }
 
-    const newAssessment = {
-      id: `ASM-${Date.now()}`,
-      name,
-      description:
-        assessmentForm.description.trim() || "Custom assessment",
-      totalMarks,
-      components: assessmentForm.components.map(
+    const totalMarks = calculateStructureTotal();
+
+    const newStructure = {
+      id: `STRUCT-${Date.now()}`,
+      examType: structureForm.examType,
+      className: structureForm.className.trim(),
+      group: structureForm.group.trim() || "General",
+      subject: structureForm.subject.trim(),
+      components: structureForm.components.map(
         (component, index) => ({
-          id: `CMP-${Date.now()}-${index}`,
+          id: `SC-${Date.now()}-${index}`,
           name: component.name.trim(),
           marks: Number(component.marks),
         })
       ),
-      status: "Active",
+      totalMarks,
     };
 
-    setAssessmentTypes((prev) => [
+    setMarkStructures((prev) => [
       ...prev,
-      newAssessment,
+      newStructure,
     ]);
 
-    closeAssessmentModal();
+    closeStructureModal();
   };
 
-
-  const deleteAssessment = (id) => {
+  const deleteMarkStructure = (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to remove this assessment type?"
+      "Remove this mark structure?"
     );
 
     if (!confirmed) return;
 
-    setAssessmentTypes((prev) =>
-      prev.filter((assessment) => assessment.id !== id)
+    setMarkStructures((prev) =>
+      prev.filter((item) => item.id !== id)
     );
   };
 
+  // ====================================================
+  // RESULT RULE FUNCTIONS
+  // ====================================================
+
+  const openRuleModal = () => {
+    setRuleError("");
+
+    setRuleForm({
+      name: "",
+      description: "",
+      components: [
+        {
+          id: Date.now(),
+          examType: examTypes[0]?.name || "",
+          weight: "",
+        },
+      ],
+    });
+
+    setShowRuleModal(true);
+  };
+
+  const closeRuleModal = () => {
+    setShowRuleModal(false);
+    setRuleError("");
+  };
+
+  const updateRuleBasic = (field, value) => {
+    setRuleForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const updateRuleComponent = (
+    id,
+    field,
+    value
+  ) => {
+    setRuleForm((prev) => ({
+      ...prev,
+      components: prev.components.map((component) =>
+        component.id === id
+          ? {
+              ...component,
+              [field]: value,
+            }
+          : component
+      ),
+    }));
+  };
+
+  const addRuleComponent = () => {
+    setRuleForm((prev) => ({
+      ...prev,
+      components: [
+        ...prev.components,
+        {
+          id: Date.now() + Math.random(),
+          examType: "",
+          weight: "",
+        },
+      ],
+    }));
+  };
+
+  const removeRuleComponent = (id) => {
+    if (ruleForm.components.length === 1) {
+      setRuleError(
+        "At least one exam is required."
+      );
+      return;
+    }
+
+    setRuleForm((prev) => ({
+      ...prev,
+      components: prev.components.filter(
+        (component) => component.id !== id
+      ),
+    }));
+
+    setRuleError("");
+  };
+
+  const calculateRuleWeight = () => {
+    return ruleForm.components.reduce(
+      (total, component) =>
+        total + Number(component.weight || 0),
+      0
+    );
+  };
+
+  const createResultRule = (e) => {
+    e.preventDefault();
+
+    setRuleError("");
+
+    if (!ruleForm.name.trim()) {
+      setRuleError(
+        "Result rule name is required."
+      );
+      return;
+    }
+
+    const invalid = ruleForm.components.some(
+      (component) =>
+        !component.examType ||
+        component.weight === "" ||
+        Number(component.weight) <= 0
+    );
+
+    if (invalid) {
+      setRuleError(
+        "Every exam needs a valid weight."
+      );
+      return;
+    }
+
+    const totalWeight = calculateRuleWeight();
+
+    if (totalWeight !== 100) {
+      setRuleError(
+        `Total weight must be 100%. Current total: ${totalWeight}%.`
+      );
+      return;
+    }
+
+    const duplicate = resultRules.some(
+      (rule) =>
+        rule.name.toLowerCase() ===
+        ruleForm.name.trim().toLowerCase()
+    );
+
+    if (duplicate) {
+      setRuleError(
+        "This result rule already exists."
+      );
+      return;
+    }
+
+    const newRule = {
+      id: `RULE-${Date.now()}`,
+      name: ruleForm.name.trim(),
+      description:
+        ruleForm.description.trim() ||
+        "Custom result calculation rule",
+      components: ruleForm.components.map(
+        (component, index) => ({
+          id: `RC-${Date.now()}-${index}`,
+          examType: component.examType,
+          weight: Number(component.weight),
+        })
+      ),
+    };
+
+    setResultRules((prev) => [
+      ...prev,
+      newRule,
+    ]);
+
+    closeRuleModal();
+  };
+
+  const deleteResultRule = (id) => {
+    const confirmed = window.confirm(
+      "Remove this result rule?"
+    );
+
+    if (!confirmed) return;
+
+    setResultRules((prev) =>
+      prev.filter((rule) => rule.id !== id)
+    );
+  };
 
   // ====================================================
   // RENDER
@@ -498,8 +851,9 @@ function Exams() {
             <h2>Exams & Results</h2>
 
             <p>
-              Monitor exams, configure assessments and review
-              student performance across classes and subjects.
+              Configure institution-specific exams,
+              mark structures and result calculation
+              rules from one academic control centre.
             </p>
           </div>
 
@@ -513,7 +867,9 @@ function Exams() {
               }
             >
               {filterOptions.map((option) => (
-                <option key={option}>{option}</option>
+                <option key={option}>
+                  {option}
+                </option>
               ))}
             </select>
 
@@ -521,14 +877,11 @@ function Exams() {
 
         </div>
 
-
         {/* ==================================================
             SEARCH PANEL
         ================================================== */}
 
         <div className="exam-search-panel">
-
-          {/* Exam Type */}
 
           <div className="exam-search-field suggestion-field">
 
@@ -581,9 +934,6 @@ function Exams() {
 
           </div>
 
-
-          {/* Class */}
-
           <div className="exam-search-field suggestion-field">
 
             <input
@@ -635,11 +985,7 @@ function Exams() {
 
           </div>
 
-
-          {/* Section */}
-
           <div className="exam-search-field">
-
             <input
               type="text"
               placeholder="Section..."
@@ -651,14 +997,9 @@ function Exams() {
                 })
               }
             />
-
           </div>
 
-
-          {/* Group */}
-
           <div className="exam-search-field">
-
             <input
               type="text"
               placeholder="Group..."
@@ -670,14 +1011,9 @@ function Exams() {
                 })
               }
             />
-
           </div>
 
-
-          {/* Subject */}
-
           <div className="exam-search-field">
-
             <input
               type="text"
               placeholder="Subject..."
@@ -689,14 +1025,9 @@ function Exams() {
                 })
               }
             />
-
           </div>
 
-
-          {/* Teacher */}
-
           <div className="exam-search-field">
-
             <input
               type="text"
               placeholder="Teacher..."
@@ -708,11 +1039,7 @@ function Exams() {
                 })
               }
             />
-
           </div>
-
-
-          {/* Status */}
 
           <div className="exam-search-field">
 
@@ -746,7 +1073,6 @@ function Exams() {
 
         </div>
 
-
         {/* ==================================================
             STAT CARDS
         ================================================== */}
@@ -754,7 +1080,6 @@ function Exams() {
         <div className="exam-stat-grid">
 
           <div className="exam-stat-card total">
-
             <div className="exam-stat-icon">
               📝
             </div>
@@ -766,9 +1091,7 @@ function Exams() {
             <small>
               Created by teachers
             </small>
-
           </div>
-
 
           <div className="exam-stat-card upcoming">
 
@@ -788,7 +1111,6 @@ function Exams() {
 
           </div>
 
-
           <div className="exam-stat-card completed">
 
             <div className="exam-stat-icon">
@@ -806,7 +1128,6 @@ function Exams() {
             </small>
 
           </div>
-
 
           <div className="exam-stat-card results">
 
@@ -828,7 +1149,6 @@ function Exams() {
 
         </div>
 
-
         {/* ==================================================
             TABS
         ================================================== */}
@@ -844,22 +1164,36 @@ function Exams() {
             Overview
           </button>
 
-
-          {/* NEW TAB */}
+          <button
+            className={
+              tab === "examTypes" ? "active" : ""
+            }
+            onClick={() => setTab("examTypes")}
+          >
+            Exam Types
+          </button>
 
           <button
             className={
-              tab === "assessmentSetup"
-                ? "active"
-                : ""
+              tab === "markStructure" ? "active" : ""
             }
             onClick={() =>
-              setTab("assessmentSetup")
+              setTab("markStructure")
             }
           >
-            Assessment Setup
+            Mark Structure
           </button>
 
+          <button
+            className={
+              tab === "resultRules" ? "active" : ""
+            }
+            onClick={() =>
+              setTab("resultRules")
+            }
+          >
+            Result Rules
+          </button>
 
           <button
             className={
@@ -870,7 +1204,6 @@ function Exams() {
             Upcoming Exams
           </button>
 
-
           <button
             className={
               tab === "results" ? "active" : ""
@@ -879,7 +1212,6 @@ function Exams() {
           >
             Results
           </button>
-
 
           <button
             className={
@@ -896,7 +1228,6 @@ function Exams() {
 
         </div>
 
-
         {/* ==================================================
             OVERVIEW
         ================================================== */}
@@ -905,8 +1236,6 @@ function Exams() {
           <>
 
             <section className="exam-overview-grid">
-
-              {/* EXAM TYPE */}
 
               <div className="exam-chart-card">
 
@@ -935,7 +1264,6 @@ function Exams() {
 
                 </div>
 
-
                 <div className="exam-pie-area">
 
                   <ResponsiveContainer
@@ -958,14 +1286,12 @@ function Exams() {
                           (entry, index) => (
                             <Cell
                               key={index}
-                              fill={
-                                [
-                                  "#4f46e5",
-                                  "#06b6d4",
-                                  "#f59e0b",
-                                  "#ef4444",
-                                ][index]
-                              }
+                              fill={[
+                                "#4f46e5",
+                                "#06b6d4",
+                                "#f59e0b",
+                                "#ef4444",
+                              ][index]}
                             />
                           )
                         )}
@@ -983,7 +1309,6 @@ function Exams() {
 
                   </ResponsiveContainer>
 
-
                   <div className="exam-pie-center">
 
                     <strong>
@@ -999,9 +1324,6 @@ function Exams() {
                 </div>
 
               </div>
-
-
-              {/* EXAM TREND */}
 
               <div className="exam-chart-card large">
 
@@ -1030,7 +1352,6 @@ function Exams() {
 
                 </div>
 
-
                 <div className="exam-line-area">
 
                   <ResponsiveContainer
@@ -1038,7 +1359,9 @@ function Exams() {
                     height="100%"
                   >
 
-                    <LineChart data={examTrendData}>
+                    <LineChart
+                      data={examTrendData}
+                    >
 
                       <CartesianGrid
                         strokeDasharray="3 3"
@@ -1081,9 +1404,6 @@ function Exams() {
 
             </section>
 
-
-            {/* SUBJECT PERFORMANCE */}
-
             <section className="exam-chart-card exam-performance-card">
 
               <div className="exam-chart-header">
@@ -1107,7 +1427,6 @@ function Exams() {
 
               </div>
 
-
               <div className="exam-bar-area">
 
                 <ResponsiveContainer
@@ -1115,7 +1434,9 @@ function Exams() {
                   height="100%"
                 >
 
-                  <BarChart data={subjectPerformance}>
+                  <BarChart
+                    data={subjectPerformance}
+                  >
 
                     <CartesianGrid
                       strokeDasharray="3 3"
@@ -1132,7 +1453,12 @@ function Exams() {
                       dataKey="average"
                       name="Average Score %"
                       fill="#4f46e5"
-                      radius={[8, 8, 0, 0]}
+                      radius={[
+                        8,
+                        8,
+                        0,
+                        0,
+                      ]}
                     />
 
                   </BarChart>
@@ -1146,15 +1472,12 @@ function Exams() {
           </>
         )}
 
-
         {/* ==================================================
-            ASSESSMENT SETUP
+            EXAM TYPES
         ================================================== */}
 
-        {tab === "assessmentSetup" && (
+        {tab === "examTypes" && (
           <section className="assessment-setup-page">
-
-            {/* SETUP HEADER */}
 
             <div className="assessment-setup-header">
 
@@ -1165,31 +1488,26 @@ function Exams() {
                 </span>
 
                 <h3>
-                  Assessment Setup
+                  Exam Types
                 </h3>
 
                 <p>
-                  Create the assessment types and
-                  mark structures used by this
-                  institution.
+                  Create the official assessment
+                  types used by this institution.
                 </p>
 
               </div>
 
-
               <button
                 type="button"
                 className="assessment-create-btn"
-                onClick={openAssessmentModal}
+                onClick={openExamTypeModal}
               >
                 <span>+</span>
-                Create Assessment
+                Create Exam Type
               </button>
 
             </div>
-
-
-            {/* INFO STRIP */}
 
             <div className="assessment-info-strip">
 
@@ -1200,57 +1518,171 @@ function Exams() {
               <div>
 
                 <strong>
-                  Flexible academic rules
+                  Institution-specific exam system
                 </strong>
 
                 <p>
-                  Each school, college or coaching
-                  centre can define its own assessment
-                  name, total marks and components.
+                  CT, MT, ST, Mid Term, Half-Yearly,
+                  Annual, Final, Model Test or any
+                  custom exam type can be created.
                 </p>
 
               </div>
 
             </div>
 
+            <div className="assessment-grid">
 
-            {/* ASSESSMENT GRID */}
+              {examTypes.map((examType) => (
+
+                <div
+                  className="assessment-card"
+                  key={examType.id}
+                >
+
+                  <div className="assessment-card-top">
+
+                    <div>
+
+                      <span className="assessment-mini-label">
+                        EXAM TYPE
+                      </span>
+
+                      <h4>
+                        {examType.name}
+                      </h4>
+
+                      <p>
+                        {examType.description}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  <div className="assessment-card-footer">
+
+                    <span className="assessment-status">
+                      <i></i>
+                      {examType.status}
+                    </span>
+
+                    <button
+                      type="button"
+                      className="assessment-delete-btn"
+                      onClick={() =>
+                        deleteExamType(
+                          examType.id
+                        )
+                      }
+                    >
+                      Remove
+                    </button>
+
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </section>
+        )}
+
+        {/* ==================================================
+            MARK STRUCTURE
+        ================================================== */}
+
+        {tab === "markStructure" && (
+          <section className="assessment-setup-page">
+
+            <div className="assessment-setup-header">
+
+              <div>
+
+                <span className="assessment-kicker">
+                  SUBJECT MARKING SYSTEM
+                </span>
+
+                <h3>
+                  Mark Structure
+                </h3>
+
+                <p>
+                  Define different marks and
+                  components for every class,
+                  group, subject and exam.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                className="assessment-create-btn"
+                onClick={openStructureModal}
+              >
+                <span>+</span>
+                Create Mark Structure
+              </button>
+
+            </div>
+
+            <div className="assessment-info-strip">
+
+              <div className="assessment-info-icon">
+                ∑
+              </div>
+
+              <div>
+
+                <strong>
+                  Flexible subject-wise marks
+                </strong>
+
+                <p>
+                  The same exam can have different
+                  marks for different subjects,
+                  classes or groups.
+                </p>
+
+              </div>
+
+            </div>
 
             <div className="assessment-grid">
 
-              {assessmentTypes.map(
-                (assessment) => (
+              {markStructures.map(
+                (structure) => (
 
                   <div
                     className="assessment-card"
-                    key={assessment.id}
+                    key={structure.id}
                   >
-
-                    {/* CARD TOP */}
 
                     <div className="assessment-card-top">
 
                       <div>
 
                         <span className="assessment-mini-label">
-                          ASSESSMENT
+                          {structure.examType}
                         </span>
 
                         <h4>
-                          {assessment.name}
+                          {structure.subject}
                         </h4>
 
                         <p>
-                          {assessment.description}
+                          {structure.className} •{" "}
+                          {structure.group}
                         </p>
 
                       </div>
 
-
                       <div className="assessment-total">
 
                         <strong>
-                          {assessment.totalMarks}
+                          {structure.totalMarks}
                         </strong>
 
                         <span>
@@ -1261,23 +1693,24 @@ function Exams() {
 
                     </div>
 
-
-                    {/* COMPONENTS */}
-
                     <div className="assessment-components">
 
                       <div className="assessment-component-title">
+
                         <span>
-                          MARK COMPONENTS
+                          COMPONENTS
                         </span>
 
                         <span>
-                          {assessment.components.length}
+                          {
+                            structure.components
+                              .length
+                          }
                         </span>
+
                       </div>
 
-
-                      {assessment.components.map(
+                      {structure.components.map(
                         (component) => (
 
                           <div
@@ -1300,9 +1733,6 @@ function Exams() {
 
                     </div>
 
-
-                    {/* CARD FOOTER */}
-
                     <div className="assessment-card-footer">
 
                       <span className="assessment-status">
@@ -1310,13 +1740,12 @@ function Exams() {
                         Active
                       </span>
 
-
                       <button
                         type="button"
                         className="assessment-delete-btn"
                         onClick={() =>
-                          deleteAssessment(
-                            assessment.id
+                          deleteMarkStructure(
+                            structure.id
                           )
                         }
                       >
@@ -1330,40 +1759,165 @@ function Exams() {
                 )
               )}
 
-
-              {/* EMPTY STATE */}
-
-              {assessmentTypes.length === 0 && (
-                <div className="assessment-empty">
-
-                  <div>
-                    ⚙
-                  </div>
-
-                  <h4>
-                    No assessment configured
-                  </h4>
-
-                  <p>
-                    Create your first assessment
-                    structure to get started.
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={openAssessmentModal}
-                  >
-                    Create Assessment
-                  </button>
-
-                </div>
-              )}
-
             </div>
 
           </section>
         )}
 
+        {/* ==================================================
+            RESULT RULES
+        ================================================== */}
+
+        {tab === "resultRules" && (
+          <section className="assessment-setup-page">
+
+            <div className="assessment-setup-header">
+
+              <div>
+
+                <span className="assessment-kicker">
+                  RESULT CALCULATION
+                </span>
+
+                <h3>
+                  Result Rules
+                </h3>
+
+                <p>
+                  Configure how multiple exams are
+                  combined into the final result.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                className="assessment-create-btn"
+                onClick={openRuleModal}
+              >
+                <span>+</span>
+                Create Result Rule
+              </button>
+
+            </div>
+
+            <div className="assessment-info-strip">
+
+              <div className="assessment-info-icon">
+                %
+              </div>
+
+              <div>
+
+                <strong>
+                  Institution-specific result formula
+                </strong>
+
+                <p>
+                  CT, MT, Mid Term, Annual or any
+                  custom assessment can be combined
+                  using your own percentage weights.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div className="assessment-grid">
+
+              {resultRules.map((rule) => (
+
+                <div
+                  className="assessment-card"
+                  key={rule.id}
+                >
+
+                  <div className="assessment-card-top">
+
+                    <div>
+
+                      <span className="assessment-mini-label">
+                        RESULT RULE
+                      </span>
+
+                      <h4>
+                        {rule.name}
+                      </h4>
+
+                      <p>
+                        {rule.description}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  <div className="assessment-components">
+
+                    <div className="assessment-component-title">
+
+                      <span>
+                        CALCULATION
+                      </span>
+
+                      <span>
+                        100%
+                      </span>
+
+                    </div>
+
+                    {rule.components.map(
+                      (component) => (
+
+                        <div
+                          className="assessment-component-row"
+                          key={component.id}
+                        >
+
+                          <span>
+                            {component.examType}
+                          </span>
+
+                          <strong>
+                            {component.weight}%
+                          </strong>
+
+                        </div>
+
+                      )
+                    )}
+
+                  </div>
+
+                  <div className="assessment-card-footer">
+
+                    <span className="assessment-status">
+                      <i></i>
+                      Active
+                    </span>
+
+                    <button
+                      type="button"
+                      className="assessment-delete-btn"
+                      onClick={() =>
+                        deleteResultRule(
+                          rule.id
+                        )
+                      }
+                    >
+                      Remove
+                    </button>
+
+                  </div>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </section>
+        )}
 
         {/* ==================================================
             UPCOMING EXAMS
@@ -1393,7 +1947,6 @@ function Exams() {
 
             </div>
 
-
             <div className="table-wrap exam-table-scroll">
 
               <table className="data-table">
@@ -1401,25 +1954,16 @@ function Exams() {
                 <thead>
 
                   <tr>
-
                     <th>Exam</th>
-
                     <th>Type</th>
-
                     <th>Class</th>
-
                     <th>Subject</th>
-
                     <th>Teacher</th>
-
                     <th>Date</th>
-
                     <th>Status</th>
-
                   </tr>
 
                 </thead>
-
 
                 <tbody>
 
@@ -1448,7 +1992,8 @@ function Exams() {
                         </td>
 
                         <td>
-                          {exam.teacher || "Teacher"}
+                          {exam.teacher ||
+                            "Teacher"}
                         </td>
 
                         <td>
@@ -1459,7 +2004,8 @@ function Exams() {
 
                           <span
                             className={`badge ${
-                              exam.status === "Running"
+                              exam.status ===
+                              "Running"
                                 ? "badge-active"
                                 : "badge-pending"
                             }`}
@@ -1497,7 +2043,6 @@ function Exams() {
           </section>
         )}
 
-
         {/* ==================================================
             RESULTS
         ================================================== */}
@@ -1526,7 +2071,6 @@ function Exams() {
 
             </div>
 
-
             <div className="table-wrap exam-table-scroll">
 
               <table className="data-table">
@@ -1534,23 +2078,15 @@ function Exams() {
                 <thead>
 
                   <tr>
-
                     <th>Student</th>
-
                     <th>Exam</th>
-
                     <th>Subject</th>
-
                     <th>Class</th>
-
                     <th>Marks</th>
-
                     <th>Grade</th>
-
                   </tr>
 
                 </thead>
-
 
                 <tbody>
 
@@ -1604,7 +2140,6 @@ function Exams() {
           </section>
         )}
 
-
         {/* ==================================================
             PERFORMANCE
         ================================================== */}
@@ -1635,7 +2170,6 @@ function Exams() {
 
               </div>
 
-
               <div className="exam-bar-area">
 
                 <ResponsiveContainer
@@ -1643,7 +2177,9 @@ function Exams() {
                   height="100%"
                 >
 
-                  <BarChart data={subjectPerformance}>
+                  <BarChart
+                    data={subjectPerformance}
+                  >
 
                     <CartesianGrid
                       strokeDasharray="3 3"
@@ -1652,7 +2188,9 @@ function Exams() {
 
                     <XAxis dataKey="subject" />
 
-                    <YAxis domain={[0, 100]} />
+                    <YAxis
+                      domain={[0, 100]}
+                    />
 
                     <Tooltip />
 
@@ -1660,7 +2198,12 @@ function Exams() {
                       dataKey="average"
                       name="Average %"
                       fill="#4f46e5"
-                      radius={[8, 8, 0, 0]}
+                      radius={[
+                        8,
+                        8,
+                        0,
+                        0,
+                      ]}
                     />
 
                   </BarChart>
@@ -1671,7 +2214,6 @@ function Exams() {
 
             </div>
 
-
             <div className="exam-insight-card">
 
               <span>
@@ -1679,18 +2221,17 @@ function Exams() {
               </span>
 
               <h3>
-                Configurable assessment system
+                Configurable result engine
               </h3>
 
               <p>
-                Assessment rules can be configured
-                according to the institution. CT,
-                MT, term exams, model tests,
-                practicals, viva or custom
-                assessments can all be managed
-                from one place.
+                Each institution can define its
+                own exam types, subject-wise mark
+                structures and final result formulas.
+                Teachers enter only their assigned
+                subject marks while the system
+                combines the complete student result.
               </p>
-
 
               <div className="insight-list">
 
@@ -1700,10 +2241,19 @@ function Exams() {
                   </strong>
 
                   <span>
-                    Configures assessment
+                    Configures exam types
                   </span>
                 </div>
 
+                <div>
+                  <strong>
+                    Admin
+                  </strong>
+
+                  <span>
+                    Defines mark structure
+                  </span>
+                </div>
 
                 <div>
                   <strong>
@@ -1711,21 +2261,9 @@ function Exams() {
                   </strong>
 
                   <span>
-                    Conducts assessment
+                    Enters subject marks
                   </span>
                 </div>
-
-
-                <div>
-                  <strong>
-                    Teacher
-                  </strong>
-
-                  <span>
-                    Enters marks
-                  </span>
-                </div>
-
 
                 <div>
                   <strong>
@@ -1733,7 +2271,7 @@ function Exams() {
                   </strong>
 
                   <span>
-                    Generates results
+                    Generates combined result
                   </span>
                 </div>
 
@@ -1746,84 +2284,80 @@ function Exams() {
 
       </div>
 
-
       {/* ====================================================
-          CREATE ASSESSMENT MODAL
+          CREATE EXAM TYPE MODAL
       ==================================================== */}
 
-      {showAssessmentModal && (
+      {showExamTypeModal && (
         <div
           className="assessment-modal-overlay"
           onMouseDown={(e) => {
             if (
               e.target === e.currentTarget
             ) {
-              closeAssessmentModal();
+              closeExamTypeModal();
             }
           }}
         >
 
           <div className="assessment-modal">
 
-            {/* MODAL HEADER */}
-
             <div className="assessment-modal-header">
 
               <div>
 
                 <span>
-                  NEW CONFIGURATION
+                  NEW EXAM CONFIGURATION
                 </span>
 
                 <h3>
-                  Create Assessment
+                  Create Exam Type
                 </h3>
 
                 <p>
-                  Define the name and mark
-                  structure for this assessment.
+                  Add an official assessment type
+                  for this institution.
                 </p>
 
               </div>
 
-
               <button
                 type="button"
                 className="assessment-modal-close"
-                onClick={closeAssessmentModal}
+                onClick={closeExamTypeModal}
               >
                 ×
               </button>
 
             </div>
 
-
-            <form onSubmit={createAssessment}>
-
-              {/* BASIC INFO */}
+            <form
+              onSubmit={createExamType}
+            >
 
               <div className="assessment-form-grid">
 
                 <div className="assessment-form-field">
 
                   <label>
-                    Assessment Name
+                    Exam Type Name
                   </label>
 
                   <input
                     type="text"
-                    placeholder="e.g. CT, Mid Term, Annual"
-                    value={assessmentForm.name}
+                    placeholder="e.g. CT, ST, Mid Term"
+                    value={
+                      examTypeForm.name
+                    }
                     onChange={(e) =>
-                      handleAssessmentBasicChange(
-                        "name",
-                        e.target.value
-                      )
+                      setExamTypeForm({
+                        ...examTypeForm,
+                        name: e.target.value,
+                      })
                     }
                   />
 
                 </div>
-
 
                 <div className="assessment-form-field">
 
@@ -1835,11 +2369,230 @@ function Exams() {
                     type="text"
                     placeholder="e.g. Class Test"
                     value={
-                      assessmentForm.description
+                      examTypeForm.description
                     }
                     onChange={(e) =>
-                      handleAssessmentBasicChange(
-                        "description",
+                      setExamTypeForm({
+                        ...examTypeForm,
+                        description:
+                          e.target.value,
+                      })
+                    }
+                  />
+
+                </div>
+
+              </div>
+
+              {examTypeError && (
+                <div className="assessment-form-error">
+                  {examTypeError}
+                </div>
+              )}
+
+              <div className="assessment-modal-footer">
+
+                <button
+                  type="button"
+                  className="assessment-cancel-btn"
+                  onClick={
+                    closeExamTypeModal
+                  }
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="assessment-save-btn"
+                >
+                  Create Exam Type
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+      )}
+
+      {/* ====================================================
+          CREATE MARK STRUCTURE MODAL
+      ==================================================== */}
+
+      {showStructureModal && (
+        <div
+          className="assessment-modal-overlay"
+          onMouseDown={(e) => {
+            if (
+              e.target === e.currentTarget
+            ) {
+              closeStructureModal();
+            }
+          }}
+        >
+
+          <div className="assessment-modal">
+
+            <div className="assessment-modal-header">
+
+              <div>
+
+                <span>
+                  SUBJECT MARKING CONFIGURATION
+                </span>
+
+                <h3>
+                  Create Mark Structure
+                </h3>
+
+                <p>
+                  Define marks for a specific
+                  class, group, subject and exam.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                className="assessment-modal-close"
+                onClick={
+                  closeStructureModal
+                }
+              >
+                ×
+              </button>
+
+            </div>
+
+            <form
+              onSubmit={createMarkStructure}
+            >
+
+              <div className="assessment-form-grid">
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Exam Type
+                  </label>
+
+                  <select
+                    value={
+                      structureForm.examType
+                    }
+                    onChange={(e) =>
+                      updateStructureField(
+                        "examType",
+                        e.target.value
+                      )
+                    }
+                  >
+
+                    <option value="">
+                      Select Exam
+                    </option>
+
+                    {examTypes.map(
+                      (examType) => (
+                        <option
+                          key={examType.id}
+                          value={examType.name}
+                        >
+                          {examType.name}
+                        </option>
+                      )
+                    )}
+
+                  </select>
+
+                </div>
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Class
+                  </label>
+
+                  <input
+                    type="text"
+                    list="class-options"
+                    placeholder="e.g. Class 9"
+                    value={
+                      structureForm.className
+                    }
+                    onChange={(e) =>
+                      updateStructureField(
+                        "className",
+                        e.target.value
+                      )
+                    }
+                  />
+
+                  <datalist id="class-options">
+                    {classSuggestions.map(
+                      (item) => (
+                        <option
+                          key={item}
+                          value={item}
+                        />
+                      )
+                    )}
+                  </datalist>
+
+                </div>
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Group
+                  </label>
+
+                  <input
+                    type="text"
+                    list="group-options"
+                    placeholder="e.g. Science"
+                    value={
+                      structureForm.group
+                    }
+                    onChange={(e) =>
+                      updateStructureField(
+                        "group",
+                        e.target.value
+                      )
+                    }
+                  />
+
+                  <datalist id="group-options">
+                    {groupSuggestions.map(
+                      (item) => (
+                        <option
+                          key={item}
+                          value={item}
+                        />
+                      )
+                    )}
+                  </datalist>
+
+                </div>
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Subject
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="e.g. Physics"
+                    value={
+                      structureForm.subject
+                    }
+                    onChange={(e) =>
+                      updateStructureField(
+                        "subject",
                         e.target.value
                       )
                     }
@@ -1848,9 +2601,6 @@ function Exams() {
                 </div>
 
               </div>
-
-
-              {/* COMPONENT HEADER */}
 
               <div className="assessment-components-heading">
 
@@ -1861,32 +2611,27 @@ function Exams() {
                   </strong>
 
                   <span>
-                    Divide the assessment into
-                    MCQ, Written, Viva, Practical
-                    or any custom component.
+                    Add MCQ, Written, Practical,
+                    Viva or any custom component.
                   </span>
 
                 </div>
-
 
                 <div className="assessment-live-total">
 
                   Total
 
                   <strong>
-                    {calculateComponentTotal()}
+                    {calculateStructureTotal()}
                   </strong>
 
                 </div>
 
               </div>
 
-
-              {/* COMPONENT ROWS */}
-
               <div className="assessment-form-components">
 
-                {assessmentForm.components.map(
+                {structureForm.components.map(
                   (component, index) => (
 
                     <div
@@ -1898,7 +2643,6 @@ function Exams() {
                         {index + 1}
                       </div>
 
-
                       <div className="assessment-component-input">
 
                         <label>
@@ -1908,9 +2652,11 @@ function Exams() {
                         <input
                           type="text"
                           placeholder="MCQ / Written / Viva / Practical"
-                          value={component.name}
+                          value={
+                            component.name
+                          }
                           onChange={(e) =>
-                            handleComponentChange(
+                            updateStructureComponent(
                               component.id,
                               "name",
                               e.target.value
@@ -1919,7 +2665,6 @@ function Exams() {
                         />
 
                       </div>
-
 
                       <div className="assessment-component-input small">
 
@@ -1931,9 +2676,11 @@ function Exams() {
                           type="number"
                           min="1"
                           placeholder="25"
-                          value={component.marks}
+                          value={
+                            component.marks
+                          }
                           onChange={(e) =>
-                            handleComponentChange(
+                            updateStructureComponent(
                               component.id,
                               "marks",
                               e.target.value
@@ -1943,12 +2690,11 @@ function Exams() {
 
                       </div>
 
-
                       <button
                         type="button"
                         className="component-remove-btn"
                         onClick={() =>
-                          removeComponent(
+                          removeStructureComponent(
                             component.id
                           )
                         }
@@ -1963,20 +2709,16 @@ function Exams() {
 
               </div>
 
-
-              {/* ADD COMPONENT */}
-
               <button
                 type="button"
                 className="add-component-btn"
-                onClick={addComponent}
+                onClick={
+                  addStructureComponent
+                }
               >
                 <span>+</span>
                 Add Component
               </button>
-
-
-              {/* PREVIEW */}
 
               <div className="assessment-preview">
 
@@ -1989,17 +2731,16 @@ function Exams() {
                     </span>
 
                     <strong>
-                      {assessmentForm.name ||
-                        "Your Assessment"}
+                      {structureForm.subject ||
+                        "Subject"}
                     </strong>
 
                   </div>
 
-
                   <div>
 
                     <strong>
-                      {calculateComponentTotal()}
+                      {calculateStructureTotal()}
                     </strong>
 
                     <span>
@@ -2010,10 +2751,9 @@ function Exams() {
 
                 </div>
 
-
                 <div className="assessment-preview-list">
 
-                  {assessmentForm.components.map(
+                  {structureForm.components.map(
                     (component) => (
 
                       <div
@@ -2038,34 +2778,297 @@ function Exams() {
 
               </div>
 
-
-              {/* ERROR */}
-
-              {assessmentError && (
+              {structureError && (
                 <div className="assessment-form-error">
-                  {assessmentError}
+                  {structureError}
                 </div>
               )}
-
-
-              {/* FOOTER */}
 
               <div className="assessment-modal-footer">
 
                 <button
                   type="button"
                   className="assessment-cancel-btn"
-                  onClick={closeAssessmentModal}
+                  onClick={
+                    closeStructureModal
+                  }
                 >
                   Cancel
                 </button>
-
 
                 <button
                   type="submit"
                   className="assessment-save-btn"
                 >
-                  Create Assessment
+                  Save Mark Structure
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+      )}
+
+      {/* ====================================================
+          CREATE RESULT RULE MODAL
+      ==================================================== */}
+
+      {showRuleModal && (
+        <div
+          className="assessment-modal-overlay"
+          onMouseDown={(e) => {
+            if (
+              e.target === e.currentTarget
+            ) {
+              closeRuleModal();
+            }
+          }}
+        >
+
+          <div className="assessment-modal">
+
+            <div className="assessment-modal-header">
+
+              <div>
+
+                <span>
+                  RESULT CALCULATION CONFIGURATION
+                </span>
+
+                <h3>
+                  Create Result Rule
+                </h3>
+
+                <p>
+                  Decide how different exams
+                  contribute to the final result.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                className="assessment-modal-close"
+                onClick={closeRuleModal}
+              >
+                ×
+              </button>
+
+            </div>
+
+            <form
+              onSubmit={createResultRule}
+            >
+
+              <div className="assessment-form-grid">
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Rule Name
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="e.g. Annual Final Result"
+                    value={ruleForm.name}
+                    onChange={(e) =>
+                      updateRuleBasic(
+                        "name",
+                        e.target.value
+                      )
+                    }
+                  />
+
+                </div>
+
+                <div className="assessment-form-field">
+
+                  <label>
+                    Description
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="e.g. Yearly result"
+                    value={
+                      ruleForm.description
+                    }
+                    onChange={(e) =>
+                      updateRuleBasic(
+                        "description",
+                        e.target.value
+                      )
+                    }
+                  />
+
+                </div>
+
+              </div>
+
+              <div className="assessment-components-heading">
+
+                <div>
+
+                  <strong>
+                    Exam Weight
+                  </strong>
+
+                  <span>
+                    Total weight must equal 100%.
+                  </span>
+
+                </div>
+
+                <div className="assessment-live-total">
+
+                  Total
+
+                  <strong>
+                    {calculateRuleWeight()}%
+                  </strong>
+
+                </div>
+
+              </div>
+
+              <div className="assessment-form-components">
+
+                {ruleForm.components.map(
+                  (component, index) => (
+
+                    <div
+                      className="assessment-form-component"
+                      key={component.id}
+                    >
+
+                      <div className="component-number">
+                        {index + 1}
+                      </div>
+
+                      <div className="assessment-component-input">
+
+                        <label>
+                          Exam
+                        </label>
+
+                        <select
+                          value={
+                            component.examType
+                          }
+                          onChange={(e) =>
+                            updateRuleComponent(
+                              component.id,
+                              "examType",
+                              e.target.value
+                            )
+                          }
+                        >
+
+                          <option value="">
+                            Select Exam
+                          </option>
+
+                          {examTypes.map(
+                            (examType) => (
+                              <option
+                                key={examType.id}
+                                value={
+                                  examType.name
+                                }
+                              >
+                                {
+                                  examType.name
+                                }
+                              </option>
+                            )
+                          )}
+
+                        </select>
+
+                      </div>
+
+                      <div className="assessment-component-input small">
+
+                        <label>
+                          Weight %
+                        </label>
+
+                        <input
+                          type="number"
+                          min="1"
+                          max="100"
+                          placeholder="20"
+                          value={
+                            component.weight
+                          }
+                          onChange={(e) =>
+                            updateRuleComponent(
+                              component.id,
+                              "weight",
+                              e.target.value
+                            )
+                          }
+                        />
+
+                      </div>
+
+                      <button
+                        type="button"
+                        className="component-remove-btn"
+                        onClick={() =>
+                          removeRuleComponent(
+                            component.id
+                          )
+                        }
+                      >
+                        ×
+                      </button>
+
+                    </div>
+
+                  )
+                )}
+
+              </div>
+
+              <button
+                type="button"
+                className="add-component-btn"
+                onClick={
+                  addRuleComponent
+                }
+              >
+                <span>+</span>
+                Add Exam
+              </button>
+
+              {ruleError && (
+                <div className="assessment-form-error">
+                  {ruleError}
+                </div>
+              )}
+
+              <div className="assessment-modal-footer">
+
+                <button
+                  type="button"
+                  className="assessment-cancel-btn"
+                  onClick={
+                    closeRuleModal
+                  }
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="assessment-save-btn"
+                >
+                  Create Result Rule
                 </button>
 
               </div>
@@ -2080,6 +3083,5 @@ function Exams() {
     </div>
   );
 }
-
 
 export default Exams;

@@ -1808,3 +1808,133 @@
   }
 
 }
+/* =========================================================
+   EXAM TABS
+   ========================================================= */
+
+.exam-tabs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+
+  padding: 6px;
+  margin-top: 24px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+.exam-tabs button {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.exam-tabs button:hover {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.exam-tabs button.active {
+  background: #ffffff;
+  color: #4f46e5;
+
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.08),
+    0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .exam-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .exam-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 6px;
+
+    padding: 6px;
+
+    margin-top: 18px;
+
+    border-radius: 12px;
+  }
+
+  .exam-tabs button {
+    min-height: 42px;
+
+    padding: 9px 8px;
+
+    font-size: 12px;
+
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .exam-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 5px;
+
+    padding: 5px;
+  }
+
+  .exam-tabs button {
+    min-height: 40px;
+
+    padding: 8px 5px;
+
+    font-size: 11px;
+  }
+
+}

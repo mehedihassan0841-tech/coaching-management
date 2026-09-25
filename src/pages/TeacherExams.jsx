@@ -1,632 +1,334 @@
+
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/teacher-exams.css";
 
+function getGrade(percentage) {
+  if (percentage >= 80) return "A+";
+  if (percentage >= 70) return "A";
+  if (percentage >= 60) return "A-";
+  if (percentage >= 50) return "B";
+  if (percentage >= 40) return "C";
+  if (percentage >= 33) return "D";
+  return "F";
+}
+
 function TeacherExams() {
-  const navigate = useNavigate();
-
-  // =========================================================
-  // 1. EXAM SETUP
-  // =========================================================
-
-  const [exams, setExams] = useState([
+  // =====================================================
+  // EXAMS
+  // Admin থেকে পরে API দিয়ে আসবে
+  // =====================================================
+  const exams = [
     {
       id: "EX-001",
       name: "Physics CT-01",
       type: "CT",
       subject: "Physics",
-      totalMarks: 10,
-      mcqMarks: 0,
-      writtenMarks: 10,
       className: "HSC 2027",
       section: "A",
       group: "Science",
       shift: "Morning",
       examDate: "2026-09-20",
+      totalMarks: 10,
+      components: [
+        { id: "C1", name: "Written", maxMarks: 10 },
+      ],
     },
+
     {
       id: "EX-002",
       name: "Physics Mid Term",
       type: "Mid Term",
       subject: "Physics",
-      totalMarks: 30,
-      mcqMarks: 10,
-      writtenMarks: 20,
       className: "HSC 2027",
       section: "A",
       group: "Science",
       shift: "Morning",
       examDate: "2026-09-25",
+      totalMarks: 30,
+      components: [
+        { id: "C2", name: "MCQ", maxMarks: 10 },
+        { id: "C3", name: "Written", maxMarks: 15 },
+        { id: "C4", name: "Practical", maxMarks: 5 },
+      ],
     },
+
     {
       id: "EX-003",
       name: "Physics Model Test",
       type: "Model Test",
       subject: "Physics",
-      totalMarks: 100,
-      mcqMarks: 40,
-      writtenMarks: 60,
       className: "HSC 2027",
       section: "A",
       group: "Science",
       shift: "Morning",
       examDate: "2026-10-05",
+      totalMarks: 100,
+      components: [
+        { id: "C5", name: "MCQ", maxMarks: 40 },
+        { id: "C6", name: "Written", maxMarks: 60 },
+      ],
     },
-  ]);
+  ];
 
-  const [showCreateExam, setShowCreateExam] = useState(false);
-
-  const [examForm, setExamForm] = useState({
-    name: "",
-    type: "",
-    subject: "Physics",
-    totalMarks: "",
-    mcqMarks: "",
-    writtenMarks: "",
-    className: "HSC 2027",
-    section: "A",
-    group: "Science",
-    shift: "Morning",
-    examDate: "",
-  });
-
-  function updateExamForm(field, value) {
-    setExamForm((current) => ({
-      ...current,
-      [field]: value,
-    }));
-  }
-
-  function createExam() {
-    const total = Number(examForm.totalMarks);
-    const mcq = Number(examForm.mcqMarks || 0);
-    const written = Number(examForm.writtenMarks || 0);
-
-    if (!examForm.name.trim()) {
-      alert("Please enter exam name.");
-      return;
-    }
-
-    if (!examForm.type.trim()) {
-      alert("Please enter exam type.");
-      return;
-    }
-
-    if (!total || total <= 0) {
-      alert("Please enter valid total marks.");
-      return;
-    }
-
-    if (mcq + written !== total) {
-      alert("MCQ Marks + Written Marks must equal Total Marks.");
-      return;
-    }
-
-    const newExam = {
-      id: `EX-${String(exams.length + 1).padStart(3, "0")}`,
-      ...examForm,
-      totalMarks: total,
-      mcqMarks: mcq,
-      writtenMarks: written,
-    };
-
-    setExams((current) => [...current, newExam]);
-
-    setExamForm({
-      name: "",
-      type: "",
-      subject: "Physics",
-      totalMarks: "",
-      mcqMarks: "",
-      writtenMarks: "",
-      className: "HSC 2027",
-      section: "A",
-      group: "Science",
-      shift: "Morning",
-      examDate: "",
-    });
-
-    setShowCreateExam(false);
-  }
-
-  // =========================================================
-  // 2. EXAM + CLASS FILTER
-  // =========================================================
-
-  const [selectedExamId, setSelectedExamId] = useState("EX-001");
-
-  const [selectedClass, setSelectedClass] = useState("HSC 2027");
-  const [selectedSection, setSelectedSection] = useState("A");
-  const [selectedGroup, setSelectedGroup] = useState("Science");
-  const [selectedShift, setSelectedShift] = useState("Morning");
-
-  const selectedExam =
-    exams.find((exam) => exam.id === selectedExamId) || exams[0];
-
-  // =========================================================
-  // 3. STUDENTS
-  // =========================================================
-
-  const [students, setStudents] = useState([
+  // =====================================================
+  // STUDENTS
+  // =====================================================
+  const students = [
     {
       id: "ST-001",
-      name: "Rahim",
-      roll: "01",
+      roll: 1,
+      name: "Abdullah Rahman",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
     {
       id: "ST-002",
-      name: "Karim",
-      roll: "02",
+      roll: 2,
+      name: "Tanvir Ahmed",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
     {
       id: "ST-003",
-      name: "Sakib",
-      roll: "03",
+      roll: 3,
+      name: "Sakib Hasan",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
     {
       id: "ST-004",
-      name: "Hasan",
-      roll: "04",
+      roll: 4,
+      name: "Fahim Hossain",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
     {
       id: "ST-005",
-      name: "Nabil",
-      roll: "05",
+      roll: 5,
+      name: "Nayeem Islam",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
     {
       id: "ST-006",
-      name: "Rafi",
-      roll: "06",
+      roll: 6,
+      name: "Rakibul Hasan",
       className: "HSC 2027",
-      group: "Science",
       section: "A",
+      group: "Science",
       shift: "Morning",
       subject: "Physics",
     },
-  ]);
+  ];
 
-  // =========================================================
-  // 4. MARKS
-  // =========================================================
+  // =====================================================
+  // SELECTED EXAM
+  // =====================================================
+  const [selectedExamId, setSelectedExamId] = useState("EX-002");
 
-  /*
-    examMarks structure:
+  const selectedExam = exams.find(
+    (exam) => exam.id === selectedExamId
+  );
 
-    {
-      "EX-001": {
-        "ST-001": 8,
-        "ST-002": 7
-      }
-    }
-  */
+  // =====================================================
+  // FILTERS
+  // =====================================================
+  const [classFilter, setClassFilter] = useState("HSC 2027");
+  const [sectionFilter, setSectionFilter] = useState("A");
+  const [groupFilter, setGroupFilter] = useState("Science");
+  const [shiftFilter, setShiftFilter] = useState("Morning");
 
-  const [examMarks, setExamMarks] = useState({
-    "EX-001": {
-      "ST-001": 8,
-      "ST-002": 7,
-      "ST-003": 9,
-      "ST-004": 6,
-      "ST-005": 5,
-      "ST-006": 4,
-    },
-
+  // =====================================================
+  // MARKS
+  // =====================================================
+  const [marks, setMarks] = useState({
     "EX-002": {
-      "ST-001": 25,
-      "ST-002": 22,
-      "ST-003": 28,
-      "ST-004": 19,
-      "ST-005": 17,
-      "ST-006": 14,
-    },
-
-    "EX-003": {
-      "ST-001": 82,
-      "ST-002": 76,
-      "ST-003": 91,
-      "ST-004": 69,
-      "ST-005": 62,
-      "ST-006": 55,
+      "ST-001": {
+        MCQ: 8,
+        Written: 13,
+        Practical: 4,
+      },
+      "ST-002": {
+        MCQ: 7,
+        Written: 12,
+        Practical: 5,
+      },
+      "ST-003": {
+        MCQ: 9,
+        Written: 14,
+        Practical: 5,
+      },
+      "ST-004": {
+        MCQ: 6,
+        Written: 11,
+        Practical: 4,
+      },
+      "ST-005": {
+        MCQ: 8,
+        Written: 10,
+        Practical: 3,
+      },
+      "ST-006": {
+        MCQ: 5,
+        Written: 12,
+        Practical: 4,
+      },
     },
   });
 
-  function updateMarks(studentId, value) {
-    if (!selectedExam) return;
+  // =====================================================
+  // FILTER STUDENTS
+  // =====================================================
+  const filteredStudents = useMemo(() => {
+    return students.filter(
+      (student) =>
+        student.className === classFilter &&
+        student.section === sectionFilter &&
+        student.group === groupFilter &&
+        student.shift === shiftFilter &&
+        student.subject === selectedExam?.subject
+    );
+  }, [
+    classFilter,
+    sectionFilter,
+    groupFilter,
+    shiftFilter,
+    selectedExam,
+  ]);
 
-    if (value === "") {
-      setExamMarks((current) => ({
-        ...current,
-        [selectedExam.id]: {
-          ...(current[selectedExam.id] || {}),
-          [studentId]: "",
-        },
-      }));
+  // =====================================================
+  // UPDATE MARKS
+  // =====================================================
+  const updateMarks = (studentId, componentName, value) => {
+    const component = selectedExam?.components.find(
+      (item) => item.name === componentName
+    );
 
-      return;
+    if (!component) return;
+
+    let numericValue = Number(value);
+
+    if (Number.isNaN(numericValue)) {
+      numericValue = 0;
     }
 
-    let marks = Number(value);
+    numericValue = Math.max(
+      0,
+      Math.min(numericValue, component.maxMarks)
+    );
 
-    if (Number.isNaN(marks)) {
-      return;
-    }
-
-    if (marks < 0) {
-      marks = 0;
-    }
-
-    if (marks > selectedExam.totalMarks) {
-      marks = selectedExam.totalMarks;
-    }
-
-    setExamMarks((current) => ({
-      ...current,
+    setMarks((prev) => ({
+      ...prev,
       [selectedExam.id]: {
-        ...(current[selectedExam.id] || {}),
-        [studentId]: marks,
+        ...prev[selectedExam.id],
+        [studentId]: {
+          ...prev[selectedExam.id]?.[studentId],
+          [componentName]: numericValue,
+        },
       },
     }));
-  }
+  };
 
-  // =========================================================
-  // 5. FILTER STUDENTS
-  // =========================================================
+  // =====================================================
+  // CALCULATE TOTAL
+  // =====================================================
+  const calculateTotal = (studentId) => {
+    const studentMarks =
+      marks[selectedExam.id]?.[studentId] || {};
 
-  const filteredStudents = useMemo(() => {
-    return students.filter((student) => {
-      return (
-        student.className === selectedClass &&
-        student.section === selectedSection &&
-        student.group === selectedGroup &&
-        student.shift === selectedShift &&
-        student.subject === selectedExam?.subject
-      );
-    });
-  }, [
-    students,
-    selectedClass,
-    selectedSection,
-    selectedGroup,
-    selectedShift,
-    selectedExam,
-  ]);
+    return selectedExam.components.reduce((total, component) => {
+      return total + Number(studentMarks[component.name] || 0);
+    }, 0);
+  };
 
-  // =========================================================
-  // 6. SUBJECT RESULT
-  // =========================================================
+  // =====================================================
+  // SUMMARY
+  // =====================================================
+  const results = filteredStudents.map((student) => {
+    const total = calculateTotal(student.id);
 
-  const subjectResults = useMemo(() => {
-    if (!selectedExam) return [];
+    const percentage =
+      selectedExam.totalMarks > 0
+        ? (total / selectedExam.totalMarks) * 100
+        : 0;
 
-    const marksForExam = examMarks[selectedExam.id] || {};
+    return {
+      ...student,
+      total,
+      percentage,
+      grade: getGrade(percentage),
+    };
+  });
 
-    return filteredStudents
-      .map((student) => {
-        const marks = Number(marksForExam[student.id] || 0);
-
-        const percentage =
-          selectedExam.totalMarks > 0
-            ? (marks / selectedExam.totalMarks) * 100
-            : 0;
-
-        return {
-          ...student,
-          marks,
-          percentage,
-        };
-      })
-      .sort((a, b) => b.marks - a.marks)
-      .map((student, index) => ({
-        ...student,
-        position: index + 1,
-      }));
-  }, [
-    filteredStudents,
-    examMarks,
-    selectedExam,
-  ]);
-
-  const highestMarks =
-    subjectResults.length > 0
-      ? subjectResults[0].marks
+  const average =
+    results.length > 0
+      ? results.reduce((sum, student) => sum + student.total, 0) /
+        results.length
       : 0;
 
-  const subjectAverage =
-    subjectResults.length > 0
-      ? subjectResults.reduce(
-          (sum, student) => sum + student.percentage,
-          0
-        ) / subjectResults.length
+  const highest =
+    results.length > 0
+      ? Math.max(...results.map((student) => student.total))
       : 0;
 
-  const passedStudents = subjectResults.filter(
-    (student) => student.percentage >= 40
+  const passed = results.filter(
+    (student) => student.percentage >= 33
   ).length;
 
-  const failedStudents =
-    subjectResults.length - passedStudents;
-
-  const aPlusStudents = subjectResults.filter(
-    (student) => student.percentage >= 80
-  ).length;
-
-  // =========================================================
-  // 7. CLASS TEACHER RESULT FORMULA
-  // =========================================================
-
-  const [resultFormula, setResultFormula] = useState([
-    {
-      id: 1,
-      examId: "EX-001",
-      weight: 20,
-    },
-    {
-      id: 2,
-      examId: "EX-002",
-      weight: 30,
-    },
-    {
-      id: 3,
-      examId: "EX-003",
-      weight: 20,
-    },
-  ]);
-
-  const [resultName, setResultName] = useState(
-    "HSC 2027 Final Result"
-  );
-
-  function addFormulaItem() {
-    const unusedExam = exams.find(
-      (exam) =>
-        !resultFormula.some(
-          (item) => item.examId === exam.id
-        )
-    );
-
-    if (!unusedExam) {
-      alert("All available exams are already added.");
-      return;
-    }
-
-    setResultFormula((current) => [
-      ...current,
-      {
-        id: Date.now(),
-        examId: unusedExam.id,
-        weight: 0,
-      },
-    ]);
-  }
-
-  function updateFormulaItem(id, field, value) {
-    setResultFormula((current) =>
-      current.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              [field]:
-                field === "weight"
-                  ? Number(value)
-                  : value,
-            }
-          : item
-      )
-    );
-  }
-
-  function removeFormulaItem(id) {
-    setResultFormula((current) =>
-      current.filter((item) => item.id !== id)
-    );
-  }
-
-  const totalWeight = resultFormula.reduce(
-    (sum, item) => sum + Number(item.weight || 0),
-    0
-  );
-
-  // =========================================================
-  // 8. FINAL CLASS RESULT
-  // =========================================================
-
-  const finalResults = useMemo(() => {
-    return filteredStudents
-      .map((student) => {
-        let finalPercentage = 0;
-
-        resultFormula.forEach((formula) => {
-          const exam = exams.find(
-            (item) => item.id === formula.examId
-          );
-
-          if (!exam) return;
-
-          const marks = Number(
-            examMarks[exam.id]?.[student.id] || 0
-          );
-
-          const percentage =
-            exam.totalMarks > 0
-              ? (marks / exam.totalMarks) * 100
-              : 0;
-
-          finalPercentage +=
-            (percentage * Number(formula.weight || 0)) /
-            100;
-        });
-
-        return {
-          ...student,
-          finalPercentage,
-        };
-      })
-      .sort(
-        (a, b) =>
-          b.finalPercentage - a.finalPercentage
-      )
-      .map((student, index) => ({
-        ...student,
-        position: index + 1,
-      }));
-  }, [
-    filteredStudents,
-    resultFormula,
-    exams,
-    examMarks,
-  ]);
-
-  function getGrade(percentage) {
-    if (percentage >= 80) return "A+";
-    if (percentage >= 70) return "A";
-    if (percentage >= 60) return "A-";
-    if (percentage >= 50) return "B";
-    if (percentage >= 40) return "C";
-    if (percentage >= 33) return "D";
-    return "F";
-  }
-
-  // =========================================================
-  // 9. SAVE FUNCTIONS
-  // =========================================================
-
-  function saveExamMarks() {
-    console.log("Exam Marks:", {
-      exam: selectedExam,
-      className: selectedClass,
-      section: selectedSection,
-      group: selectedGroup,
-      shift: selectedShift,
-      marks: examMarks[selectedExam.id],
-    });
-
-    alert("Exam marks saved successfully!");
-  }
-
-  function saveResultFormula() {
-    if (!resultName.trim()) {
-      alert("Please enter result name.");
-      return;
-    }
-
-    if (totalWeight !== 100) {
-      alert(
-        `Result formula must total 100%. Current total: ${totalWeight}%`
-      );
-      return;
-    }
-
-    console.log("Result Formula:", {
-      resultName,
-      className: selectedClass,
-      section: selectedSection,
-      group: selectedGroup,
-      shift: selectedShift,
-      items: resultFormula,
-    });
-
-    alert("Result formula saved successfully!");
-  }
-
-  function generateFinalResult() {
-    if (totalWeight !== 100) {
-      alert(
-        `Formula must total 100%. Current total: ${totalWeight}%`
-      );
-      return;
-    }
-
+  // =====================================================
+  // SAVE
+  // =====================================================
+  const handleSave = () => {
     alert(
-      `Final result generated for ${finalResults.length} students.`
+      `${selectedExam.name} marks saved successfully.`
     );
-  }
-
-  function openStudentPortfolio(studentId) {
-    console.log("Open student portfolio:", studentId);
-
-    // Later this can become:
-    // navigate(`/student/${studentId}`);
-
-    alert(`Student portfolio: ${studentId}`);
-  }
+  };
 
   return (
-    <div className="dashboard-page teacher-exams-page">
-
-      {/* =====================================================
+    <div className="teacher-exams-page">
+      {/* =================================================
           HEADER
-      ====================================================== */}
-
+      ================================================= */}
       <div className="teacher-exams-header">
         <div>
-          <p className="teacher-dashboard-eyebrow">
-            Teacher Portal
-          </p>
+          <span className="page-eyebrow">Teacher Portal</span>
 
-          <h1>Exam & Result Management</h1>
+          <h1>Exam Marks</h1>
 
           <p>
-            Create exams, enter marks and generate
-            subject and class results.
+            Enter and manage marks for your assigned exams.
           </p>
         </div>
-
-        <button
-          type="button"
-          className="teacher-save-results-btn"
-          onClick={() => setShowCreateExam(true)}
-        >
-          + Create Exam
-        </button>
       </div>
 
-      {/* =====================================================
-          STAGE 1 — EXAM SETUP
-      ====================================================== */}
-
-      <div className="dashboard-panel teacher-exam-control-panel">
-
-        <div className="panel-header">
+      {/* =================================================
+          EXAM SELECT
+      ================================================= */}
+      <section className="teacher-exam-card">
+        <div className="teacher-section-title">
           <div>
-            <h2>Exam Setup</h2>
-            <p>
-              Select an existing exam or create a new
-              exam structure.
-            </p>
+            <h2>Select Exam</h2>
+            <p>Choose an exam to enter student marks.</p>
           </div>
-
-          <span className="teacher-exam-student-count">
-            {exams.length} Exams
-          </span>
         </div>
 
-        <div className="teacher-exam-controls">
-
-          <div className="teacher-exam-field">
+        <div className="teacher-exam-select-row">
+          <div className="teacher-field">
             <label>Exam</label>
 
             <select
@@ -636,981 +338,309 @@ function TeacherExams() {
               }
             >
               {exams.map((exam) => (
-                <option
-                  key={exam.id}
-                  value={exam.id}
-                >
+                <option key={exam.id} value={exam.id}>
                   {exam.name}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="teacher-exam-field">
-            <label>Exam Type</label>
-
-            <input
-              type="text"
-              value={selectedExam?.type || ""}
-              readOnly
-            />
+          <div className="teacher-exam-info">
+            <span>{selectedExam.type}</span>
+            <strong>{selectedExam.subject}</strong>
+            <small>
+              Exam Date: {selectedExam.examDate}
+            </small>
           </div>
-
-          <div className="teacher-exam-field">
-            <label>Subject</label>
-
-            <input
-              type="text"
-              value={selectedExam?.subject || ""}
-              readOnly
-            />
-          </div>
-
-          <div className="teacher-exam-field">
-            <label>Total Marks</label>
-
-            <div className="teacher-total-marks">
-              {selectedExam?.totalMarks || 0}
-            </div>
-          </div>
-
-          <div className="teacher-exam-field">
-            <label>MCQ</label>
-
-            <div className="teacher-total-marks">
-              {selectedExam?.mcqMarks || 0}
-            </div>
-          </div>
-
-          <div className="teacher-exam-field">
-            <label>Written</label>
-
-            <div className="teacher-total-marks">
-              {selectedExam?.writtenMarks || 0}
-            </div>
-          </div>
-
         </div>
+      </section>
 
-      </div>
-
-      {/* =====================================================
-          STAGE 2 — CLASS SEARCH
-      ====================================================== */}
-
-      <div className="dashboard-panel teacher-exam-filter-panel">
-
-        <div className="panel-header">
+      {/* =================================================
+          FILTERS
+      ================================================= */}
+      <section className="teacher-exam-card">
+        <div className="teacher-section-title">
           <div>
             <h2>Find Students</h2>
-
-            <p>
-              Select class, section, group and shift.
-            </p>
+            <p>Filter your assigned students.</p>
           </div>
         </div>
 
-        <div className="teacher-exam-controls">
-
-          <div className="teacher-exam-field">
+        <div className="teacher-filters">
+          <div className="teacher-field">
             <label>Class</label>
 
-            <input
-              list="teacher-exam-classes"
-              value={selectedClass}
+            <select
+              value={classFilter}
               onChange={(e) =>
-                setSelectedClass(e.target.value)
+                setClassFilter(e.target.value)
               }
-            />
-
-            <datalist id="teacher-exam-classes">
-              <option value="HSC 2027" />
-              <option value="HSC 2026" />
-              <option value="Class 9" />
-              <option value="Class 10" />
-            </datalist>
+            >
+              <option>HSC 2027</option>
+            </select>
           </div>
 
-          <div className="teacher-exam-field">
+          <div className="teacher-field">
             <label>Section</label>
 
-            <input
-              list="teacher-exam-sections"
-              value={selectedSection}
+            <select
+              value={sectionFilter}
               onChange={(e) =>
-                setSelectedSection(e.target.value)
+                setSectionFilter(e.target.value)
               }
-            />
-
-            <datalist id="teacher-exam-sections">
-              <option value="A" />
-              <option value="B" />
-              <option value="C" />
-              <option value="D" />
-            </datalist>
+            >
+              <option>A</option>
+              <option>B</option>
+            </select>
           </div>
 
-          <div className="teacher-exam-field">
+          <div className="teacher-field">
             <label>Group</label>
 
-            <input
-              list="teacher-exam-groups"
-              value={selectedGroup}
+            <select
+              value={groupFilter}
               onChange={(e) =>
-                setSelectedGroup(e.target.value)
+                setGroupFilter(e.target.value)
               }
-            />
-
-            <datalist id="teacher-exam-groups">
-              <option value="Science" />
-              <option value="Commerce" />
-              <option value="Arts" />
-            </datalist>
+            >
+              <option>Science</option>
+              <option>Business Studies</option>
+              <option>Humanities</option>
+            </select>
           </div>
 
-          <div className="teacher-exam-field">
+          <div className="teacher-field">
             <label>Shift</label>
 
-            <input
-              list="teacher-exam-shifts"
-              value={selectedShift}
+            <select
+              value={shiftFilter}
               onChange={(e) =>
-                setSelectedShift(e.target.value)
+                setShiftFilter(e.target.value)
               }
-            />
-
-            <datalist id="teacher-exam-shifts">
-              <option value="Morning" />
-              <option value="Day" />
-              <option value="Afternoon" />
-              <option value="Evening" />
-            </datalist>
+            >
+              <option>Morning</option>
+              <option>Day</option>
+            </select>
           </div>
+        </div>
+      </section>
 
+      {/* =================================================
+          EXAM INFO
+      ================================================= */}
+      <section className="teacher-exam-info-bar">
+        <div>
+          <span>Exam</span>
+          <strong>{selectedExam.name}</strong>
         </div>
 
-      </div>
+        <div>
+          <span>Subject</span>
+          <strong>{selectedExam.subject}</strong>
+        </div>
 
-      {/* =====================================================
-          STAGE 3 — SUBJECT MARKS
-      ====================================================== */}
+        <div>
+          <span>Total Marks</span>
+          <strong>{selectedExam.totalMarks}</strong>
+        </div>
 
-      <div className="teacher-exam-summary">
+        <div>
+          <span>Students</span>
+          <strong>{filteredStudents.length}</strong>
+        </div>
+      </section>
 
-        <div className="teacher-exam-summary-card">
-          <span>Total Students</span>
+      {/* =================================================
+          SUMMARY
+      ================================================= */}
+      <section className="teacher-summary-grid">
+        <div className="teacher-summary-card">
+          <span>Highest</span>
           <strong>
-            {subjectResults.length}
+            {highest}/{selectedExam.totalMarks}
           </strong>
-          <small>
-            Selected class
-          </small>
         </div>
 
-        <div className="teacher-exam-summary-card">
-          <span>Highest Marks</span>
-          <strong>
-            {highestMarks}
-          </strong>
-          <small>
-            Out of {selectedExam?.totalMarks}
-          </small>
-        </div>
-
-        <div className="teacher-exam-summary-card">
+        <div className="teacher-summary-card">
           <span>Average</span>
-          <strong>
-            {subjectAverage.toFixed(1)}%
-          </strong>
-          <small>
-            Subject performance
-          </small>
+          <strong>{average.toFixed(1)}</strong>
         </div>
 
-        <div className="teacher-exam-summary-card">
+        <div className="teacher-summary-card">
           <span>Passed</span>
           <strong>
-            {passedStudents}
+            {passed}/{results.length}
           </strong>
-          <small>
-            {failedStudents} failed
-          </small>
         </div>
 
-      </div>
-
-      <div className="dashboard-panel teacher-exam-results-panel">
-
-        <div className="panel-header">
-
-          <div>
-            <h2>Enter Exam Marks</h2>
-
-            <p>
-              {selectedExam?.name} ·{" "}
-              {selectedExam?.totalMarks} marks
-            </p>
-          </div>
-
-          <span className="teacher-exam-student-count">
-            {subjectResults.length} Students
-          </span>
-
+        <div className="teacher-summary-card">
+          <span>Components</span>
+          <strong>
+            {selectedExam.components.length}
+          </strong>
         </div>
+      </section>
 
-        <div className="teacher-exam-table-wrapper">
+     
+{/* =================================================
+    MARKS TABLE
+================================================= */}
+<section className="teacher-exam-card marks-entry-card">
+  <div className="teacher-section-title">
+    <div>
+      <h2>Enter Marks</h2>
 
-          <table className="teacher-exam-table">
+      <p>
+        Enter marks according to the exam mark
+        structure.
+      </p>
+    </div>
 
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Roll</th>
-                <th>Student</th>
-                <th>Class</th>
-                <th>Group</th>
-                <th>Section</th>
-                <th>Shift</th>
-                <th>Subject</th>
-                <th>
-                  Marks / {selectedExam?.totalMarks}
-                </th>
-                <th>Percentage</th>
-                <th>Result</th>
-              </tr>
-            </thead>
+    <button
+      className="teacher-save-btn"
+      onClick={handleSave}
+    >
+      Save Marks
+    </button>
+  </div>
 
-            <tbody>
+  <div className="teacher-table-wrapper">
+    <table className="teacher-marks-table">
+      <thead>
+        <tr>
+          {/* Roll first */}
+          <th>Roll</th>
 
-              {subjectResults.map((student) => (
+          {/* Dynamic Marks Components */}
+          {selectedExam.components.map(
+            (component) => (
+              <th key={component.id}>
+                {component.name}
+                <small>
+                  / {component.maxMarks}
+                </small>
+              </th>
+            )
+          )}
 
-                <tr key={student.id}>
+          {/* Result */}
+          <th>Total</th>
+          <th>%</th>
+          <th>Grade</th>
 
-                  <td>
-                    <div className="teacher-exam-id-action">
+          {/* Student information on the right */}
+          <th>ID</th>
+          <th>Student</th>
+        </tr>
+      </thead>
 
-                      <span className="teacher-exam-student-id">
-                        {student.id}
-                      </span>
+      <tbody>
+        {filteredStudents.length > 0 ? (
+          filteredStudents.map((student) => {
+            const total = calculateTotal(
+              student.id
+            );
 
-                      <button
-                        type="button"
-                        className="teacher-student-eye-btn"
-                        title="View student portfolio"
-                        onClick={() =>
-                          openStudentPortfolio(
+            const percentage =
+              selectedExam.totalMarks > 0
+                ? (total /
+                    selectedExam.totalMarks) *
+                  100
+                : 0;
+
+            return (
+              <tr key={student.id}>
+                {/* Roll */}
+                <td>
+                  <strong>{student.roll}</strong>
+                </td>
+
+                {/* Dynamic Marks Inputs */}
+                {selectedExam.components.map(
+                  (component) => (
+                    <td key={component.id}>
+                      <input
+                        type="number"
+                        min="0"
+                        max={component.maxMarks}
+                        value={
+                          marks[selectedExam.id]?.[
                             student.id
-                          )
+                          ]?.[component.name] ?? ""
                         }
-                      >
-                        👁
-                      </button>
-
-                    </div>
-                  </td>
-
-                  <td>
-                    <span className="teacher-exam-roll">
-                      {student.roll}
-                    </span>
-                  </td>
-
-                  <td>
-                    <strong className="teacher-exam-student-name">
-                      {student.name}
-                    </strong>
-                  </td>
-
-                  <td>{student.className}</td>
-
-                  <td>{student.group}</td>
-
-                  <td>{student.section}</td>
-
-                  <td>{student.shift}</td>
-
-                  <td>{selectedExam?.subject}</td>
-
-                  <td>
-
-                    <input
-                      type="number"
-                      min="0"
-                      max={selectedExam?.totalMarks}
-                      value={
-                        examMarks[selectedExam?.id]?.[
-                          student.id
-                        ] ?? ""
-                      }
-                      onChange={(e) =>
-                        updateMarks(
-                          student.id,
-                          e.target.value
-                        )
-                      }
-                      className="teacher-marks-input"
-                    />
-
-                  </td>
-
-                  <td>
-                    <strong className="teacher-exam-percentage">
-                      {student.percentage.toFixed(1)}%
-                    </strong>
-                  </td>
-
-                  <td>
-
-                    <span
-                      className={
-                        student.percentage >= 40
-                          ? "teacher-result-badge pass"
-                          : "teacher-result-badge fail"
-                      }
-                    >
-                      {student.percentage >= 40
-                        ? "Passed"
-                        : "Failed"}
-                    </span>
-
-                  </td>
-
-                </tr>
-
-              ))}
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div className="teacher-exam-footer">
-
-          <div>
-            <strong>
-              {selectedExam?.name}
-            </strong>
-
-            <span>
-              {selectedClass} ·{" "}
-              {selectedSection} ·{" "}
-              {selectedGroup} ·{" "}
-              {selectedShift}
-            </span>
-          </div>
-
-          <button
-            type="button"
-            className="teacher-save-results-btn"
-            onClick={saveExamMarks}
-          >
-            Save Exam Marks
-          </button>
-
-        </div>
-
-      </div>
-
-      {/* =====================================================
-          STAGE 4 — RESULT FORMULA
-      ====================================================== */}
-
-      <div className="dashboard-panel teacher-result-formula-panel">
-
-        <div className="panel-header">
-
-          <div>
-            <h2>Class Teacher Result Formula</h2>
-
-            <p>
-              Combine CT, Mid, Model Test or any custom
-              exam into a final result.
-            </p>
-          </div>
-
-          <span
-            className={
-              totalWeight === 100
-                ? "teacher-formula-total valid"
-                : "teacher-formula-total invalid"
-            }
-          >
-            Total {totalWeight}%
-          </span>
-
-        </div>
-
-        <div className="teacher-result-name-field">
-
-          <label>Result Name</label>
-
-          <input
-            type="text"
-            value={resultName}
-            onChange={(e) =>
-              setResultName(e.target.value)
-            }
-            placeholder="Example: HSC 2027 Final Result"
-          />
-
-        </div>
-
-        <div className="teacher-formula-table-wrapper">
-
-          <table className="teacher-formula-table">
-
-            <thead>
-              <tr>
-                <th>Exam</th>
-                <th>Type</th>
-                <th>Total Marks</th>
-                <th>Weight</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-
-            <tbody>
-
-              {resultFormula.map((item) => {
-
-                const exam = exams.find(
-                  (examItem) =>
-                    examItem.id === item.examId
-                );
-
-                return (
-                  <tr key={item.id}>
-
-                    <td>
-
-                      <select
-                        value={item.examId}
                         onChange={(e) =>
-                          updateFormulaItem(
-                            item.id,
-                            "examId",
+                          updateMarks(
+                            student.id,
+                            component.name,
                             e.target.value
                           )
                         }
-                      >
-
-                        {exams.map((examItem) => (
-                          <option
-                            key={examItem.id}
-                            value={examItem.id}
-                          >
-                            {examItem.name}
-                          </option>
-                        ))}
-
-                      </select>
-
+                      />
                     </td>
+                  )
+                )}
 
-                    <td>
-                      {exam?.type}
-                    </td>
+                {/* Total */}
+                <td>
+                  <strong>
+                    {total}/{selectedExam.totalMarks}
+                  </strong>
+                </td>
 
-                    <td>
-                      {exam?.totalMarks}
-                    </td>
+                {/* Percentage */}
+                <td>
+                  {percentage.toFixed(0)}%
+                </td>
 
-                    <td>
+                {/* Grade */}
+                <td>
+                  <span className="teacher-grade">
+                    {getGrade(percentage)}
+                  </span>
+                </td>
 
-                      <div className="teacher-weight-input">
+                {/* ID */}
+                <td>{student.id}</td>
 
-                        <input
-                          type="number"
-                          min="0"
-                          max="100"
-                          value={item.weight}
-                          onChange={(e) =>
-                            updateFormulaItem(
-                              item.id,
-                              "weight",
-                              e.target.value
-                            )
-                          }
-                        />
-
-                        <span>%</span>
-
-                      </div>
-
-                    </td>
-
-                    <td>
-
-                      <button
-                        type="button"
-                        className="teacher-remove-formula-btn"
-                        onClick={() =>
-                          removeFormulaItem(item.id)
-                        }
-                      >
-                        Remove
-                      </button>
-
-                    </td>
-
-                  </tr>
-                );
-              })}
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div className="teacher-formula-actions">
-
-          <button
-            type="button"
-            className="teacher-add-formula-btn"
-            onClick={addFormulaItem}
-          >
-            + Add Exam
-          </button>
-
-          <button
-            type="button"
-            className="teacher-save-results-btn"
-            onClick={saveResultFormula}
-          >
-            Save Result Formula
-          </button>
-
-        </div>
-
-      </div>
-
-      {/* =====================================================
-          STAGE 5 — FINAL CLASS RESULT
-      ====================================================== */}
-
-      <div className="dashboard-panel teacher-final-result-panel">
-
-        <div className="panel-header">
-
-          <div>
-            <h2>Final Class Result</h2>
-
-            <p>
-              {resultName}
-            </p>
-          </div>
-
-          <button
-            type="button"
-            className="teacher-save-results-btn"
-            onClick={generateFinalResult}
-          >
-            Generate Result
-          </button>
-
-        </div>
-
-        <div className="teacher-final-result-info">
-
-          <span>
-            {selectedClass}
-          </span>
-
-          <span>
-            Section {selectedSection}
-          </span>
-
-          <span>
-            {selectedGroup}
-          </span>
-
-          <span>
-            {selectedShift}
-          </span>
-
-          <span>
-            Formula {totalWeight}%
-          </span>
-
-        </div>
-
-        <div className="teacher-exam-table-wrapper">
-
-          <table className="teacher-exam-table">
-
-            <thead>
-              <tr>
-                <th>Position</th>
-                <th>ID</th>
-                <th>Roll</th>
-                <th>Student</th>
-                <th>Final %</th>
-                <th>Grade</th>
-                <th>Status</th>
+                {/* Student */}
+                <td>
+                  <div className="teacher-student-name">
+                    <strong>{student.name}</strong>
+                  </div>
+                </td>
               </tr>
-            </thead>
-
-            <tbody>
-
-              {finalResults.map((student) => {
-
-                const grade = getGrade(
-                  student.finalPercentage
-                );
-
-                return (
-                  <tr key={student.id}>
-
-                    <td>
-                      <span
-                        className={
-                          student.position <= 3
-                            ? "teacher-position-badge top"
-                            : "teacher-position-badge"
-                        }
-                      >
-                        {student.position}
-                      </span>
-                    </td>
-
-                    <td>
-                      <div className="teacher-exam-id-action">
-
-                        <span className="teacher-exam-student-id">
-                          {student.id}
-                        </span>
-
-                        <button
-                          type="button"
-                          className="teacher-student-eye-btn"
-                          title="View student portfolio"
-                          onClick={() =>
-                            openStudentPortfolio(
-                              student.id
-                            )
-                          }
-                        >
-                          👁
-                        </button>
-
-                      </div>
-                    </td>
-
-                    <td>
-                      {student.roll}
-                    </td>
-
-                    <td>
-                      <strong>
-                        {student.name}
-                      </strong>
-                    </td>
-
-                    <td>
-                      <strong className="teacher-exam-percentage">
-                        {student.finalPercentage.toFixed(
-                          2
-                        )}
-                        %
-                      </strong>
-                    </td>
-
-                    <td>
-                      <span className="teacher-result-grade">
-                        {grade}
-                      </span>
-                    </td>
-
-                    <td>
-
-                      <span
-                        className={
-                          student.finalPercentage >= 33
-                            ? "teacher-result-badge pass"
-                            : "teacher-result-badge fail"
-                        }
-                      >
-                        {student.finalPercentage >= 33
-                          ? "Passed"
-                          : "Failed"}
-                      </span>
-
-                    </td>
-
-                  </tr>
-                );
-              })}
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
-
-      {/* =====================================================
-          CREATE EXAM MODAL
-      ====================================================== */}
-
-      {showCreateExam && (
-
-        <div
-          className="teacher-exam-modal-overlay"
-          onClick={() =>
-            setShowCreateExam(false)
-          }
-        >
-
-          <div
-            className="teacher-exam-modal"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
-
-            <div className="teacher-exam-modal-header">
-
-              <div>
-                <span>
-                  Teacher Portal
-                </span>
-
-                <h2>
-                  Create New Exam
-                </h2>
-              </div>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setShowCreateExam(false)
-                }
-              >
-                ×
-              </button>
-
-            </div>
-
-            <div className="teacher-exam-modal-body">
-
-              <div className="teacher-modal-grid">
-
-                <div className="teacher-exam-field">
-                  <label>Exam Name</label>
-
-                  <input
-                    type="text"
-                    placeholder="Example: Physics CT-02"
-                    value={examForm.name}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "name",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Exam Type</label>
-
-                  <input
-                    type="text"
-                    placeholder="CT / Mid / ST / Model Test"
-                    value={examForm.type}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "type",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Subject</label>
-
-                  <input
-                    type="text"
-                    value={examForm.subject}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "subject",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Total Marks</label>
-
-                  <input
-                    type="number"
-                    min="1"
-                    placeholder="10 / 30 / 100"
-                    value={examForm.totalMarks}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "totalMarks",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>MCQ Marks</label>
-
-                  <input
-                    type="number"
-                    min="0"
-                    value={examForm.mcqMarks}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "mcqMarks",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Written Marks</label>
-
-                  <input
-                    type="number"
-                    min="0"
-                    value={examForm.writtenMarks}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "writtenMarks",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Class</label>
-
-                  <input
-                    type="text"
-                    value={examForm.className}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "className",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Section</label>
-
-                  <input
-                    type="text"
-                    value={examForm.section}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "section",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Group</label>
-
-                  <input
-                    type="text"
-                    value={examForm.group}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "group",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Shift</label>
-
-                  <input
-                    type="text"
-                    value={examForm.shift}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "shift",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="teacher-exam-field">
-                  <label>Exam Date</label>
-
-                  <input
-                    type="date"
-                    value={examForm.examDate}
-                    onChange={(e) =>
-                      updateExamForm(
-                        "examDate",
-                        e.target.value
-                      )
-                    }
-                  />
-                </div>
-
-              </div>
-
-              <div className="teacher-exam-mark-rule">
-
-                <strong>
-                  Marks Structure
-                </strong>
-
-                <span>
-                  MCQ + Written must equal Total Marks.
-                </span>
-
-              </div>
-
-            </div>
-
-            <div className="teacher-exam-modal-footer">
-
-              <button
-                type="button"
-                className="teacher-cancel-btn"
-                onClick={() =>
-                  setShowCreateExam(false)
-                }
-              >
-                Cancel
-              </button>
-
-              <button
-                type="button"
-                className="teacher-save-results-btn"
-                onClick={createExam}
-              >
-                Create Exam
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-      )}
+            );
+          })
+        ) : (
+          <tr>
+            <td
+              colSpan={
+                selectedExam.components.length + 7
+              }
+              className="teacher-empty-state"
+            >
+              No students found for the selected
+              filters.
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
+
+  <div className="teacher-table-footer">
+    <span>
+      {filteredStudents.length} students
+    </span>
+
+    <button
+      className="teacher-save-btn"
+      onClick={handleSave}
+    >
+      Save Marks
+    </button>
+  </div>
+</section>
 
     </div>
   );
