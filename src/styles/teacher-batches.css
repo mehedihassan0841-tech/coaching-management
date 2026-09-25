@@ -1,0 +1,1848 @@
+/* =========================================================
+   TEACHER BATCHES PAGE
+   ========================================================= */
+
+.teacher-batches-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  color: #172033;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.teacher-batches-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+.teacher-batches-header-left {
+  min-width: 0;
+}
+
+.teacher-dashboard-eyebrow {
+  margin: 0 0 7px;
+  color: #6366f1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.teacher-batches-header-left h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 29px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.teacher-batches-header-left > p:last-child {
+  margin: 9px 0 0;
+  max-width: 650px;
+  color: #718096;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   HEADER RIGHT
+   ========================================================= */
+
+.teacher-batches-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.teacher-batches-header-stats {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #e7eaf1;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 7px 24px rgba(15, 23, 42, 0.045);
+}
+
+.teacher-batches-header-stats > div {
+  min-width: 88px;
+  padding: 11px 15px;
+  text-align: center;
+  border-right: 1px solid #edf0f5;
+}
+
+.teacher-batches-header-stats > div:last-child {
+  border-right: none;
+}
+
+.teacher-batches-header-stats span {
+  display: block;
+  margin-bottom: 4px;
+  color: #8a94a6;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+}
+
+.teacher-batches-header-stats strong {
+  display: block;
+  color: #27324a;
+  font-size: 19px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   CREATE BATCH BUTTON
+   ========================================================= */
+
+.teacher-create-batch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid #4f46e5;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #4f46e5
+  );
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.teacher-create-batch-btn span {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.teacher-create-batch-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 25px rgba(79, 70, 229, 0.27);
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #4338ca
+  );
+}
+
+.teacher-create-batch-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   FILTER PANEL
+   ========================================================= */
+
+.teacher-batches-filter-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+  padding: 18px 20px;
+  border: 1px solid #e8ebf2;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.035);
+}
+
+.teacher-batches-filter-left {
+  min-width: 0;
+}
+
+.teacher-section-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #818cf8;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.teacher-batches-filter-left h2 {
+  margin: 0;
+  color: #263148;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.teacher-batches-filter-left p {
+  margin: 4px 0 0;
+  color: #8490a3;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.teacher-batches-filter-right {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.teacher-batches-filter-right label {
+  color: #69758a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.teacher-batches-filter-right select {
+  min-width: 155px;
+  height: 37px;
+  padding: 0 32px 0 11px;
+  border: 1px solid #dfe4ec;
+  border-radius: 9px;
+  outline: none;
+  background-color: #ffffff;
+  color: #334155;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.teacher-batches-filter-right select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================================================
+   BATCH GRID
+   ========================================================= */
+
+.teacher-batches-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
+  gap: 18px;
+}
+
+
+/* =========================================================
+   BATCH CARD
+   ========================================================= */
+
+.teacher-batch-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid #e7eaf0;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.045);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+    display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.teacher-batch-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #818cf8,
+    #38bdf8
+  );
+  opacity: 0.9;
+}
+
+.teacher-batch-card:hover {
+  transform: translateY(-3px);
+  border-color: #dfe2f2;
+  box-shadow: 0 15px 34px rgba(15, 23, 42, 0.075);
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.teacher-batch-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.teacher-batch-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e4e7ff;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #eef0ff,
+    #f6f7ff
+  );
+  color: #4f46e5;
+  font-size: 21px;
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.08);
+}
+
+.teacher-batch-card-top-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.teacher-batch-status,
+.teacher-class-teacher-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 23px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.teacher-batch-status {
+  border: 1px solid #cceedd;
+  background: #f0fbf5;
+  color: #16804b;
+}
+
+.teacher-class-teacher-badge {
+  border: 1px solid #dcdcff;
+  background: #f4f3ff;
+  color: #5348d8;
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.teacher-batch-title {
+  margin-top: 16px;
+}
+
+.teacher-batch-title h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.teacher-batch-title p {
+  margin: 5px 0 0;
+  color: #768196;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CLASS TEACHER INFO
+   ========================================================= */
+
+.teacher-class-teacher-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 11px 12px;
+  border: 1px solid #e8e9fb;
+  border-radius: 11px;
+  background: #fafaff;
+}
+
+.teacher-class-teacher-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 31px;
+  height: 31px;
+  border-radius: 9px;
+  background: #f0efff;
+  font-size: 15px;
+}
+
+.teacher-class-teacher-info > div:last-child {
+  min-width: 0;
+}
+
+.teacher-class-teacher-info small {
+  display: block;
+  margin-bottom: 3px;
+  color: #8b93a5;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.teacher-class-teacher-info strong {
+  display: block;
+  overflow: hidden;
+  color: #4b556b;
+  font-size: 9px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   BATCH INFORMATION
+   ========================================================= */
+
+.teacher-batch-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid #edf0f4;
+}
+
+.teacher-batch-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.teacher-batch-info-row > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  background: #f5f7fb;
+  color: #667085;
+  font-size: 12px;
+}
+
+.teacher-batch-info-row > div {
+  min-width: 0;
+}
+
+.teacher-batch-info-row small {
+  display: block;
+  margin-bottom: 3px;
+  color: #98a1b2;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.teacher-batch-info-row strong {
+  display: block;
+  overflow: hidden;
+  color: #455166;
+  font-size: 9px;
+  line-height: 1.35;
+  font-weight: 750;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.teacher-batch-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  
+    margin-top: auto;
+  padding-top: 17px;
+
+}
+
+.teacher-batch-actions button {
+  height: 35px;
+  border: 1px solid #e0e4eb;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #4b5567;
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.teacher-batch-actions button:first-child:hover {
+  border-color: #c9c8fb;
+  background: #f7f7ff;
+  color: #4f46e5;
+}
+
+.teacher-batch-actions button:last-child {
+  border-color: #dfe3ff;
+  background: #f7f7ff;
+  color: #5148cf;
+}
+
+.teacher-batch-actions button:last-child:hover {
+  border-color: #c8c5ff;
+  background: #efeeff;
+  color: #4338ca;
+}
+
+.teacher-batch-actions button:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.teacher-batches-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  margin-top: 18px;
+  padding: 35px;
+  border: 1px dashed #dfe3eb;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.teacher-batches-empty > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 13px;
+  border-radius: 13px;
+  background: #f4f5ff;
+  font-size: 22px;
+}
+
+.teacher-batches-empty h3 {
+  margin: 0;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.teacher-batches-empty p {
+  margin: 6px 0 0;
+  color: #8a94a6;
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.teacher-batch-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: teacherModalOverlayIn 0.2s ease;
+}
+
+@keyframes teacherModalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.teacher-batch-modal {
+  width: min(780px, 100%);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow:
+    0 30px 80px rgba(15, 23, 42, 0.2),
+    0 8px 30px rgba(15, 23, 42, 0.08);
+  animation: teacherModalIn 0.25s ease;
+}
+
+@keyframes teacherModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.teacher-batch-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 23px 25px 20px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.teacher-batch-modal-header > div:first-child {
+  min-width: 0;
+}
+
+.teacher-batch-modal-header span {
+  display: block;
+  margin-bottom: 6px;
+  color: #6366f1;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.teacher-batch-modal-header h2 {
+  margin: 0;
+  color: #202a3c;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.teacher-batch-modal-header p {
+  margin: 5px 0 0;
+  color: #8590a3;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.teacher-modal-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e8ee;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #697386;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.teacher-modal-close-btn:hover {
+  border-color: #d6d9e1;
+  background: #f7f8fa;
+  color: #273142;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.teacher-batch-form {
+  padding: 0 25px 24px;
+}
+
+.teacher-form-section {
+  padding: 21px 0;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.teacher-form-section:last-of-type {
+  border-bottom: none;
+}
+
+.teacher-form-section-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-bottom: 17px;
+}
+
+.teacher-form-section-title > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  background: #f0efff;
+  color: #5148d7;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.teacher-form-section-title h3 {
+  margin: 1px 0 3px;
+  color: #303b50;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.teacher-form-section-title p {
+  margin: 0;
+  color: #9099a9;
+  font-size: 9px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.teacher-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.teacher-form-field {
+  min-width: 0;
+}
+
+.teacher-form-field label,
+.teacher-days-field > label {
+  display: block;
+  margin-bottom: 6px;
+  color: #4b5568;
+  font-size: 9px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.teacher-form-field input,
+.teacher-form-field select {
+  width: 100%;
+  height: 39px;
+  box-sizing: border-box;
+  padding: 0 11px;
+  border: 1px solid #dfe4eb;
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: #344054;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.teacher-form-field input::placeholder {
+  color: #a5adba;
+  font-weight: 500;
+}
+
+.teacher-form-field input:hover,
+.teacher-form-field select:hover {
+  border-color: #cbd2dd;
+}
+
+.teacher-form-field input:focus,
+.teacher-form-field select:focus {
+  border-color: #818cf8;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.075);
+}
+
+
+/* =========================================================
+   DAYS
+   ========================================================= */
+
+.teacher-days-field {
+  margin-top: 17px;
+}
+
+.teacher-days-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.teacher-day-option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 34px;
+  padding: 0 11px;
+  border: 1px solid #dfe4eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #667085;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.teacher-day-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.teacher-day-option span {
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.teacher-day-option:hover {
+  border-color: #c9c9fa;
+  background: #f8f8ff;
+  color: #5148d6;
+}
+
+.teacher-day-option.selected {
+  border-color: #6366f1;
+  background: #f0efff;
+  color: #4f46e5;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================================================
+   CLASS TEACHER TOGGLE
+   ========================================================= */
+
+.teacher-class-teacher-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e4e7ef;
+  border-radius: 12px;
+  background: #fafbfc;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.teacher-class-teacher-toggle:hover {
+  border-color: #d8d8f6;
+  background: #fafaff;
+}
+
+.teacher-class-teacher-toggle > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.teacher-toggle-ui {
+  position: relative;
+  flex: 0 0 auto;
+  width: 39px;
+  height: 22px;
+  border-radius: 999px;
+  background: #d7dce5;
+  transition: background 0.2s ease;
+}
+
+.teacher-toggle-ui > span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.teacher-class-teacher-toggle
+  > input:checked
+  + .teacher-toggle-ui {
+  background: #6366f1;
+}
+
+.teacher-class-teacher-toggle
+  > input:checked
+  + .teacher-toggle-ui
+  > span {
+  transform: translateX(17px);
+}
+
+.teacher-class-teacher-toggle > div:last-child {
+  min-width: 0;
+}
+
+.teacher-class-teacher-toggle strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #354052;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.teacher-class-teacher-toggle small {
+  display: block;
+  color: #8b95a6;
+  font-size: 8px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   CLASS TEACHER PREVIEW
+   ========================================================= */
+
+.teacher-class-teacher-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 11px;
+  padding: 11px 13px;
+  border: 1px solid #dedfff;
+  border-radius: 10px;
+  background: #f8f8ff;
+}
+
+.teacher-class-teacher-preview > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 8px;
+  background: #ecebff;
+  font-size: 14px;
+}
+
+.teacher-class-teacher-preview strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #4b45ba;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.teacher-class-teacher-preview p {
+  margin: 0;
+  color: #777f94;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+   ========================================================= */
+
+.teacher-batch-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  padding-top: 20px;
+}
+
+.teacher-modal-cancel-btn,
+.teacher-modal-create-btn {
+  min-width: 92px;
+  height: 37px;
+  padding: 0 14px;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.teacher-modal-cancel-btn {
+  border: 1px solid #dfe3ea;
+  background: #ffffff;
+  color: #657084;
+}
+
+.teacher-modal-cancel-btn:hover {
+  border-color: #cbd1dc;
+  background: #f8f9fb;
+}
+
+.teacher-modal-create-btn {
+  border: 1px solid #4f46e5;
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #4f46e5
+  );
+  color: #ffffff;
+  box-shadow: 0 7px 17px rgba(79, 70, 229, 0.18);
+}
+
+.teacher-modal-create-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.25);
+}
+
+
+/* =========================================================
+   MODAL SCROLLBAR
+   ========================================================= */
+
+.teacher-batch-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.teacher-batch-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.teacher-batch-modal::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #d5d9e2;
+}
+
+.teacher-batch-modal::-webkit-scrollbar-thumb:hover {
+  background: #b9bfcb;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =========================
+     PAGE
+     ========================= */
+
+  .teacher-batches-page {
+    padding: 18px 14px 75px;
+  }
+
+
+  /* =========================
+     HEADER
+     ========================= */
+
+  .teacher-batches-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+    margin-bottom: 18px;
+  }
+
+  .teacher-batches-header-left {
+    width: 100%;
+  }
+
+  .teacher-batches-header-left h1 {
+    font-size: 23px;
+  }
+
+  .teacher-batches-header-left > p:last-child {
+    font-size: 11px;
+  }
+
+  .teacher-batches-header-right {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+
+  /* =========================
+     HEADER STATS
+     ========================= */
+
+  .teacher-batches-header-stats {
+    width: 100%;
+    display: flex;
+    gap: 7px;
+  }
+
+  .teacher-batches-header-stats > div {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 7px;
+  }
+
+  .teacher-batches-header-stats span {
+    font-size: 7px;
+  }
+
+  .teacher-batches-header-stats strong {
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     CREATE BUTTON
+     ========================= */
+
+  .teacher-create-batch-btn {
+    width: 100%;
+    height: 42px;
+  }
+
+
+  /* =====================================================
+     FILTER
+     ===================================================== */
+
+  .teacher-batches-filter-panel {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+
+  /* =========================
+     SEARCH AREA
+     ========================= */
+
+  .teacher-batches-search-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .teacher-batch-search-field {
+    width: 100%;
+  }
+
+  .teacher-batch-search-field label {
+    margin-bottom: 4px;
+    font-size: 9px;
+  }
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    width: 100%;
+    height: 36px;
+    font-size: 9px;
+  }
+
+
+  /* =========================
+     SUBJECT SMALL
+     ========================= */
+
+  .teacher-batch-search-field.subject-search {
+    width: 150px;
+  }
+
+  .teacher-batch-search-field.subject-search select {
+    width: 150px;
+  }
+
+
+  /* =========================
+     FILTER RIGHT
+     ========================= */
+
+  .teacher-batches-filter-right {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .teacher-batches-filter-right select {
+    width: 100%;
+  }
+
+
+  /* =====================================================
+     BATCH GRID
+     ===================================================== */
+
+  .teacher-batches-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+
+  /* =====================================================
+     BATCH CARD
+     ===================================================== */
+
+  .teacher-batch-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    padding: 17px;
+    border-radius: 15px;
+  }
+
+
+  /* =========================
+     CARD INFO
+     ========================= */
+
+  .teacher-batch-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+
+  /* =========================
+     CARD ACTIONS
+     ========================= */
+
+  .teacher-batch-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: auto;
+    padding-top: 17px;
+  }
+
+  .teacher-batch-actions button {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* =====================================================
+     MODAL
+     ===================================================== */
+
+  .teacher-batch-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .teacher-batch-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 94vh;
+    border-radius: 20px 20px 0 0;
+  }
+
+
+  /* =========================
+     MODAL HEADER
+     ========================= */
+
+  .teacher-batch-modal-header {
+    padding: 19px 17px 16px;
+  }
+
+  .teacher-batch-modal-header h2 {
+    font-size: 18px;
+  }
+
+
+  /* =========================
+     FORM
+     ========================= */
+
+  .teacher-batch-form {
+    padding: 0 17px 20px;
+  }
+
+  .teacher-form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .teacher-form-section {
+    padding: 18px 0;
+  }
+
+
+  /* =========================
+     DAYS
+     ========================= */
+
+  .teacher-days-list {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .teacher-day-option {
+    min-width: 47px;
+    height: 33px;
+    padding: 0 9px;
+  }
+
+
+  /* =========================
+     CLASS TEACHER PREVIEW
+     ========================= */
+
+  .teacher-class-teacher-preview {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     MODAL FOOTER
+     ========================= */
+
+  .teacher-batch-modal-footer {
+    position: sticky;
+    bottom: 0;
+    margin: 0 -17px;
+    padding: 13px 17px;
+    border-top: 1px solid #edf0f4;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .teacher-modal-cancel-btn,
+  .teacher-modal-create-btn {
+    flex: 1;
+    min-width: 0;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  /* =========================
+     PAGE
+     ========================= */
+
+  .teacher-batches-page {
+    padding: 16px 12px 75px;
+  }
+
+
+  /* =========================
+     HEADER STATS
+     ========================= */
+
+  .teacher-batches-header-stats {
+    gap: 5px;
+  }
+
+  .teacher-batches-header-stats > div {
+    padding: 9px 4px;
+  }
+
+  .teacher-batches-header-stats span {
+    font-size: 6.5px;
+  }
+
+  .teacher-batches-header-stats strong {
+    font-size: 15px;
+  }
+
+
+  /* =========================
+     SEARCH
+     ========================= */
+
+  .teacher-batches-search-area {
+    gap: 9px;
+  }
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    height: 35px;
+  }
+
+  .teacher-batch-search-field.subject-search,
+  .teacher-batch-search-field.subject-search select {
+    width: 140px;
+  }
+
+
+  /* =========================
+     BATCH INFO
+     ========================= */
+
+  .teacher-batch-info {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* =========================
+     ACTION BUTTONS
+     ========================= */
+
+  .teacher-batch-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+
+  /* =========================
+     MODAL
+     ========================= */
+
+  .teacher-batch-modal {
+    max-height: 95vh;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .teacher-batch-modal-header {
+    padding: 17px 14px 14px;
+  }
+
+  .teacher-batch-form {
+    padding: 0 14px 18px;
+  }
+
+  .teacher-batch-modal-footer {
+    margin: 0 -14px;
+    padding: 12px 14px;
+  }
+
+  .teacher-modal-cancel-btn,
+  .teacher-modal-create-btn {
+    min-height: 40px;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    border: 1px solid #eef1f5;
+    background: #f8fafc;
+    box-shadow: none;
+  }
+
+  .teacher-batch-search-field input:hover,
+  .teacher-batch-search-field select:hover {
+    border-color: #e5e9ef;
+    background: #ffffff;
+  }
+
+  .teacher-batch-search-field input:focus,
+  .teacher-batch-search-field select:focus {
+    border-color: #dfe4ec;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.04);
+  }
+
+  .teacher-batch-search-field input::placeholder {
+    color: #aab2bf;
+  }
+}
+@media (max-width: 768px) {
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    border: none !important;
+    outline: none !important;
+    background: #f8fafc;
+    box-shadow: none;
+    transition:
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+  /* Hover করলে শুধু soft shadow */
+  .teacher-batch-search-field input:hover,
+  .teacher-batch-search-field select:hover {
+    border: none !important;
+    outline: none !important;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+
+  /* Click / Focus করলে কোনো extra border থাকবে না */
+  .teacher-batch-search-field input:focus,
+  .teacher-batch-search-field select:focus {
+    border: none !important;
+    outline: none !important;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+
+  /* Browser-এর default focus ring বন্ধ */
+  .teacher-batch-search-field input:focus-visible,
+  .teacher-batch-search-field select:focus-visible {
+    outline: none !important;
+    border: none !important;
+  }
+}
+/* =========================================================
+   MOBILE - FINAL POLISH
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =========================
+     PAGE FONT
+     ========================= */
+
+  .teacher-batches-page {
+    font-size: 14px;
+  }
+
+  .teacher-batches-page button,
+  .teacher-batches-page input,
+  .teacher-batches-page select {
+    font-family: inherit;
+  }
+
+
+  /* =========================
+     SEARCH INPUT
+     ========================= */
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    height: 40px;
+
+    border: none !important;
+    outline: none !important;
+
+    border-radius: 14px;
+
+    background: #f7f9fc;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow: none;
+
+    transition:
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+
+  /* Hover */
+
+  .teacher-batch-search-field input:hover,
+  .teacher-batch-search-field select:hover {
+    border: none !important;
+    outline: none !important;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 5px 16px rgba(15, 23, 42, 0.09);
+  }
+
+
+  /* Focus / Click */
+
+  .teacher-batch-search-field input:focus,
+  .teacher-batch-search-field select:focus {
+    border: none !important;
+    outline: none !important;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 5px 16px rgba(15, 23, 42, 0.09);
+  }
+
+  .teacher-batch-search-field input:focus-visible,
+  .teacher-batch-search-field select:focus-visible {
+    border: none !important;
+    outline: none !important;
+  }
+
+
+  /* =========================
+     LABEL
+     ========================= */
+
+  .teacher-batch-search-field label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+
+  /* =========================
+     PLACEHOLDER
+     ========================= */
+
+  .teacher-batch-search-field input::placeholder {
+    font-size: 13px;
+    color: #9ca5b3;
+  }
+
+
+  /* =========================
+     SUBJECT
+     ========================= */
+
+  .teacher-batch-search-field.subject-search {
+    width: 155px;
+  }
+
+  .teacher-batch-search-field.subject-search select {
+    width: 155px;
+  }
+
+
+  /* =========================
+     BATCH CARD TEXT
+     ========================= */
+
+  .teacher-batch-card {
+    font-size: 14px;
+  }
+
+
+  /* =========================
+     CARD ACTION BUTTON
+     ========================= */
+
+  .teacher-batch-actions button {
+    font-size: 12px;
+    min-height: 40px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .teacher-batches-page {
+    font-size: 14px;
+  }
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    height: 40px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+
+  .teacher-batch-search-field label {
+    font-size: 12px;
+  }
+
+  .teacher-batch-search-field input::placeholder {
+    font-size: 13px;
+  }
+
+  .teacher-batch-search-field.subject-search,
+  .teacher-batch-search-field.subject-search select {
+    width: 150px;
+  }
+
+  .teacher-batch-actions button {
+    font-size: 12px;
+    min-height: 40px;
+  }
+}
+/* =========================================================
+   DESKTOP SEARCH - 4 INPUTS IN ONE ROW
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  .teacher-batches-search-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 150px;
+    align-items: end;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .teacher-batch-search-field {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .teacher-batch-search-field.subject-search {
+    width: 150px;
+  }
+
+  .teacher-batch-search-field input,
+  .teacher-batch-search-field select {
+    width: 100%;
+    height: 40px;
+
+    border: none !important;
+    outline: none !important;
+    border-radius: 14px;
+
+    background: #f7f9fc;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow: none;
+
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* Hover */
+
+  .teacher-batch-search-field input:hover,
+  .teacher-batch-search-field select:hover {
+    border: none !important;
+    outline: none !important;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 5px 16px rgba(15, 23, 42, 0.09);
+  }
+
+  /* Click / Focus */
+
+  .teacher-batch-search-field input:focus,
+  .teacher-batch-search-field select:focus {
+    border: none !important;
+    outline: none !important;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 5px 16px rgba(15, 23, 42, 0.09);
+  }
+
+  .teacher-batch-search-field input:focus-visible,
+  .teacher-batch-search-field select:focus-visible {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .teacher-batch-search-field label {
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .teacher-batch-search-field input::placeholder {
+    font-size: 13px;
+    color: #9ca5b3;
+  }
+
+}

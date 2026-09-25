@@ -1,0 +1,2320 @@
+
+
+/* =========================================================
+   MOVED FROM APP.CSS
+========================================================= */
+
+
+.student-fee-summary-card span {
+  display: block;
+
+  margin-bottom: 4px;
+}
+
+
+.student-fee-summary-card strong {
+  display: block;
+}
+
+
+.student-fee-card:hover {
+  border-color: #d9dcff;
+}
+
+
+@media (max-width: 700px) {
+  .student-fee-card {
+    flex-direction: column;
+  }
+
+  .student-fee-month {
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #eef0f4;
+  }
+
+  .student-fee-status {
+    text-align: center;
+  }
+
+}
+
+
+.fees-glass-intro {
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+
+.fees-glass-scene {
+  perspective: 1200px;
+}
+
+
+.fees-glass-orb {
+  width: 260px;
+  height: 260px;
+
+  opacity: 0.18;
+}
+
+
+.fees-glass-card {
+  z-index: 10;
+}
+
+
+.fees-glass-card::before {
+  position: absolute;
+  top: -170px;
+  left: -110px;
+
+  width: 180px;
+  height: 420px;
+
+  background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.18), transparent );
+
+  content: "";
+  transform: rotate(28deg);
+  filter: blur(3px);
+  animation: feesGlassReflection 2.4s ease 0.7s forwards;
+  pointer-events: none;
+}
+
+
+.fees-glass-card-shine {
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.fees-glass-card-chip {
+  border: 1px solid rgba(255,255,255,.24);
+}
+
+
+.fees-glass-card-info {
+  bottom: 65px;
+}
+
+
+.fees-glass-card-info strong {
+  font-weight: 600;
+}
+
+
+.fees-glass-card-bottom {
+  color: rgba(255,255,255,.55);
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+
+.fees-glass-card-bottom strong {
+  letter-spacing: 1px;
+}
+
+
+.fees-glass-card-lines {
+  bottom: 61px;
+}
+
+
+.fees-payment-terminal {
+  z-index: 5;
+
+  border-radius: 25px;
+  background: linear-gradient( 145deg, rgba(255,255,255,.13), rgba(255,255,255,.035) );
+  border: 1px solid rgba(255,255,255,.24);
+  box-shadow: 0 20px 45px rgba(0,0,0,.24), inset 0 1px 1px rgba(255,255,255,.28);
+
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+}
+
+
+.fees-terminal-glass {
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.fees-terminal-screen {
+  right: 17px;
+}
+
+
+.fees-terminal-contact {
+  width: 38px;
+  height: 26px;
+
+  border-radius: 9px;
+  background: rgba(108,99,255,.12);
+  border: 1px solid rgba(108,99,255,.22);
+  box-shadow: 0 0 20px rgba(108,99,255,.12);
+}
+
+
+.fees-terminal-contact span {
+  width: 3px;
+  height: 13px;
+
+  background: rgba(255,255,255,.35);
+}
+
+
+.fees-terminal-base {
+  right: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.fees-terminal-base span {
+  width: 18px;
+}
+
+
+.fees-payment-success {
+  flex-direction: column;
+
+  width: 150px;
+}
+
+
+.fees-success-check {
+  border: 1px solid rgba(74,222,128,.35);
+}
+
+
+.fees-payment-success span {
+  letter-spacing: 1px;
+}
+
+
+.fees-payment-ripple {
+  z-index: 12;
+}
+
+
+.fees-payment-ripple::before,
+.fees-payment-ripple::after {
+  position: absolute;
+  inset: -1px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(108,99,255,.28);
+
+  content: "";
+  animation: feesRippleExpand .8s ease-out 1.78s forwards;
+}
+
+
+.fees-payment-ripple::after {
+  animation-delay: 1.9s;
+}
+
+
+.fees-intro-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.fees-page-hidden {
+  transform: translateY(10px) scale(.995);
+}
+
+
+.fees-page-visible {
+  transform: translateY(0) scale(1);
+}
+
+
+@media (max-width: 800px) {
+  .fees-terminal-screen {
+    right: 14px;
+  }
+
+  .fees-terminal-base {
+    right: 18px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+  .fees-glass-intro {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  .fees-glass-card-info {
+    bottom: 48px;
+  }
+
+  .fees-glass-card-bottom {
+    font-size: 6px;
+  }
+
+  .fees-glass-card-lines {
+    bottom: 45px;
+  }
+
+  .fees-payment-terminal {
+    border-radius: 20px;
+  }
+
+  .fees-terminal-screen {
+    right: 11px;
+  }
+
+  .fees-terminal-contact {
+    width: 30px;
+    height: 20px;
+  }
+
+  .fees-terminal-contact span {
+    height: 10px;
+  }
+
+  .fees-terminal-base {
+    right: 14px;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .fees-page-hidden {
+    transform: none;
+  }
+
+}
+
+
+/* =========================================================
+   STUDENT FEES PAGE
+   Premium Glassmorphism + Secure Payment Intro
+   ========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.student-page {
+  position: relative;
+  min-height: 100%;
+  padding: 28px;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(99, 102, 241, 0.25),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(59, 130, 246, 0.3),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #dbeafe 100%
+    );
+
+  background-attachment: fixed;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.student-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.student-page-header h1 {
+  margin: 0 0 7px;
+
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+
+  color: #172554;
+}
+
+.student-page-header p {
+  margin: 0;
+
+  font-size: 15px;
+  color: #475569;
+}
+
+
+/* =========================================================
+   FEES SUMMARY
+   ========================================================= */
+
+.student-fees-summary {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
+
+.student-fee-summary-card {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  min-height: 105px;
+
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.42);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 20px;
+
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  box-shadow:
+    0 12px 30px rgba(31, 38, 135, 0.12),
+    0 4px 12px rgba(37, 99, 235, 0.08);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.student-fee-summary-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 135px;
+  height: 135px;
+
+  top: -60px;
+  right: -60px;
+
+  border-radius: 50%;
+
+  background: rgba(99, 102, 241, 0.12);
+}
+
+
+.student-fee-summary-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 40px rgba(31, 38, 135, 0.17),
+    0 8px 20px rgba(37, 99, 235, 0.1);
+
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   SUMMARY ICON
+   ========================================================= */
+
+.student-fee-icon {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #2563eb
+    );
+
+  color: white;
+
+  font-size: 23px;
+  font-weight: 900;
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.22);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.student-fee-summary-card:hover
+.student-fee-icon {
+  transform: scale(1.08) rotate(-3deg);
+
+  box-shadow:
+    0 10px 22px rgba(37, 99, 235, 0.27);
+}
+
+
+/* =========================================================
+   SUMMARY TEXT
+   ========================================================= */
+
+.student-fee-summary-card > div:last-child {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.student-fee-summary-card span {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #64748b;
+}
+
+
+.student-fee-summary-card strong {
+  font-size: 26px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  color: #172554;
+}
+
+
+/* =========================================================
+   FEES SECTION
+   ========================================================= */
+
+.student-fees-section {
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.38);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 22px;
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  box-shadow:
+    0 16px 38px rgba(31, 38, 135, 0.12),
+    0 6px 18px rgba(37, 99, 235, 0.07);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.student-fees-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+
+.student-fees-section-header h2 {
+  margin: 0 0 5px;
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+  color: #172554;
+}
+
+
+.student-fees-section-header p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   FEES LIST
+   ========================================================= */
+
+.student-fees-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   FEE CARD
+   ========================================================= */
+
+.student-fee-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(210px, 1.8fr)
+    minmax(100px, 0.8fr)
+    minmax(100px, 0.8fr)
+    minmax(100px, 0.8fr)
+    auto;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  box-shadow:
+    0 8px 22px rgba(31, 38, 135, 0.09),
+    0 3px 10px rgba(37, 99, 235, 0.06);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* Left Accent */
+
+.student-fee-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #4f46e5,
+      #2563eb
+    );
+
+  opacity: 0.85;
+}
+
+
+/* Decorative Circle */
+
+.student-fee-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(99, 102, 241, 0.07);
+
+  pointer-events: none;
+}
+
+
+.student-fee-card:hover {
+  transform: translateX(5px);
+
+  background: rgba(255, 255, 255, 0.58);
+
+  box-shadow:
+    0 14px 30px rgba(31, 38, 135, 0.14),
+    0 6px 16px rgba(37, 99, 235, 0.08);
+}
+
+
+/* =========================================================
+   MONTH
+   ========================================================= */
+
+.student-fee-month {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  min-width: 0;
+}
+
+
+.student-fee-month-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.95),
+      rgba(37, 99, 235, 0.9)
+    );
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 16px rgba(37, 99, 235, 0.2);
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.student-fee-card:hover
+.student-fee-month-icon {
+  transform: scale(1.07) rotate(2deg);
+}
+
+
+.student-fee-month h3 {
+  margin: 0 0 4px;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  color: #172554;
+}
+
+
+.student-fee-month p {
+  margin: 0;
+
+  font-size: 11px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   AMOUNT / PAID / DUE
+   ========================================================= */
+
+.student-fee-amount,
+.student-fee-paid,
+.student-fee-due {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.student-fee-amount span,
+.student-fee-paid span,
+.student-fee-due span {
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: #64748b;
+}
+
+
+.student-fee-amount strong,
+.student-fee-paid strong,
+.student-fee-due strong {
+  font-size: 15px;
+
+  font-weight: 800;
+
+  color: #172554;
+}
+
+
+/* =========================================================
+   DUE COLOR
+   ========================================================= */
+
+.student-fee-due strong {
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.student-fee-status {
+  position: relative;
+  z-index: 1;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+.student-fee-status-paid {
+  background: rgba(22, 163, 74, 0.11);
+
+  border: 1px solid rgba(22, 163, 74, 0.2);
+
+  color: #15803d;
+}
+
+
+.student-fee-status-partial {
+  background: rgba(245, 158, 11, 0.12);
+
+  border: 1px solid rgba(245, 158, 11, 0.22);
+
+  color: #b45309;
+}
+
+
+/* =========================================================
+   GLASS PAYMENT INTRO
+   ========================================================= */
+
+.fees-glass-intro {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(59, 130, 246, 0.16),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #0f172a 55%,
+      #111827 100%
+    );
+
+  overflow: hidden;
+
+  animation:
+    feesIntroFadeOut 0.8s ease 3.2s forwards;
+}
+
+
+.fees-glass-scene {
+  position: relative;
+
+  width: min(800px, 94vw);
+
+  height: min(650px, 90vh);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   BACKGROUND ORBS
+   ========================================================= */
+
+.fees-glass-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(5px);
+
+  pointer-events: none;
+}
+
+
+.fees-glass-orb-one {
+  width: 300px;
+  height: 300px;
+
+  top: 80px;
+  left: 90px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.22),
+      transparent 70%
+    );
+
+  animation:
+    feesOrbFloatOne 5s ease-in-out infinite;
+}
+
+
+.fees-glass-orb-two {
+  width: 260px;
+  height: 260px;
+
+  right: 80px;
+  bottom: 100px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.2),
+      transparent 70%
+    );
+
+  animation:
+    feesOrbFloatTwo 6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   GLASS PAYMENT CARD
+   ========================================================= */
+
+.fees-glass-card {
+  position: absolute;
+
+  top: 105px;
+  left: 50%;
+
+  width: 330px;
+  height: 205px;
+
+  transform:
+    translateX(-50%)
+    rotate(-5deg);
+
+  padding: 23px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.07)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.38),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  animation:
+    feesCardAppear 0.9s ease 0.3s forwards,
+    feesCardFloat 4s ease-in-out 1.3s infinite;
+}
+
+
+.fees-glass-card-shine {
+  position: absolute;
+
+  top: -100%;
+  left: -80%;
+
+  width: 60%;
+  height: 300%;
+
+  transform: rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+
+  animation:
+    feesCardShine 2.8s ease 1.2s infinite;
+}
+
+
+.fees-glass-card-top {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.fees-glass-card-chip {
+  display: block;
+
+  width: 37px;
+  height: 27px;
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e2e8f0,
+      #94a3b8
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(15, 23, 42, 0.2);
+}
+
+
+.fees-glass-card-info {
+  position: absolute;
+
+  left: 23px;
+  right: 23px;
+  top: 83px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.fees-glass-card-info span {
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+
+.fees-glass-card-info strong {
+  color: white;
+
+  font-size: 17px;
+
+  letter-spacing: 1.5px;
+}
+
+
+.fees-glass-card-bottom {
+  position: absolute;
+
+  left: 23px;
+  right: 23px;
+  bottom: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.fees-glass-card-bottom span {
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+}
+
+
+.fees-glass-card-bottom strong {
+  color: #f8fafc;
+
+  font-size: 19px;
+}
+
+
+/* Decorative Card Lines */
+
+.fees-glass-card-lines {
+  position: absolute;
+
+  right: 23px;
+  top: 52px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  opacity: 0.3;
+}
+
+
+.fees-glass-card-lines i {
+  display: block;
+
+  width: 35px;
+  height: 2px;
+
+  border-radius: 2px;
+
+  background: white;
+}
+
+
+/* =========================================================
+   PAYMENT TERMINAL
+   ========================================================= */
+
+.fees-payment-terminal {
+  position: absolute;
+
+  left: 50%;
+
+  top: 285px;
+
+  width: 180px;
+  height: 230px;
+
+  transform:
+    translateX(-50%)
+    rotate(2deg);
+
+  opacity: 0;
+
+  animation:
+    feesTerminalAppear 0.9s ease 1s forwards;
+}
+
+
+.fees-terminal-glass {
+  position: absolute;
+
+  left: 20px;
+  top: 0;
+
+  width: 140px;
+  height: 120px;
+
+  border-radius: 18px 18px 10px 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.17),
+      rgba(255, 255, 255, 0.05)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.22);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+.fees-terminal-screen {
+  position: absolute;
+
+  left: 35px;
+  top: 16px;
+
+  width: 110px;
+  height: 72px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.88),
+      rgba(30, 41, 59, 0.8)
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.18);
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.fees-terminal-small {
+  color: #cbd5e1;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Contactless Icon */
+
+.fees-terminal-contact {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+}
+
+
+.fees-terminal-contact span {
+  display: block;
+
+  border: 2px solid #60a5fa;
+
+  border-left-color: transparent;
+
+  border-bottom-color: transparent;
+
+  border-radius: 50%;
+
+  transform: rotate(-45deg);
+}
+
+
+.fees-terminal-contact span:nth-child(1) {
+  width: 9px;
+  height: 9px;
+}
+
+
+.fees-terminal-contact span:nth-child(2) {
+  width: 15px;
+  height: 15px;
+}
+
+
+.fees-terminal-contact span:nth-child(3) {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* =========================================================
+   TERMINAL BASE
+   ========================================================= */
+
+.fees-terminal-base {
+  position: absolute;
+
+  left: 5px;
+  bottom: 0;
+
+  width: 170px;
+  height: 90px;
+
+  border-radius: 12px 12px 20px 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.32);
+}
+
+
+.fees-terminal-base span {
+  position: absolute;
+
+  display: block;
+
+  height: 8px;
+
+  border-radius: 5px;
+
+  background: rgba(148, 163, 184, 0.35);
+}
+
+
+.fees-terminal-base span:nth-child(1) {
+  width: 65px;
+
+  top: 22px;
+  left: 22px;
+}
+
+
+.fees-terminal-base span:nth-child(2) {
+  width: 42px;
+
+  top: 22px;
+  right: 22px;
+}
+
+
+/* =========================================================
+   PAYMENT SUCCESS
+   ========================================================= */
+
+.fees-payment-success {
+  position: absolute;
+
+  left: 50%;
+  bottom: -20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 13px;
+
+  transform:
+    translateX(-50%)
+    translateY(15px);
+
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.7);
+
+  border:
+    1px solid rgba(74, 222, 128, 0.28);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+
+  animation:
+    feesSuccessAppear 0.7s ease 2s forwards;
+}
+
+
+.fees-success-check {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+
+.fees-payment-success span {
+  color: #dcfce7;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   RIPPLE
+   ========================================================= */
+
+.fees-payment-ripple {
+  position: absolute;
+
+  left: 50%;
+  top: 310px;
+
+  width: 100px;
+  height: 100px;
+
+  transform: translateX(-50%);
+
+  border:
+    2px solid rgba(96, 165, 250, 0.4);
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  animation:
+    feesRipple 1.7s ease 1.7s infinite;
+}
+
+
+/* =========================================================
+   INTRO LABEL
+   ========================================================= */
+
+.fees-intro-label {
+  position: absolute;
+
+  left: 50%;
+  bottom: 38px;
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  text-align: center;
+
+  opacity: 0;
+
+  animation:
+    feesLabelAppear 0.9s ease 2.15s forwards;
+}
+
+
+.fees-intro-label span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+
+.fees-intro-label strong {
+  display: block;
+
+  color: #f8fafc;
+
+  font-size: clamp(42px, 7vw, 64px);
+
+  font-weight: 900;
+
+  letter-spacing: -2px;
+
+  text-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   PAGE TRANSITION
+   ========================================================= */
+
+.fees-page-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.fees-page-visible {
+  opacity: 1;
+  visibility: visible;
+
+  animation:
+    feesPageReveal 0.9s ease both;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes feesIntroFadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+
+@keyframes feesCardAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(-25px)
+      rotate(-8deg)
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      rotate(-5deg)
+      scale(1);
+  }
+}
+
+
+@keyframes feesCardFloat {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -9px;
+  }
+}
+
+
+@keyframes feesCardShine {
+  0% {
+    left: -80%;
+  }
+
+  45%,
+  100% {
+    left: 130%;
+  }
+}
+
+
+@keyframes feesTerminalAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(30px)
+      rotate(5deg)
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      rotate(2deg)
+      scale(1);
+  }
+}
+
+
+@keyframes feesSuccessAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(15px)
+      scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes feesRipple {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scale(0.45);
+  }
+
+  35% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scale(2.2);
+  }
+}
+
+
+@keyframes feesLabelAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+}
+
+
+@keyframes feesPageReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes feesOrbFloatOne {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, -18px);
+  }
+}
+
+
+@keyframes feesOrbFloatTwo {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 18px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .student-fees-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .student-fee-card {
+    grid-template-columns:
+      minmax(180px, 1.6fr)
+      repeat(3, 0.8fr)
+      auto;
+
+    gap: 13px;
+
+    padding: 17px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .student-page {
+    padding: 20px 16px 90px;
+
+    background-attachment: scroll;
+  }
+
+
+  .student-page-header {
+    margin-bottom: 22px;
+  }
+
+
+  .student-page-header h1 {
+    font-size: 26px;
+  }
+
+
+  .student-page-header p {
+    font-size: 14px;
+  }
+
+
+  .student-fees-summary {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .student-fee-summary-card {
+    min-height: 88px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    transition: none;
+  }
+
+
+  .student-fee-summary-card:hover {
+    transform: none;
+  }
+
+
+  .student-fee-summary-card:hover
+  .student-fee-icon {
+    transform: none;
+  }
+
+
+  .student-fee-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 21px;
+  }
+
+
+  .student-fee-summary-card strong {
+    font-size: 24px;
+  }
+
+
+  .student-fees-section {
+    padding: 18px;
+
+    border-radius: 19px;
+  }
+
+
+  .student-fees-section-header h2 {
+    font-size: 19px;
+  }
+
+
+  .student-fees-section-header p {
+    font-size: 12px;
+  }
+
+
+  /* Fee cards become vertical */
+
+  .student-fee-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    transition: none;
+  }
+
+
+  .student-fee-card:hover {
+    transform: none;
+
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+
+  .student-fee-card:hover
+  .student-fee-month-icon {
+    transform: none;
+  }
+
+
+  .student-fee-month {
+    grid-column: 1 / -1;
+  }
+
+
+  .student-fee-month-icon {
+    width: 47px;
+    height: 47px;
+  }
+
+
+  .student-fee-month h3 {
+    font-size: 16px;
+  }
+
+
+  .student-fee-amount,
+  .student-fee-paid,
+  .student-fee-due {
+    padding-top: 3px;
+  }
+
+
+  .student-fee-amount strong,
+  .student-fee-paid strong,
+  .student-fee-due strong {
+    font-size: 14px;
+  }
+
+
+  .student-fee-status {
+    grid-column: 1 / -1;
+
+    justify-self: start;
+  }
+
+
+  /* Intro */
+
+  .fees-glass-scene {
+    width: 100vw;
+    height: 100vh;
+  }
+
+
+  .fees-glass-card {
+    width: 285px;
+    height: 178px;
+
+    top: 105px;
+
+    padding: 19px;
+
+    border-radius: 17px;
+  }
+
+
+  .fees-glass-card-info {
+    top: 70px;
+
+    left: 19px;
+    right: 19px;
+  }
+
+
+  .fees-glass-card-info strong {
+    font-size: 15px;
+  }
+
+
+  .fees-glass-card-bottom {
+    left: 19px;
+    right: 19px;
+    bottom: 16px;
+  }
+
+
+  .fees-glass-card-bottom strong {
+    font-size: 17px;
+  }
+
+
+  .fees-payment-terminal {
+    top: 270px;
+
+    transform:
+      translateX(-50%)
+      scale(0.88)
+      rotate(2deg);
+  }
+
+
+  .fees-payment-ripple {
+    top: 295px;
+  }
+
+
+  .fees-intro-label {
+    bottom: 48px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .student-page {
+    padding: 18px 12px 88px;
+  }
+
+
+  .student-page-header h1 {
+    font-size: 24px;
+  }
+
+
+  .student-page-header p {
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+
+  .student-fee-summary-card {
+    min-height: 82px;
+
+    padding: 14px;
+  }
+
+
+  .student-fee-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 13px;
+
+    font-size: 19px;
+  }
+
+
+  .student-fee-summary-card strong {
+    font-size: 22px;
+  }
+
+
+  .student-fees-section {
+    padding: 15px;
+  }
+
+
+  .student-fees-section-header {
+    margin-bottom: 16px;
+  }
+
+
+  .student-fees-section-header h2 {
+    font-size: 18px;
+  }
+
+
+  .student-fee-card {
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 16px;
+  }
+
+
+  .student-fee-month {
+    gap: 10px;
+  }
+
+
+  .student-fee-month-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+  }
+
+
+  .student-fee-month h3 {
+    font-size: 15px;
+  }
+
+
+  .student-fee-month p {
+    font-size: 10px;
+  }
+
+
+  .student-fee-amount span,
+  .student-fee-paid span,
+  .student-fee-due span {
+    font-size: 10px;
+  }
+
+
+  .student-fee-amount strong,
+  .student-fee-paid strong,
+  .student-fee-due strong {
+    font-size: 13px;
+  }
+
+
+  .student-fee-status {
+    padding: 5px 9px;
+
+    font-size: 9px;
+  }
+
+
+  /* Intro */
+
+  .fees-glass-card {
+    width: 260px;
+    height: 163px;
+
+    top: 100px;
+  }
+
+
+  .fees-glass-card-top {
+    font-size: 10px;
+  }
+
+
+  .fees-glass-card-chip {
+    width: 31px;
+    height: 23px;
+  }
+
+
+  .fees-glass-card-info {
+    top: 63px;
+  }
+
+
+  .fees-glass-card-info span {
+    font-size: 7px;
+  }
+
+
+  .fees-glass-card-info strong {
+    font-size: 13px;
+  }
+
+
+  .fees-glass-card-bottom {
+    bottom: 14px;
+  }
+
+
+  .fees-glass-card-bottom span {
+    font-size: 8px;
+  }
+
+
+  .fees-glass-card-bottom strong {
+    font-size: 15px;
+  }
+
+
+  .fees-payment-terminal {
+    top: 250px;
+
+    transform:
+      translateX(-50%)
+      scale(0.76)
+      rotate(2deg);
+  }
+
+
+  .fees-payment-ripple {
+    top: 275px;
+
+    width: 80px;
+    height: 80px;
+  }
+
+
+  .fees-intro-label {
+    bottom: 42px;
+  }
+
+
+  .fees-intro-label span {
+    font-size: 8px;
+
+    letter-spacing: 4px;
+  }
+
+
+  .fees-intro-label strong {
+    font-size: 43px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .student-page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .student-fees-section {
+    padding: 13px;
+  }
+
+
+  .student-fee-card {
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+
+  .student-fee-month-icon {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+
+    font-size: 17px;
+  }
+
+
+  .student-fee-month h3 {
+    font-size: 14px;
+  }
+
+
+  .student-fee-amount strong,
+  .student-fee-paid strong,
+  .student-fee-due strong {
+    font-size: 12px;
+  }
+
+
+  .fees-glass-card {
+    width: 235px;
+    height: 148px;
+
+    top: 95px;
+
+    transform:
+      translateX(-50%)
+      rotate(-4deg)
+      scale(0.94);
+  }
+
+
+  .fees-payment-terminal {
+    top: 235px;
+
+    transform:
+      translateX(-50%)
+      scale(0.68)
+      rotate(2deg);
+  }
+
+
+  .fees-intro-label strong {
+    font-size: 38px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .fees-glass-intro,
+  .fees-glass-card,
+  .fees-glass-card-shine,
+  .fees-payment-terminal,
+  .fees-payment-success,
+  .fees-payment-ripple,
+  .fees-intro-label,
+  .fees-glass-orb,
+  .fees-page-visible {
+    animation: none !important;
+  }
+
+
+  .fees-glass-intro {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+  }
+
+
+  .fees-page-hidden {
+    opacity: 1;
+
+    visibility: visible;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS (MOVED FROM APP.CSS)
+========================================================= */
+
+@keyframes feesGlassReflection {
+  0% {
+    transform: translateX(-80px) rotate(28deg);
+  }
+  100% {
+    transform: translateX(430px) rotate(28deg);
+  }
+}
+
+@keyframes feesRippleExpand {
+  0% {
+    opacity: .8;
+    transform: scale(.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}

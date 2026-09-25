@@ -1,0 +1,973 @@
+/* =========================================================
+   STUDENTS PAGE ONLY
+   IMPORTANT: All selectors are scoped under .students-page
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.students-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px 20px 80px;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(165, 180, 252, 0.25),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(191, 219, 254, 0.3),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #f5f7ff 0%,
+      #edf2ff 100%
+    );
+
+  background-attachment: fixed;
+  color: #293246;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.students-page .student-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.students-page .summary-box {
+  min-width: 0;
+  min-height: 100px;
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 25px -5px rgba(99, 102, 241, 0.08),
+    0 8px 10px -6px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.students-page .summary-box span {
+  display: block;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #6366f1;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.students-page .summary-box strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 26px;
+  font-weight: 800;
+
+  color: #1e293b;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.students-page .students-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.students-page .students-container-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 24px -6px rgba(99, 102, 241, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+
+  min-width: 0;
+}
+
+.students-page .students-heading {
+  min-width: 200px;
+
+  flex-shrink: 0;
+}
+
+.students-page .section-kicker {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #4f46e5;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+}
+
+.students-page .students-container-header h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #1e293b;
+}
+
+.students-page .students-container-header p {
+  margin: 5px 0 0;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.students-page .header-actions {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 10px;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   ADD STUDENT BUTTON
+========================================================= */
+
+.students-page .add-student-btn {
+  align-self: flex-end;
+
+  height: 40px;
+
+  padding: 0 18px;
+
+  background: #6366f1;
+
+  border: 1px solid #6366f1;
+  border-radius: 12px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 6px 16px rgba(99, 102, 241, 0.25);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.students-page .add-student-btn:hover {
+  background: #4f46e5;
+
+  border-color: #4f46e5;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SEARCH GRID
+========================================================= */
+
+.students-page .student-search-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(110px, 1fr));
+
+  gap: 8px;
+
+  width: 100%;
+
+  max-width: 700px;
+
+  min-width: 0;
+}
+
+.students-page .student-search {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 40px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(226, 232, 240, 0.8);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #334155;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.students-page .student-search::placeholder {
+  color: #94a3b8;
+}
+
+.students-page .student-search:focus {
+  border-color: #818cf8;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* =========================================================
+   RESULT INFO
+========================================================= */
+
+.students-page .student-result-info {
+  margin: 0 2px;
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.students-page .student-result-info strong {
+  color: #4338ca;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.students-page .table-wrap {
+  width: 100%;
+
+  min-width: 0;
+}
+
+.students-page .student-table-scroll {
+  width: 100%;
+
+  max-height: 300px;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  border-radius: 14px;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #94a3b8
+    rgba(148, 163, 184, 0.15);
+}
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+========================================================= */
+
+.students-page .student-table-scroll::-webkit-scrollbar {
+  width: 8px;
+
+  height: 8px;
+}
+
+.students-page .student-table-scroll::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.12);
+
+  border-radius: 10px;
+}
+
+.students-page .student-table-scroll::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+
+  border-radius: 10px;
+}
+
+.students-page .student-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.students-page .student-table-scroll .data-table {
+  width: 100%;
+
+  min-width: 1050px;
+}
+
+.students-page .student-table-scroll .data-table th,
+.students-page .student-table-scroll .data-table td {
+  white-space: nowrap;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   STICKY TABLE HEADER
+========================================================= */
+
+.students-page .student-table-scroll .data-table thead {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 30;
+}
+
+.students-page .student-table-scroll .data-table thead,
+.students-page .student-table-scroll .data-table thead tr,
+.students-page .student-table-scroll .data-table thead th {
+  background: #dbeafe;
+}
+
+.students-page .student-table-scroll .data-table thead th {
+  color: #172554;
+
+  box-shadow:
+    0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   STUDENT ID
+========================================================= */
+
+.students-page .student-id {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 8px;
+
+  border-radius: 7px;
+
+  background: rgba(79, 70, 229, 0.1);
+
+  border: 1px solid rgba(79, 70, 229, 0.14);
+
+  color: #4338ca;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   GROUP BADGE
+========================================================= */
+
+.students-page .group-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.11),
+      rgba(6, 182, 212, 0.1)
+    );
+
+  border: 1px solid rgba(59, 130, 246, 0.14);
+
+  color: #1d4ed8;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SUBJECT CELL
+========================================================= */
+
+.students-page .student-subject-cell {
+  line-height: 1.45;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.students-page .empty-state {
+  text-align: center;
+
+  padding: 40px 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #94a3b8;
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
+
+.students-page .modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(15, 23, 42, 0.2);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  z-index: 1000;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.students-page .modal {
+  width: 100%;
+
+  max-width: 440px;
+
+  max-height: calc(100vh - 32px);
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 40px -10px rgba(99, 102, 241, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+.students-page .modal h2 {
+  margin: 0 0 5px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #1e293b;
+}
+
+.students-page .modal-subtitle {
+  margin: 0 0 18px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.students-page .modal form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.students-page .modal label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #64748b;
+}
+
+.students-page .modal input[type="text"],
+.students-page .modal select {
+  width: 100%;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(226, 232, 240, 0.9);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  color: #334155;
+}
+
+.students-page .modal input[type="text"]:focus,
+.students-page .modal select:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* =========================================================
+   SUBJECT SELECTOR
+========================================================= */
+
+.students-page .student-subject-selector {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.students-page .subject-selector-label {
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.students-page .subject-options {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.students-page .subject-option {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 7px 10px;
+
+  border: 1px solid rgba(99, 102, 241, 0.16);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  color: #334155;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.students-page .subject-option input {
+  accent-color: #4f46e5;
+}
+
+.students-page .subject-option.selected {
+  background: rgba(79, 70, 229, 0.1);
+
+  border-color: rgba(79, 70, 229, 0.3);
+
+  color: #4338ca;
+}
+
+
+/* =========================================================
+   MODAL BUTTONS
+========================================================= */
+
+.students-page .modal-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.students-page .btn-secondary {
+  height: 40px;
+
+  padding: 0 16px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+
+  color: #64748b;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.students-page .btn-primary {
+  height: 40px;
+
+  padding: 0 18px;
+
+  background: #6366f1;
+
+  border: 1px solid #6366f1;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 16px rgba(99, 102, 241, 0.2);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .students-page .students-container-header {
+    gap: 18px;
+  }
+
+  .students-page .students-heading {
+    min-width: 170px;
+  }
+
+  .students-page .student-search-grid {
+    grid-template-columns:
+      repeat(2, minmax(120px, 1fr));
+
+    max-width: 520px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .students-page {
+    padding: 16px 12px 80px;
+  }
+
+
+  /* SUMMARY */
+
+  .students-page .student-summary {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
+  .students-page .summary-box {
+    min-height: 82px;
+
+    padding: 10px 7px;
+
+    border-radius: 13px;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .students-page .summary-box span {
+    font-size: 9px;
+
+    line-height: 1.2;
+  }
+
+  .students-page .summary-box strong {
+    margin-top: 5px;
+
+    font-size: 21px;
+  }
+
+
+  /* HEADER */
+
+  .students-page .students-container-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+
+    padding: 14px 15px;
+  }
+
+  .students-page .students-heading {
+    min-width: 0;
+  }
+
+
+  /* ACTIONS */
+
+  .students-page .header-actions {
+    width: 100%;
+
+    align-items: stretch;
+  }
+
+  .students-page .add-student-btn {
+    width: 100%;
+
+    align-self: stretch;
+  }
+
+
+  /* SEARCH */
+
+  .students-page .student-search-grid {
+    width: 100%;
+
+    max-width: none;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .students-page .student-search {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 38px;
+
+    padding: 0 9px;
+
+    font-size: 11px;
+  }
+
+
+  /* RESULT */
+
+  .students-page .student-result-info {
+    margin-top: 0;
+
+    font-size: 10px;
+  }
+
+
+  /* TABLE */
+
+  .students-page .student-table-scroll {
+    max-height: 300px;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    border-radius: 12px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .students-page .student-table-scroll .data-table {
+    min-width: 1050px;
+  }
+
+  .students-page .student-table-scroll .data-table thead {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 30;
+  }
+
+  .students-page .student-table-scroll .data-table thead,
+  .students-page .student-table-scroll .data-table thead tr,
+  .students-page .student-table-scroll .data-table thead th {
+    background: #dbeafe;
+  }
+
+  .students-page .student-table-scroll .data-table thead th {
+    box-shadow:
+      0 4px 12px rgba(15, 23, 42, 0.16);
+  }
+
+
+  /* MODAL */
+
+  .students-page .modal-backdrop {
+    padding: 12px;
+  }
+
+  .students-page .modal {
+    max-height: calc(100vh - 24px);
+
+    padding: 20px;
+
+    border-radius: 20px;
+  }
+
+  .students-page .subject-options {
+    max-height: 150px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+  }
+
+
+  /* MOBILE HOVER */
+
+  .students-page .add-student-btn:hover {
+    transform: none;
+  }
+}

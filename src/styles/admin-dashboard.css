@@ -1,0 +1,1285 @@
+/* =========================================================
+   DASHBOARD PAGE
+========================================================= */
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+}
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 4px 2px;
+}
+
+.dashboard-eyebrow,
+.panel-kicker {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  color: #6366f1;
+}
+
+.dashboard-welcome h1 {
+  margin: 0;
+
+  font-family: "Sora", "Poppins", sans-serif;
+
+  font-size: 24px;
+  line-height: 1.25;
+
+  color: #172033;
+}
+
+.dashboard-welcome p {
+  margin: 7px 0 0;
+
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.dashboard-date {
+  min-width: 145px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #edf0f6;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  text-align: right;
+}
+
+.dashboard-date span {
+  display: block;
+
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.dashboard-date strong {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 12px;
+  color: #334155;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.dashboard-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.dashboard-stat-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  padding: 18px;
+
+  border: 1px solid #edf0f6;
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #e1e4ff;
+
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.stat-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 10px;
+
+  background: #f5f3ff;
+
+  font-size: 15px;
+}
+
+.stat-link {
+  font-size: 10px;
+  font-weight: 700;
+
+  color: #94a3b8;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #64748b;
+}
+
+.stat-value {
+  margin-top: 5px;
+
+  font-family: "Sora", "Poppins", sans-serif;
+
+  font-size: 25px;
+  line-height: 1.15;
+
+  color: #172033;
+}
+
+.stat-money {
+  font-size: 21px;
+}
+
+.dashboard-stat-card small {
+  margin-top: 7px;
+
+  font-size: 10px;
+
+  color: #94a3b8;
+}
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.dashboard-panel {
+  min-width: 0;
+
+  padding: 20px;
+
+  border: 1px solid #edf0f6;
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.035);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.panel-header h2,
+.dashboard-section-heading h2 {
+  margin: 0;
+
+  font-family: "Sora", "Poppins", sans-serif;
+
+  font-size: 14px;
+  color: #172033;
+}
+
+.panel-header a {
+  flex-shrink: 0;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color: #6366f1;
+}
+
+.panel-header a:hover {
+  color: #4338ca;
+}
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.dashboard-main-grid {
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 16px;
+}
+
+/* =========================================================
+   FEE OVERVIEW
+========================================================= */
+
+.fee-overview-content {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 28px;
+
+  align-items: center;
+}
+
+.fee-total span {
+  display: block;
+
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.fee-total strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-family: "Sora", "Poppins", sans-serif;
+
+  font-size: 24px;
+
+  color: #172033;
+}
+
+.fee-total small {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 9px;
+
+  color: #94a3b8;
+}
+
+.fee-progress-area {
+  min-width: 0;
+}
+
+.fee-progress-label {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+
+  font-size: 10px;
+  color: #64748b;
+}
+
+.fee-progress-label strong {
+  color: #172033;
+}
+
+.fee-progress {
+  width: 100%;
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 99px;
+
+  background: #eef2f7;
+}
+
+.fee-progress span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #818cf8
+  );
+}
+
+.fee-mini-stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 17px;
+}
+
+.fee-mini-stats div {
+  padding: 9px;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+}
+
+.fee-mini-stats span {
+  display: block;
+
+  font-size: 8px;
+  color: #94a3b8;
+}
+
+.fee-mini-stats strong {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+  color: #334155;
+}
+
+/* =========================================================
+   DISTRIBUTION
+========================================================= */
+
+.distribution-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.distribution-row {
+  display: grid;
+
+  grid-template-columns: 115px 1fr 38px;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.distribution-info {
+  min-width: 0;
+}
+
+.distribution-info strong {
+  display: block;
+
+  overflow: hidden;
+
+  font-size: 10px;
+
+  color: #334155;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.distribution-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 8px;
+  color: #94a3b8;
+}
+
+.distribution-track {
+  height: 6px;
+
+  overflow: hidden;
+
+  border-radius: 99px;
+
+  background: #f1f5f9;
+}
+
+.distribution-track span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #6366f1;
+}
+
+.distribution-percent {
+  font-size: 9px;
+
+  text-align: right;
+
+  color: #64748b;
+}
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.dashboard-quick-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.dashboard-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quick-actions {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+}
+
+.quick-action-card {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding: 13px;
+
+  border: 1px solid #edf0f6;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  transition: 0.2s ease;
+}
+
+.quick-action-card:hover {
+  border-color: #dfe2ff;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.quick-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 9px;
+
+  background: #f5f3ff;
+
+  font-size: 14px;
+}
+
+.quick-action-card div {
+  min-width: 0;
+  flex: 1;
+}
+
+.quick-action-card strong {
+  display: block;
+
+  font-size: 10px;
+
+  color: #334155;
+}
+
+.quick-action-card div span {
+  display: block;
+
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  font-size: 8px;
+
+  color: #94a3b8;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.quick-action-card b {
+  color: #cbd5e1;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   LOWER GRID
+========================================================= */
+
+.dashboard-lower-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-list-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dashboard-list-row:first-child {
+  padding-top: 0;
+}
+
+.dashboard-list-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.list-leading {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+}
+
+.list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  font-size: 12px;
+}
+
+.list-leading > div {
+  min-width: 0;
+}
+
+.dashboard-list-row strong {
+  display: block;
+
+  overflow: hidden;
+
+  font-size: 10px;
+
+  color: #334155;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-list-row p {
+  margin: 3px 0 0;
+
+  overflow: hidden;
+
+  font-size: 8px;
+
+  color: #94a3b8;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-pill {
+  flex-shrink: 0;
+
+  max-width: 145px;
+
+  padding: 5px 8px;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  background: #f5f3ff;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  color: #6366f1;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-pill.muted {
+  background: #f8fafc;
+  color: #64748b;
+}
+
+.notice-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 9px;
+
+  background: #fff7ed;
+
+  color: #f97316;
+
+  font-size: 9px;
+}
+
+/* =========================================================
+   TEACHER OVERVIEW
+========================================================= */
+
+.dashboard-overview-grid {
+  display: grid;
+
+  grid-template-columns: 1.2fr 0.8fr;
+
+  gap: 16px;
+}
+
+.subject-overview {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.subject-overview-row {
+  display: grid;
+
+  grid-template-columns: 28px 130px 1fr;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.subject-rank {
+  font-size: 8px;
+  font-weight: 800;
+
+  color: #cbd5e1;
+}
+
+.subject-info strong {
+  display: block;
+
+  font-size: 10px;
+
+  color: #334155;
+}
+
+.subject-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 8px;
+
+  color: #94a3b8;
+}
+
+.subject-bar {
+  height: 6px;
+
+  overflow: hidden;
+
+  border-radius: 99px;
+
+  background: #f1f5f9;
+}
+
+.subject-bar span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #6366f1;
+}
+
+/* =========================================================
+   SYSTEM OVERVIEW
+========================================================= */
+
+.system-overview {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.system-overview a {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 11px;
+
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+
+  background: #fafbfc;
+
+  transition: 0.2s ease;
+}
+
+.system-overview a:hover {
+  border-color: #e0e3ff;
+  background: #ffffff;
+}
+
+.system-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  font-size: 11px;
+}
+
+.system-overview a div {
+  flex: 1;
+}
+
+.system-overview strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: #172033;
+}
+
+.system-overview small {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 8px;
+
+  color: #94a3b8;
+}
+
+.system-overview a b {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.dashboard-empty {
+  padding: 25px 10px;
+
+  text-align: center;
+
+  font-size: 10px;
+
+  color: #94a3b8;
+}
+
+/* =========================================================
+   FOOTER NOTE
+========================================================= */
+
+.dashboard-footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 14px 17px;
+
+  border: 1px solid #edf0f6;
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.dashboard-footer-note > div {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.footer-note-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 29px;
+  height: 29px;
+
+  border-radius: 50%;
+
+  background: #eefbf3;
+
+  color: #16a34a;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.dashboard-footer-note strong {
+  display: block;
+
+  font-size: 9px;
+
+  color: #334155;
+}
+
+.dashboard-footer-note p {
+  margin: 3px 0 0;
+
+  font-size: 8px;
+
+  color: #94a3b8;
+}
+
+.dashboard-footer-note > a {
+  flex-shrink: 0;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color: #6366f1;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-main-grid,
+  .dashboard-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-page {
+    gap: 18px;
+  }
+
+  .dashboard-welcome {
+    align-items: flex-start;
+  }
+
+  .dashboard-welcome h1 {
+    font-size: 20px;
+  }
+
+  .dashboard-welcome p {
+    font-size: 10px;
+  }
+
+  .dashboard-date {
+    display: none;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+  }
+
+  .dashboard-stat-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .stat-card-top {
+    margin-bottom: 13px;
+  }
+
+  .stat-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-money {
+    font-size: 17px;
+  }
+
+  .dashboard-panel {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .panel-header {
+    margin-bottom: 16px;
+  }
+
+  .fee-overview-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .quick-action-card {
+    padding: 10px;
+  }
+
+  .quick-action-card b {
+    display: none;
+  }
+
+  .dashboard-lower-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subject-overview-row {
+    grid-template-columns: 25px 110px 1fr;
+  }
+
+  .dashboard-footer-note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-footer-note > a {
+    margin-left: 39px;
+  }
+}
+/* =========================================================
+   DASHBOARD — READABLE FONT SIZE FIX
+========================================================= */
+
+.dashboard-page {
+  font-size: 14px;
+}
+
+/* Welcome */
+.dashboard-welcome h1 {
+  font-size: 26px;
+}
+
+.dashboard-welcome p {
+  font-size: 14px;
+}
+
+.dashboard-eyebrow {
+  font-size: 11px;
+}
+
+/* Stats */
+.stat-label {
+  font-size: 13px;
+}
+
+.stat-value {
+  font-size: 30px;
+}
+
+.stat-money {
+  font-size: 25px;
+}
+
+.dashboard-stat-card small {
+  font-size: 12px;
+}
+
+.stat-link {
+  font-size: 11px;
+}
+
+.stat-icon {
+  font-size: 17px;
+}
+
+/* Panels */
+.panel-kicker {
+  font-size: 10px;
+}
+
+.panel-header h2,
+.dashboard-section-heading h2 {
+  font-size: 17px;
+}
+
+.panel-header a {
+  font-size: 12px;
+}
+
+/* Fee */
+.fee-total span {
+  font-size: 12px;
+}
+
+.fee-total strong {
+  font-size: 27px;
+}
+
+.fee-total small {
+  font-size: 11px;
+}
+
+.fee-progress-label {
+  font-size: 12px;
+}
+
+.fee-mini-stats span {
+  font-size: 10px;
+}
+
+.fee-mini-stats strong {
+  font-size: 13px;
+}
+
+/* Student distribution */
+.distribution-info strong {
+  font-size: 12px;
+}
+
+.distribution-info span {
+  font-size: 10px;
+}
+
+.distribution-percent {
+  font-size: 11px;
+}
+
+/* Quick actions */
+.quick-action-card strong {
+  font-size: 12px;
+}
+
+.quick-action-card div span {
+  font-size: 10px;
+}
+
+.quick-action-icon {
+  font-size: 16px;
+}
+
+/* Batch / Notice list */
+.dashboard-list-row strong {
+  font-size: 12px;
+}
+
+.dashboard-list-row p {
+  font-size: 10px;
+}
+
+.dashboard-pill {
+  font-size: 10px;
+}
+
+.list-icon,
+.notice-dot {
+  font-size: 13px;
+}
+
+/* Teacher overview */
+.subject-info strong {
+  font-size: 12px;
+}
+
+.subject-info span {
+  font-size: 10px;
+}
+
+.subject-rank {
+  font-size: 10px;
+}
+
+/* System overview */
+.system-overview strong {
+  font-size: 16px;
+}
+
+.system-overview small {
+  font-size: 10px;
+}
+
+.system-icon {
+  font-size: 13px;
+}
+
+/* Footer */
+.dashboard-footer-note strong {
+  font-size: 11px;
+}
+
+.dashboard-footer-note p {
+  font-size: 10px;
+}
+
+.dashboard-footer-note > a {
+  font-size: 11px;
+}
+
+.dashboard-empty {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   MOBILE FONT SIZE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-welcome h1 {
+    font-size: 21px;
+  }
+
+  .dashboard-welcome p {
+    font-size: 11px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .stat-money {
+    font-size: 18px;
+  }
+
+  .dashboard-stat-card small {
+    font-size: 10px;
+  }
+
+  .panel-header h2,
+  .dashboard-section-heading h2 {
+    font-size: 15px;
+  }
+
+  .panel-header a {
+    font-size: 10px;
+  }
+
+  .distribution-info strong,
+  .dashboard-list-row strong,
+  .subject-info strong {
+    font-size: 11px;
+  }
+
+  .distribution-info span,
+  .dashboard-list-row p,
+  .subject-info span {
+    font-size: 9px;
+  }
+
+  .quick-action-card strong {
+    font-size: 11px;
+  }
+
+  .quick-action-card div span {
+    font-size: 9px;
+  }
+
+  .system-overview strong {
+    font-size: 14px;
+  }
+
+  .system-overview small {
+    font-size: 9px;
+  }
+}

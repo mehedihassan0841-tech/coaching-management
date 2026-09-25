@@ -1,0 +1,1751 @@
+
+
+/* =========================================================
+   MOVED FROM APP.CSS
+========================================================= */
+
+
+.student-attendance-card:hover {
+  border-color: #d9dcff;
+}
+
+
+.student-attendance-classes {
+  text-align: center;
+}
+
+
+.student-attendance-classes span {
+  display: block;
+}
+
+
+.student-attendance-classes small {
+  display: block;
+}
+
+
+@media (max-width: 700px) {
+  .student-attendance-card {
+    flex-direction: column;
+  }
+
+  .student-attendance-subject {
+    width: 100%;
+  }
+
+  .student-attendance-progress-area {
+    width: 100%;
+  }
+
+  .student-attendance-classes {
+    gap: 6px;
+
+    text-align: left;
+  }
+
+}
+
+
+.attendance-intro-scene {
+  height: 100%;
+}
+
+
+.attendance-calendar {
+  position: relative;
+
+  min-height: 340px;
+
+  opacity: 0;
+  transform: scale(0.78) translateY(25px);
+}
+
+
+.attendance-calendar-header {
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.attendance-calendar-month {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+
+.attendance-calendar-icon {
+  border: 1px solid rgba(108, 99, 255, 0.22);
+}
+
+
+.attendance-calendar-week {
+  margin-top: 20px;
+}
+
+
+.attendance-calendar-week span {
+  letter-spacing: 0.8px;
+}
+
+
+.attendance-calendar-days > span {
+  height: 34px;
+
+  transition: background 0.3s ease;
+}
+
+
+.attendance-today {
+  border: 1px solid rgba(108, 99, 255, 0.45);
+
+  font-weight: 600;
+}
+
+
+.attendance-check b {
+  box-shadow: 0 0 0 rgba(50, 213, 131, 0);
+
+  font-weight: 800;
+
+  opacity: 0;
+  transform: scale(0);
+}
+
+
+.attendance-present-indicator {
+  left: 50%;
+
+  transform: translateX(-50%) translateY(20px) scale(0.85);
+  opacity: 0;
+}
+
+
+.attendance-present-check {
+  border: 1px solid rgba(50, 213, 131, 0.25);
+  box-shadow: 0 0 20px rgba(50, 213, 131, 0.12);
+}
+
+
+.attendance-present-indicator div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.attendance-page-visible {
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+
+@media (max-width: 700px) {
+  .attendance-calendar {
+    max-width: 350px;
+    min-height: auto;
+  }
+
+  .attendance-calendar-header {
+    padding-bottom: 15px;
+  }
+
+  .attendance-calendar-week {
+    margin-top: 15px;
+  }
+
+  .attendance-calendar-days > span {
+    height: 31px;
+  }
+
+}
+
+
+@media (max-width: 380px) {
+  .attendance-calendar-days > span {
+    height: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   STUDENT ATTENDANCE
+   Premium Glassmorphism + Responsive Design
+========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.student-page {
+  min-height: 100vh;
+  padding: 30px;
+
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(99, 102, 241, 0.20) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(59, 130, 246, 0.22) 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #dbeafe 100%
+    );
+
+  background-attachment: fixed;
+
+  color: #172033;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+
+/* Intro শেষ হওয়ার আগে */
+
+.attendance-page-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+/* Intro শেষ হওয়ার পরে */
+
+.attendance-page-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.student-page-header {
+  margin-bottom: 24px;
+}
+
+.student-page-header h1 {
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  color: #172033;
+  letter-spacing: -0.7px;
+}
+
+.student-page-header p {
+  margin: 8px 0 0;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   ATTENDANCE SUMMARY
+========================================================= */
+
+.student-attendance-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+========================================================= */
+
+.student-attendance-summary-card {
+  min-width: 0;
+  min-height: 112px;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: rgba(255, 255, 255, 0.43);
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+
+  border-top-color: rgba(255, 255, 255, 0.95);
+  border-left-color: rgba(255, 255, 255, 0.95);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 16px 32px -8px rgba(31, 38, 135, 0.13),
+    0 4px 12px rgba(37, 99, 235, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+
+/* Summary Hover */
+
+.student-attendance-summary-card:hover {
+  transform: translateY(-4px);
+
+  background: rgba(255, 255, 255, 0.52);
+
+  box-shadow:
+    0 20px 38px -10px rgba(31, 38, 135, 0.18),
+    0 7px 16px rgba(37, 99, 235, 0.09),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================================
+   SUMMARY ICON
+========================================================= */
+
+.student-attendance-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.16),
+      rgba(59, 130, 246, 0.12)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  color: #2563eb;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 6px 14px rgba(37, 99, 235, 0.08);
+}
+
+
+/* =========================================================
+   SUMMARY TEXT
+========================================================= */
+
+.student-attendance-summary-card span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.student-attendance-summary-card strong {
+  display: block;
+
+  color: #172033;
+
+  font-size: 27px;
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   ATTENDANCE SECTION
+========================================================= */
+
+.student-attendance-section {
+  padding: 22px;
+
+  background: rgba(255, 255, 255, 0.38);
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.70);
+
+  border-top-color: rgba(255, 255, 255, 0.94);
+  border-left-color: rgba(255, 255, 255, 0.94);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 18px 38px -10px rgba(31, 38, 135, 0.13),
+    0 5px 14px rgba(37, 99, 235, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.student-attendance-section-header {
+  margin-bottom: 18px;
+}
+
+.student-attendance-section-header h2 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  color: #172033;
+}
+
+.student-attendance-section-header p {
+  margin: 6px 0 0;
+
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+/* =========================================================
+   ATTENDANCE LIST
+========================================================= */
+
+.student-attendance-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   ATTENDANCE CARD
+========================================================= */
+
+.student-attendance-card {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(190px, 1.2fr)
+    minmax(180px, 2fr)
+    70px;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 17px 18px;
+
+  background: rgba(255, 255, 255, 0.40);
+
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+
+  border: 1px solid rgba(255, 255, 255, 0.68);
+
+  border-top-color: rgba(255, 255, 255, 0.92);
+  border-left-color: rgba(255, 255, 255, 0.92);
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 10px 24px -7px rgba(31, 38, 135, 0.10),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+
+/* Card Hover */
+
+.student-attendance-card:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.52);
+
+  box-shadow:
+    0 15px 28px -8px rgba(31, 38, 135, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   SUBJECT
+========================================================= */
+
+.student-attendance-subject {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.student-attendance-subject-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #2563eb
+    );
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  box-shadow:
+    0 7px 16px rgba(37, 99, 235, 0.20);
+}
+
+.student-attendance-subject h3 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 16px;
+  font-weight: 750;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-attendance-subject p {
+  margin: 4px 0 0;
+
+  color: #718096;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   PROGRESS AREA
+========================================================= */
+
+.student-attendance-progress-area {
+  min-width: 0;
+}
+
+.student-attendance-progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.student-attendance-progress-top span {
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.student-attendance-progress-top strong {
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.student-attendance-progress {
+  width: 100%;
+  height: 9px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: rgba(203, 213, 225, 0.45);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    inset 0 2px 4px rgba(31, 38, 135, 0.06);
+}
+
+.student-attendance-progress-bar {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #3b82f6
+    );
+
+  box-shadow:
+    0 0 12px rgba(59, 130, 246, 0.25);
+
+  transition: width 1s ease;
+}
+
+
+/* =========================================================
+   TOTAL CLASSES
+========================================================= */
+
+.student-attendance-classes {
+  min-width: 55px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 7px;
+
+  border-radius: 13px;
+
+  background: rgba(239, 246, 255, 0.45);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.student-attendance-classes span {
+  color: #2563eb;
+
+  font-size: 17px;
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+.student-attendance-classes small {
+  margin-top: 4px;
+
+  color: #718096;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CINEMATIC INTRO
+========================================================= */
+
+.attendance-cinematic-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #dbeafe 0%,
+      #eef2ff 38%,
+      #c7d2fe 100%
+    );
+
+  animation: attendanceIntroFadeOut 4s ease forwards;
+}
+
+
+.attendance-intro-scene {
+  position: relative;
+
+  width: min(520px, 90vw);
+  min-height: 430px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   CALENDAR
+========================================================= */
+
+.attendance-calendar {
+  width: min(390px, 82vw);
+
+  padding: 22px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.78);
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 30px 60px rgba(31, 38, 135, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+
+  animation:
+    attendanceCalendarAppear 1s ease forwards;
+}
+
+
+/* Calendar Header */
+
+.attendance-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.attendance-calendar-month span {
+  display: block;
+
+  color: #6366f1;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.attendance-calendar-month strong {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #172033;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.attendance-calendar-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #2563eb
+  );
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.22);
+}
+
+
+/* Calendar Week */
+
+.attendance-calendar-week {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 7px;
+
+  margin-bottom: 8px;
+}
+
+.attendance-calendar-week span {
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+
+/* Calendar Days */
+
+.attendance-calendar-days {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 7px;
+}
+
+.attendance-calendar-days > span {
+  position: relative;
+
+  min-height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color: #334155;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.calendar-muted {
+  color: #a0aec0 !important;
+}
+
+.attendance-check {
+  background: rgba(34, 197, 94, 0.10);
+
+  color: #15803d !important;
+}
+
+.attendance-check b {
+  position: absolute;
+
+  right: 2px;
+  top: 1px;
+
+  width: 13px;
+  height: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  animation: attendanceCheckPop 0.5s ease both;
+}
+
+.check-one b {
+  animation-delay: 1s;
+}
+
+.check-two b {
+  animation-delay: 1.25s;
+}
+
+.check-three b {
+  animation-delay: 1.5s;
+}
+
+.check-four b {
+  animation-delay: 1.75s;
+}
+
+.check-five b {
+  animation-delay: 2s;
+}
+
+.attendance-today {
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #2563eb
+  ) !important;
+
+  color: #ffffff !important;
+
+  box-shadow:
+    0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   PRESENT INDICATOR
+========================================================= */
+
+.attendance-present-indicator {
+  position: absolute;
+
+  right: -5px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 15px;
+
+  background: rgba(255, 255, 255, 0.70);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 14px 30px rgba(31, 38, 135, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+
+  animation:
+    attendanceIndicatorAppear 1s 1.5s ease both;
+}
+
+.attendance-present-check {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.attendance-present-indicator span {
+  display: block;
+
+  color: #718096;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.attendance-present-indicator strong {
+  display: block;
+
+  margin-top: 1px;
+
+  color: #15803d;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   INTRO ANIMATIONS
+========================================================= */
+
+@keyframes attendanceCalendarAppear {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateY(35px)
+      scale(0.88)
+      rotateX(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1)
+      rotateX(0);
+  }
+
+}
+
+@keyframes attendanceCheckPop {
+
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+@keyframes attendanceIndicatorAppear {
+
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+@keyframes attendanceIntroFadeOut {
+
+  0%,
+  82% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .student-page {
+    padding: 24px;
+  }
+
+  .student-attendance-summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .student-attendance-card {
+    grid-template-columns:
+      minmax(180px, 1.1fr)
+      minmax(160px, 1.8fr)
+      65px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .student-page {
+    min-height: 100vh;
+
+    padding:
+      18px
+      14px
+      90px !important;
+
+    background:
+      radial-gradient(
+        circle at 15% 15%,
+        rgba(99, 102, 241, 0.25) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 75%,
+        rgba(59, 130, 246, 0.30) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        #eef2ff 0%,
+        #dbeafe 100%
+      ) !important;
+
+    background-attachment: fixed !important;
+  }
+
+
+  /* Header */
+
+  .student-page-header {
+    margin-bottom: 17px;
+  }
+
+  .student-page-header h1 {
+    font-size: 23px;
+    letter-spacing: -0.4px;
+  }
+
+  .student-page-header p {
+    margin-top: 6px;
+
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* Summary */
+
+  .student-attendance-summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+  }
+
+
+  /* Square Glass Cards */
+
+  .student-attendance-summary-card {
+    min-height: 0;
+
+    aspect-ratio: 1 / 1;
+
+    padding: 13px;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 9px;
+
+    background: rgba(255, 255, 255, 0.45) !important;
+
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+      0 10px 25px -5px rgba(37, 99, 235, 0.18),
+      0 8px 10px -6px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+
+    transform: none !important;
+  }
+
+
+  .student-attendance-summary-card:hover,
+  .student-attendance-summary-card:active {
+    transform: none !important;
+
+    box-shadow:
+      0 10px 25px -5px rgba(37, 99, 235, 0.18),
+      0 8px 10px -6px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  }
+
+
+  .student-attendance-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 13px;
+
+    font-size: 17px;
+  }
+
+  .student-attendance-summary-card span {
+    font-size: 10px;
+    line-height: 1.3;
+
+    white-space: normal;
+  }
+
+  .student-attendance-summary-card strong {
+    font-size: 24px;
+  }
+
+
+  /* Main Section */
+
+  .student-attendance-section {
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.35) !important;
+
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+
+    box-shadow:
+      0 12px 28px -6px rgba(31, 38, 135, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
+  }
+
+
+  .student-attendance-section-header {
+    margin-bottom: 14px;
+  }
+
+  .student-attendance-section-header h2 {
+    font-size: 17px;
+  }
+
+  .student-attendance-section-header p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+
+  /* Attendance Cards */
+
+  .student-attendance-list {
+    gap: 12px;
+  }
+
+  .student-attendance-card {
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    grid-template-areas:
+      "subject classes"
+      "progress progress";
+
+    gap: 13px;
+
+    padding: 14px;
+
+    background: rgba(255, 255, 255, 0.40) !important;
+
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.70) !important;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.95) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.95) !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+      0 16px 32px -8px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(37, 99, 235, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+
+    transform: none !important;
+  }
+
+
+  .student-attendance-card:hover,
+  .student-attendance-card:active {
+    transform: none !important;
+
+    box-shadow:
+      0 16px 32px -8px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(37, 99, 235, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  }
+
+
+  .student-attendance-subject {
+    grid-area: subject;
+  }
+
+  .student-attendance-subject-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+  }
+
+  .student-attendance-subject h3 {
+    font-size: 15px;
+  }
+
+  .student-attendance-subject p {
+    font-size: 11px;
+  }
+
+
+  .student-attendance-progress-area {
+    grid-area: progress;
+  }
+
+  .student-attendance-progress-top {
+    margin-bottom: 7px;
+  }
+
+  .student-attendance-progress-top span {
+    font-size: 10px;
+  }
+
+  .student-attendance-progress-top strong {
+    font-size: 13px;
+  }
+
+  .student-attendance-progress {
+    height: 8px;
+  }
+
+
+  .student-attendance-classes {
+    grid-area: classes;
+
+    min-width: 52px;
+
+    padding: 8px 7px;
+
+    border-radius: 12px;
+  }
+
+  .student-attendance-classes span {
+    font-size: 16px;
+  }
+
+  .student-attendance-classes small {
+    font-size: 9px;
+  }
+
+
+  /* Intro */
+
+  .attendance-intro-scene {
+    width: 94vw;
+    min-height: 390px;
+  }
+
+  .attendance-calendar {
+    width: min(360px, 88vw);
+
+    padding: 18px;
+
+    border-radius: 21px;
+  }
+
+  .attendance-calendar-month strong {
+    font-size: 21px;
+  }
+
+  .attendance-calendar-days {
+    gap: 5px;
+  }
+
+  .attendance-calendar-days > span {
+    min-height: 32px;
+
+    font-size: 11px;
+  }
+
+  .attendance-calendar-week {
+    gap: 5px;
+  }
+
+  .attendance-calendar-week span {
+    font-size: 8px;
+  }
+
+  .attendance-present-indicator {
+    right: 0;
+    bottom: 5px;
+
+    padding: 9px 12px;
+  }
+
+  .attendance-present-check {
+    width: 28px;
+    height: 28px;
+
+    font-size: 13px;
+  }
+
+  .attendance-present-indicator strong {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL ANDROID / IPHONE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .student-page {
+    padding:
+      16px
+      11px
+      86px !important;
+  }
+
+
+  .student-page-header h1 {
+    font-size: 21px;
+  }
+
+  .student-page-header p {
+    font-size: 11px;
+  }
+
+
+  .student-attendance-summary {
+    gap: 10px;
+  }
+
+
+  .student-attendance-summary-card {
+    padding: 10px;
+    border-radius: 16px !important;
+  }
+
+  .student-attendance-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    font-size: 16px;
+  }
+
+  .student-attendance-summary-card span {
+    font-size: 9px;
+  }
+
+  .student-attendance-summary-card strong {
+    font-size: 22px;
+  }
+
+
+  .student-attendance-section {
+    padding: 12px;
+
+    border-radius: 17px;
+  }
+
+  .student-attendance-section-header h2 {
+    font-size: 16px;
+  }
+
+  .student-attendance-section-header p {
+    font-size: 10px;
+  }
+
+
+  .student-attendance-card {
+    padding: 12px;
+
+    border-radius: 16px !important;
+
+    gap: 11px;
+  }
+
+  .student-attendance-subject {
+    gap: 9px;
+  }
+
+  .student-attendance-subject-icon {
+    width: 37px;
+    height: 37px;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+  }
+
+  .student-attendance-subject h3 {
+    font-size: 14px;
+  }
+
+  .student-attendance-subject p {
+    font-size: 10px;
+  }
+
+  .student-attendance-progress-top span {
+    font-size: 9px;
+  }
+
+  .student-attendance-progress-top strong {
+    font-size: 12px;
+  }
+
+  .student-attendance-progress {
+    height: 7px;
+  }
+
+  .student-attendance-classes {
+    min-width: 48px;
+
+    padding: 7px 6px;
+  }
+
+  .student-attendance-classes span {
+    font-size: 15px;
+  }
+
+  .student-attendance-classes small {
+    font-size: 8px;
+  }
+
+
+  /* Intro */
+
+  .attendance-calendar {
+    width: 90vw;
+
+    padding: 15px;
+
+    border-radius: 19px;
+  }
+
+  .attendance-calendar-month span {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .attendance-calendar-month strong {
+    font-size: 19px;
+  }
+
+  .attendance-calendar-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    font-size: 16px;
+  }
+
+  .attendance-calendar-days {
+    gap: 4px;
+  }
+
+  .attendance-calendar-days > span {
+    min-height: 29px;
+
+    font-size: 10px;
+
+    border-radius: 7px;
+  }
+
+  .attendance-check b {
+    width: 11px;
+    height: 11px;
+
+    right: 1px;
+    top: 0;
+
+    font-size: 7px;
+  }
+
+  .attendance-present-indicator {
+    right: 2px;
+    bottom: 0;
+
+    gap: 7px;
+
+    padding: 8px 10px;
+
+    border-radius: 12px;
+  }
+
+  .attendance-present-check {
+    width: 25px;
+    height: 25px;
+
+    font-size: 12px;
+  }
+
+  .attendance-present-indicator span {
+    font-size: 8px;
+  }
+
+  .attendance-present-indicator strong {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   Galaxy Fold / iPhone SE / 320-360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .student-page {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+
+
+  .student-attendance-summary {
+    gap: 8px;
+  }
+
+  .student-attendance-summary-card {
+    padding: 8px;
+  }
+
+  .student-attendance-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+  .student-attendance-summary-card span {
+    font-size: 8px;
+  }
+
+  .student-attendance-summary-card strong {
+    font-size: 20px;
+  }
+
+
+  .student-attendance-section {
+    padding: 10px;
+  }
+
+  .student-attendance-card {
+    padding: 10px;
+  }
+
+  .student-attendance-subject h3 {
+    font-size: 13px;
+  }
+
+  .student-attendance-subject p {
+    font-size: 9px;
+  }
+
+  .student-attendance-classes {
+    min-width: 44px;
+  }
+
+
+  /* Calendar ultra-small */
+
+  .attendance-calendar {
+    width: 92vw;
+    padding: 12px;
+  }
+
+  .attendance-calendar-days {
+    gap: 3px;
+  }
+
+  .attendance-calendar-days > span {
+    min-height: 26px;
+    font-size: 9px;
+  }
+
+  .attendance-calendar-week {
+    gap: 3px;
+  }
+
+  .attendance-calendar-week span {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .student-page,
+  .student-attendance-summary-card,
+  .student-attendance-card,
+  .student-attendance-progress-bar,
+  .attendance-calendar,
+  .attendance-present-indicator,
+  .attendance-check b {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}

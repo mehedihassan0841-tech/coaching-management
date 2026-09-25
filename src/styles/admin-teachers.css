@@ -1,0 +1,2424 @@
+.page-block {
+  width: 100%;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.student-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.summary-box {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 22px;
+  border-radius: 18px;
+
+
+
+  border: 1px solid rgba(99, 102, 241, 0.14);
+
+  box-shadow:
+    0 16px 35px rgba(30, 64, 175, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.summary-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #4f46e5,
+      #06b6d4
+    );
+}
+
+.summary-box span {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.summary-box strong {
+  color: #172554;
+  font-size: 27px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   TEACHER ANALYTICS
+========================================================= */
+
+.teacher-analytics {
+  position: relative;
+  overflow: hidden;
+
+  margin-bottom: 24px;
+  padding: 24px;
+
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(99, 102, 241, 0.16),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 92% 90%,
+      rgba(6, 182, 212, 0.13),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.63),
+      rgba(239, 246, 255, 0.46)
+    );
+
+  
+
+  
+
+  
+}
+
+.teacher-analytics::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #4f46e5,
+      #6366f1,
+      #06b6d4
+    );
+}
+
+
+/* =========================================================
+   ANALYTICS HEADER
+========================================================= */
+
+.teacher-analytics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.analytics-kicker {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #4f46e5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.teacher-analytics-header h2 {
+  margin: 0;
+
+  color: #172554;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.teacher-analytics-header p {
+  margin: 6px 0 0;
+
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.analytics-live-badge {
+  flex-shrink: 0;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(16, 185, 129, 0.09);
+
+  border:
+    1px solid rgba(16, 185, 129, 0.18);
+
+  color: #047857;
+  font-size: 10px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ANALYTICS FILTERS
+========================================================= */
+
+.teacher-analytics-filters {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(130px, 1fr));
+
+  gap: 10px;
+
+  margin-top: 20px;
+  padding: 14px;
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.42);
+
+  border:
+    1px solid rgba(99, 102, 241, 0.1);
+}
+
+.analytics-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.analytics-filter-field label {
+  color: #475569;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.analytics-filter-field select {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.15);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.66);
+
+  color: #334155;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.analytics-filter-field select:focus {
+  border-color: rgba(79, 70, 229, 0.42);
+
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 0 0 3px rgba(79, 70, 229, 0.08);
+}
+
+
+/* =========================================================
+   ANALYTICS MINI STATS
+========================================================= */
+
+.teacher-analytics-stats {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 12px;
+}
+
+.analytics-stat {
+  position: relative;
+  overflow: hidden;
+
+  padding: 13px 15px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(239, 246, 255, 0.48)
+    );
+
+  border:
+    1px solid rgba(99, 102, 241, 0.1);
+}
+
+.analytics-stat::after {
+  content: "";
+
+  position: absolute;
+
+  width: 55px;
+  height: 55px;
+
+  right: -22px;
+  bottom: -25px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(99, 102, 241, 0.08);
+}
+
+.analytics-stat span {
+  display: block;
+
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.analytics-stat strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #172554;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.analytics-stat small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #94a3b8;
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   CHART GRID
+========================================================= */
+
+.teacher-chart-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 1fr);
+
+  gap: 14px;
+
+  margin-top: 14px;
+}
+
+.teacher-chart-card {
+  min-width: 0;
+
+  padding: 17px;
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  border:
+    1px solid rgba(99, 102, 241, 0.11);
+
+  box-shadow:
+    0 12px 30px rgba(30, 64, 175, 0.06);
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.chart-card-header > div span {
+  display: block;
+
+  color: #6366f1;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+.chart-card-header h3 {
+  margin: 3px 0 0;
+
+  color: #1e293b;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.chart-info {
+  flex-shrink: 0;
+
+  padding: 5px 8px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(99, 102, 241, 0.07);
+
+  color: #6366f1;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.teacher-chart {
+  width: 100%;
+  height: 245px;
+}
+
+.chart-empty {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DISTRIBUTION LIST
+========================================================= */
+
+.teacher-distribution-list {
+  margin-top: 14px;
+
+  padding: 17px;
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.48);
+
+  border:
+    1px solid rgba(99, 102, 241, 0.11);
+}
+
+.distribution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 13px;
+}
+
+.distribution-header span:first-child {
+  display: block;
+
+  color: #6366f1;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+.distribution-header h3 {
+  margin: 3px 0 0;
+
+  color: #1e293b;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.distribution-header > span:last-child {
+  flex-shrink: 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.distribution-items {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 8px;
+}
+
+.distribution-item {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border-radius: 11px;
+
+  background:
+    rgba(248, 250, 252, 0.65);
+
+  border:
+    1px solid rgba(148, 163, 184, 0.1);
+}
+
+.distribution-number {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.1),
+      rgba(6, 182, 212, 0.08)
+    );
+
+  color: #4f46e5;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.distribution-name {
+  min-width: 0;
+  flex: 1;
+}
+
+.distribution-name strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: #334155;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.distribution-track {
+  width: 100%;
+  height: 4px;
+
+  margin-top: 6px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    rgba(148, 163, 184, 0.14);
+}
+
+.distribution-track span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #06b6d4
+    );
+
+  transition: width 0.35s ease;
+}
+
+.distribution-count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  flex-shrink: 0;
+}
+
+.distribution-count strong {
+  color: #172554;
+
+  font-size: 17px;
+  line-height: 1;
+}
+
+.distribution-count span {
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.distribution-empty {
+  padding: 25px;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   TEACHERS CONTAINER
+========================================================= */
+
+.students-container {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(239, 246, 255, 0.48)
+    );
+
+  border:
+    1px solid rgba(99, 102, 241, 0.13);
+
+  box-shadow:
+    0 20px 45px rgba(30, 64, 175, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+
+.students-container::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #4f46e5,
+      #06b6d4
+    );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.students-container-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding: 21px 22px 16px;
+}
+
+.section-kicker {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #6366f1;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.students-container-header h2 {
+  margin: 0;
+
+  color: #172554;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.students-container-header p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+
+  min-width: 0;
+}
+
+.student-search {
+  width: 135px;
+  height: 36px;
+
+  padding: 0 10px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.58);
+
+  color: #334155;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.student-search::placeholder {
+  color: #94a3b8;
+}
+
+.student-search:focus {
+  border-color:
+    rgba(79, 70, 229, 0.38);
+
+  background:
+    rgba(255, 255, 255, 0.86);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(79, 70, 229, 0.07);
+}
+
+.add-student-btn {
+  height: 36px;
+
+  padding: 0 14px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #2563eb
+    );
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px
+    rgba(79, 70, 229, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-student-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 11px 22px
+    rgba(79, 70, 229, 0.26);
+}
+
+
+/* =========================================================
+   RESULT INFO
+========================================================= */
+
+.teacher-result-info {
+  padding: 0 22px 12px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.teacher-result-info strong {
+  color: #4f46e5;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TABLE — UNIFIED TYPOGRAPHY
+   One font (size / weight / family / color) for every cell,
+   header, badge and nested element in this table.
+========================================================= */
+
+.teachers-page {
+  --tbl-font-family: inherit;
+  --tbl-font-size: 12px;
+  --tbl-font-weight: 600;
+  --tbl-color: #334155;
+  --tbl-head-weight: 800;
+  --tbl-head-color: #172554;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.teacher-table-scroll {
+  max-height: 270px;
+
+  overflow-y: auto;
+  overflow-x: auto;
+
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.teacher-table-scroll .data-table {
+  min-width: 1180px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* One rule to rule every cell, and every element inside it,
+   to the same font-family / size / weight / line-height.
+   Individual elements (badges, ids, names) may still set their
+   own colour, but never their own font. */
+.teachers-page .teacher-table-scroll .data-table th,
+.teachers-page .teacher-table-scroll .data-table td,
+.teachers-page .teacher-table-scroll .data-table th *,
+.teachers-page .teacher-table-scroll .data-table td * {
+  font-family: var(--tbl-font-family) !important;
+  font-size: var(--tbl-font-size) !important;
+  font-weight: var(--tbl-font-weight) !important;
+  line-height: 1.45 !important;
+  letter-spacing: normal !important;
+}
+
+.teachers-page .teacher-table-scroll .data-table th,
+.teachers-page .teacher-table-scroll .data-table th * {
+  font-weight: var(--tbl-head-weight) !important;
+  color: var(--tbl-head-color) !important;
+}
+
+.teachers-page .teacher-table-scroll .data-table td {
+  color: var(--tbl-color);
+}
+
+.teacher-table-scroll .data-table th,
+.teacher-table-scroll .data-table td {
+  padding: 12px 14px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.teacher-table-scroll .data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.teacher-table-scroll .data-table thead,
+.teacher-table-scroll .data-table thead tr,
+.teacher-table-scroll .data-table thead th {
+  background: #dbeafe;
+}
+
+.teacher-table-scroll .data-table thead th {
+  box-shadow:
+    0 4px 10px
+    rgba(15, 23, 42, 0.1);
+}
+
+.teacher-table-scroll .data-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.teacher-table-scroll .data-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.teacher-table-scroll .data-table tbody tr:hover {
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.teacher-table-scroll .data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.teacher-subject-cell,
+.teacher-class-cell {
+  text-align: center;
+}
+
+
+/* =========================================================
+   TEACHER ID
+========================================================= */
+
+.teacher-id-action {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.teacher-id {
+  color: #4338ca;
+}
+
+.teacher-view-btn {
+  width: 29px;
+  height: 29px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid rgba(79, 70, 229, 0.18);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  color: #4338ca;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+}
+
+.teacher-view-btn:hover {
+  background: #eef2ff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px
+    rgba(79, 70, 229, 0.15);
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.cell-name {
+  display: inline-flex;
+  align-items: center;
+  color: #334155;
+}
+
+.mini-avatar {
+  width: 27px;
+  height: 27px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 7px;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.12),
+      rgba(6, 182, 212, 0.11)
+    );
+
+  color: #4f46e5;
+}
+
+
+/* =========================================================
+   GROUP BADGE
+========================================================= */
+
+.group-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.11),
+      rgba(6, 182, 212, 0.1)
+    );
+
+  border:
+    1px solid rgba(59, 130, 246, 0.14);
+
+  color: #1d4ed8;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SECTION BADGE
+========================================================= */
+
+.section-badge {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 28px;
+
+  padding: 5px 8px;
+
+  border-radius: 8px;
+
+  background:
+    rgba(99, 102, 241, 0.08);
+
+  border:
+    1px solid rgba(99, 102, 241, 0.13);
+
+  color: #4338ca;
+}
+
+
+/* =========================================================
+   COMPACT LIST
+========================================================= */
+
+.compact-list-cell {
+  line-height: 1.45;
+
+  white-space: nowrap;
+
+  color: #475569;
+}
+
+.compact-list-cell span {
+  display: inline;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-state {
+  padding: 35px 20px !important;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
+
+.modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(15, 23, 42, 0.46);
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+  width: min(520px, 100%);
+
+  max-height:
+    calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(239, 246, 255, 0.96)
+    );
+
+  border:
+    1px solid rgba(99, 102, 241, 0.16);
+
+  box-shadow:
+    0 30px 80px
+    rgba(15, 23, 42, 0.24);
+
+  scrollbar-width: thin;
+}
+
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background:
+    rgba(99, 102, 241, 0.25);
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.modal-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background:
+    rgba(248, 250, 252, 0.94);
+
+  border-bottom:
+    1px solid rgba(99, 102, 241, 0.1);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.modal-header h2 {
+  margin: 0;
+
+  color: #172554;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.modal-header p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.modal-close {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.12);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.65);
+
+  color: #64748b;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+
+/* =========================================================
+   MODAL FORM
+========================================================= */
+
+.modal form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 20px;
+}
+
+.modal form > label,
+.custom-select-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.modal form label {
+  color: #334155;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.modal form input[type="text"] {
+  width: 100%;
+  height: 40px;
+
+  box-sizing: border-box;
+
+  padding: 0 11px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  color: #334155;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.modal form input[type="text"]:focus {
+  border-color:
+    rgba(79, 70, 229, 0.4);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(79, 70, 229, 0.07);
+}
+
+
+/* =========================================================
+   CUSTOM SELECT
+========================================================= */
+
+.field-label {
+  color: #334155;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.custom-select-field {
+  position: relative;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  min-height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 0 11px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  color: #475569;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.custom-select-trigger:hover {
+  border-color:
+    rgba(79, 70, 229, 0.28);
+}
+
+.select-arrow {
+  color: #6366f1;
+
+  font-size: 12px;
+}
+
+.select-disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DROPDOWN MENU
+========================================================= */
+
+.custom-select-menu {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: calc(100% + 5px);
+
+  z-index: 100;
+
+  max-height: 190px;
+
+  overflow-y: auto;
+
+  padding: 5px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 16px 35px
+    rgba(30, 64, 175, 0.16);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.custom-option {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 9px 10px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #475569;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.custom-option:hover,
+.custom-option.selected {
+  background:
+    rgba(99, 102, 241, 0.08);
+
+  color: #4338ca;
+}
+
+.option-check {
+  width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.18);
+
+  border-radius: 5px;
+
+  color: transparent;
+
+  font-size: 10px;
+}
+
+.option-check.checked {
+  background: #4f46e5;
+
+  border-color: #4f46e5;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   SELECTED TAGS
+========================================================= */
+
+.selected-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: -5px;
+}
+
+.selected-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 8px;
+
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79, 70, 229, 0.1),
+      rgba(6, 182, 212, 0.08)
+    );
+
+  border:
+    1px solid rgba(79, 70, 229, 0.13);
+
+  color: #4338ca;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.selected-tag button {
+  width: 16px;
+  height: 16px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 5px;
+
+  background:
+    rgba(79, 70, 229, 0.08);
+
+  color: #6366f1;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+========================================================= */
+
+.modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  margin-top: 5px;
+
+  padding-top: 14px;
+
+  border-top:
+    1px solid rgba(99, 102, 241, 0.1);
+}
+
+.btn-secondary,
+.btn-primary {
+  height: 37px;
+
+  padding: 0 14px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.btn-secondary {
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  background:
+    rgba(255, 255, 255, 0.65);
+
+  color: #64748b;
+}
+
+.btn-primary {
+  border: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #2563eb
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 8px 18px
+    rgba(79, 70, 229, 0.18);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .teacher-analytics-filters {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .teacher-chart-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .teacher-chart {
+    height: 230px;
+  }
+
+  .students-container-header {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+
+  .student-search {
+    flex: 1;
+    min-width: 140px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .student-summary {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .summary-box {
+    padding: 13px 10px;
+
+    border-radius: 13px;
+  }
+
+  .summary-box span {
+    font-size: 9px;
+  }
+
+  .summary-box strong {
+    font-size: 20px;
+  }
+
+
+  /* ANALYTICS */
+
+  .teacher-analytics {
+    padding: 15px;
+
+    border-radius: 17px;
+  }
+
+  .teacher-analytics-header {
+    align-items: flex-start;
+  }
+
+  .teacher-analytics-header h2 {
+    font-size: 17px;
+  }
+
+  .teacher-analytics-header p {
+    font-size: 10px;
+  }
+
+  .analytics-live-badge {
+    padding: 5px 7px;
+
+    font-size: 8px;
+  }
+
+
+  .teacher-analytics-filters {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+
+    padding: 10px;
+
+    margin-top: 14px;
+  }
+
+  .analytics-filter-field select {
+    height: 36px;
+
+    font-size: 10px;
+  }
+
+
+  .teacher-analytics-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .analytics-stat {
+    padding: 11px;
+  }
+
+  .analytics-stat strong {
+    font-size: 19px;
+  }
+
+
+  .teacher-chart-grid {
+    grid-template-columns:
+      1fr;
+
+    gap: 8px;
+  }
+
+  .teacher-chart-card {
+    padding: 12px;
+
+    border-radius: 13px;
+  }
+
+  .teacher-chart {
+    height: 215px;
+  }
+
+
+  .teacher-distribution-list {
+    padding: 12px;
+
+    border-radius: 13px;
+  }
+
+  .distribution-items {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* DIRECTORY */
+
+  .students-container {
+    border-radius: 16px;
+  }
+
+  .students-container-header {
+    padding: 16px 14px 12px;
+  }
+
+  .students-container-header h2 {
+    font-size: 17px;
+  }
+
+  .students-container-header p {
+    font-size: 10px;
+  }
+
+  .header-actions {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    width: 100%;
+
+    gap: 6px;
+  }
+
+  .student-search {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 36px;
+
+    font-size: 9px;
+  }
+
+  .add-student-btn {
+    width: 100%;
+
+    grid-column:
+      1 / -1;
+
+    height: 38px;
+  }
+
+  .teacher-result-info {
+    padding:
+      0 14px 10px;
+  }
+
+
+  /* TABLE */
+
+  .teachers-page {
+    --tbl-font-size: 11px;
+  }
+
+  .teacher-table-scroll {
+    max-height: 260px;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    border-radius: 10px;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+  }
+
+  .teacher-table-scroll .data-table {
+    min-width: 1180px;
+  }
+
+  .teacher-table-scroll .data-table thead {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 30;
+  }
+
+  .teacher-table-scroll .data-table th,
+  .teacher-table-scroll .data-table td {
+    padding: 9px 10px;
+  }
+
+
+  /* MODAL */
+
+  .modal-backdrop {
+    align-items: center;
+
+    padding: 12px;
+  }
+
+  .modal {
+    width: 100%;
+
+    max-height:
+      calc(100vh - 24px);
+
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    padding: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 17px;
+  }
+
+  .modal form {
+    padding: 16px;
+
+    gap: 12px;
+  }
+
+  .modal-actions {
+    position: sticky;
+
+    bottom: 0;
+
+    padding-top: 11px;
+    padding-bottom: 2px;
+
+    background:
+      rgba(239, 246, 255, 0.94);
+  }
+
+  .teacher-view-btn:hover,
+  .add-student-btn:hover {
+    transform: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE HOVER DISABLE
+========================================================= */
+
+@media (hover: none) {
+
+  .teacher-view-btn:hover,
+  .add-student-btn:hover {
+    transform: none;
+
+    box-shadow:
+      none;
+  }
+
+}
+/* =========================================================
+   MANUAL INPUT + LIVE SUGGESTIONS
+========================================================= */
+
+.suggestion-input {
+  width: 100%;
+  height: 40px;
+
+  box-sizing: border-box;
+
+  padding: 0 11px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  color: #334155;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.suggestion-input::placeholder {
+  color: #94a3b8;
+}
+
+.suggestion-input:focus {
+  border-color:
+    rgba(79, 70, 229, 0.4);
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(79, 70, 229, 0.07);
+}
+
+
+/* =========================================================
+   LIVE SUGGESTION BOX
+========================================================= */
+
+.live-suggestions {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: calc(100% + 5px);
+
+  z-index: 150;
+
+  max-height: 190px;
+
+  overflow-y: auto;
+
+  padding: 5px;
+
+  border:
+    1px solid rgba(99, 102, 241, 0.14);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 16px 35px
+    rgba(30, 64, 175, 0.16);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.suggestion-option {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 9px 10px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #475569;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.suggestion-option:hover {
+  background:
+    rgba(99, 102, 241, 0.08);
+
+  color: #4338ca;
+}
+
+.suggestion-option span:last-child {
+  color: #6366f1;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .suggestion-input {
+    height: 38px;
+
+    font-size: 10px;
+  }
+
+  .live-suggestions {
+    max-height: 170px;
+  }
+
+  .suggestion-option {
+    padding: 9px;
+
+    font-size: 10px;
+  }
+
+}
+/* =========================================================
+   TEACHERS PAGE — CLEAN WHITE UI
+   Remove nested glass / shadow / border overload
+========================================================= */
+
+/* PAGE BACKGROUND */
+
+.teachers-page {
+  min-height: 100%;
+  background: #ffffff !important;
+}
+
+
+/* =========================================================
+   REMOVE PARENT / CHILD CARD SHADOWS
+========================================================= */
+
+.teachers-page .page-block,
+.teachers-page .students-container,
+.teachers-page .teacher-analytics,
+.teachers-page .teacher-chart-card,
+.teachers-page .teacher-distribution-list,
+.teachers-page .summary-box,
+.teachers-page .analytics-stat {
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   REMOVE HEAVY BORDERS
+========================================================= */
+
+.teachers-page .page-block,
+.teachers-page .students-container,
+.teachers-page .teacher-analytics,
+.teachers-page .teacher-chart-card,
+.teachers-page .teacher-distribution-list,
+.teachers-page .summary-box,
+.teachers-page .analytics-stat {
+
+  border: 1px solid #e5e7eb !important;
+
+}
+
+
+/* =========================================================
+   CLEAN WHITE CONTAINERS
+========================================================= */
+
+.teachers-page .page-block,
+.teachers-page .students-container,
+.teachers-page .teacher-analytics,
+.teachers-page .teacher-chart-card,
+.teachers-page .teacher-distribution-list {
+
+  background: #ffffff !important;
+
+}
+
+
+/* =========================================================
+   SUMMARY BOXES
+========================================================= */
+
+.teachers-page .summary-box {
+
+  background: #ffffff !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   ANALYTICS
+========================================================= */
+
+.teachers-page .teacher-analytics {
+
+  background: #ffffff !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   ANALYTICS STAT CARDS
+========================================================= */
+
+.teachers-page .analytics-stat {
+
+  background: #f8fafc !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   CHART CARDS
+========================================================= */
+
+.teachers-page .teacher-chart-card {
+
+  background: #ffffff !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   DISTRIBUTION
+========================================================= */
+
+.teachers-page .teacher-distribution-list {
+
+  background: #ffffff !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.teachers-page .teacher-table-scroll {
+
+  background: #ffffff !important;
+
+  border: 1px solid #e5e7eb !important;
+
+  box-shadow: none !important;
+
+}
+
+
+.teachers-page .teacher-table-scroll .data-table {
+
+  background: #ffffff !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* TABLE BODY */
+
+.teachers-page .teacher-table-scroll .data-table tbody,
+.teachers-page .teacher-table-scroll .data-table tbody tr,
+.teachers-page .teacher-table-scroll .data-table tbody td {
+
+  background: #ffffff !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* TABLE HEADER */
+
+.teachers-page .teacher-table-scroll .data-table thead,
+.teachers-page .teacher-table-scroll .data-table thead tr,
+.teachers-page .teacher-table-scroll .data-table thead th {
+
+  background: #f8fafc !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   TABLE ROWS
+========================================================= */
+
+.teachers-page .teacher-table-scroll .data-table tbody tr {
+
+  border-bottom: 1px solid #f1f5f9;
+
+}
+
+.teachers-page .teacher-table-scroll .data-table tbody tr:hover {
+
+  background: #f8fafc !important;
+
+}
+
+
+/* =========================================================
+   REMOVE BADGE BACKGROUND / BORDER
+========================================================= */
+
+.teachers-page .teacher-id,
+.teachers-page .group-badge,
+.teachers-page .section-badge {
+
+  background: transparent !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   VIEW BUTTON
+========================================================= */
+
+.teachers-page .teacher-view-btn {
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   SEARCH INPUTS
+========================================================= */
+
+.teachers-page .student-search {
+
+  box-shadow: none !important;
+
+  border: 1px solid #dbe2ea !important;
+
+  background: #ffffff !important;
+
+}
+
+
+/* =========================================================
+   ADD TEACHER BUTTON
+========================================================= */
+
+.teachers-page .add-student-btn {
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   REMOVE INNER GLASS EFFECTS
+========================================================= */
+
+.teachers-page .teacher-analytics *,
+.teachers-page .students-container * {
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+}
+
+
+/* =========================================================
+   DISTRIBUTION TRACK
+========================================================= */
+
+.teachers-page .distribution-track {
+
+  box-shadow: none !important;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .teachers-page {
+
+    background: #ffffff !important;
+
+  }
+
+  .teachers-page .teacher-analytics,
+  .teachers-page .students-container,
+  .teachers-page .teacher-chart-card,
+  .teachers-page .teacher-distribution-list {
+
+    border-radius: 14px;
+
+    box-shadow: none !important;
+
+  }
+
+}

@@ -1,0 +1,842 @@
+
+
+/* =========================================================
+   MOVED FROM APP.CSS
+========================================================= */
+
+
+@media (max-width: 700px) {
+  .student-course-intro-content {
+    color: #ffffff;
+  }
+
+  .student-course-intro h1 {
+    margin: 0;
+
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    animation: studentCourseTitle 0.7s ease 0.15s both;
+  }
+
+  .student-course-intro p {
+    margin: 0;
+
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+
+    animation: studentCourseSubtitle 0.7s ease 0.6s both;
+  }
+
+}
+
+
+/* =========================================================
+   STUDENT COURSES
+   Premium Glassmorphism + Responsive Design
+========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.student-page {
+  min-height: 100vh;
+  padding: 30px;
+
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(99, 102, 241, 0.20) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(59, 130, 246, 0.22) 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #dbeafe 100%
+    );
+
+  background-attachment: fixed;
+
+  color: #172033;
+
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+
+/* Intro-এর সময় page hidden */
+
+.student-course-page-hidden {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.student-page-header {
+  margin-bottom: 25px;
+}
+
+.student-page-header h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: -0.7px;
+}
+
+.student-page-header p {
+  margin: 8px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+.student-course-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+.student-course-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 205px;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.40);
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.70);
+
+  border-top-color: rgba(255, 255, 255, 0.96);
+  border-left-color: rgba(255, 255, 255, 0.96);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 16px 32px -8px rgba(31, 38, 135, 0.15),
+    0 4px 12px rgba(37, 99, 235, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.82);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+
+/* Soft reflection */
+
+.student-course-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -70px;
+  right: -60px;
+
+  width: 160px;
+  height: 160px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.50) 0%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Blue ambient glow */
+
+.student-course-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: -45px;
+  bottom: -65px;
+
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.10) 0%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   COURSE CARD HOVER
+========================================================= */
+
+.student-course-card:hover {
+  transform: translateY(-6px);
+
+  background: rgba(255, 255, 255, 0.52);
+
+  box-shadow:
+    0 23px 42px -10px rgba(31, 38, 135, 0.20),
+    0 7px 17px rgba(37, 99, 235, 0.10),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================================
+   COURSE TITLE
+========================================================= */
+
+.student-course-card h3 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 12px;
+
+  color: #172033;
+
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   TEACHER
+========================================================= */
+
+.student-course-card p {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 13px;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   BATCH BADGE
+========================================================= */
+
+.student-course-card span {
+  position: relative;
+  z-index: 1;
+
+  align-self: flex-start;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 8px 13px;
+
+  border-radius: 11px;
+
+  background: rgba(239, 246, 255, 0.58);
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+
+  color: #2563eb;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    0 4px 10px rgba(37, 99, 235, 0.05);
+}
+
+
+/* =========================================================
+   CINEMATIC INTRO
+========================================================= */
+
+.student-course-intro {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #dbeafe 0%,
+      #eef2ff 42%,
+      #c7d2fe 100%
+    );
+
+  animation:
+    studentCourseIntroFade 1.8s ease forwards;
+}
+
+
+/* Intro content */
+
+.student-course-intro-content {
+  width: min(390px, 86vw);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  animation:
+    studentCourseIntroContent 0.9s ease both;
+}
+
+
+/* Intro Icon */
+
+.student-course-intro-icon {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.82);
+
+  font-size: 36px;
+
+  box-shadow:
+    0 20px 40px rgba(31, 38, 135, 0.16),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+
+  animation:
+    studentCourseIconFloat 1.8s ease-in-out infinite;
+}
+
+
+/* Intro title */
+
+.student-course-intro-content h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 850;
+
+  letter-spacing: -0.8px;
+}
+
+
+/* Intro line */
+
+.student-course-intro-line {
+  width: 0;
+  height: 3px;
+
+  margin: 15px 0 12px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #2563eb
+    );
+
+  box-shadow:
+    0 0 14px rgba(59, 130, 246, 0.30);
+
+  animation:
+    studentCourseIntroLine 0.8s 0.25s ease forwards;
+}
+
+
+/* Intro subtitle */
+
+.student-course-intro-content p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   INTRO ANIMATIONS
+========================================================= */
+
+@keyframes studentCourseIntroContent {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateY(25px)
+      scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes studentCourseIconFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+
+}
+
+
+@keyframes studentCourseIntroLine {
+
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 90px;
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes studentCourseIntroFade {
+
+  0%,
+  78% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .student-page {
+    padding: 25px;
+  }
+
+  .student-course-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .student-page {
+    min-height: 100vh;
+
+    padding:
+      17px
+      13px
+      88px !important;
+
+    background:
+      radial-gradient(
+        circle at 15% 15%,
+        rgba(99, 102, 241, 0.25) 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 75%,
+        rgba(59, 130, 246, 0.30) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        #eef2ff 0%,
+        #dbeafe 100%
+      ) !important;
+
+    background-attachment: fixed !important;
+  }
+
+
+  /* Header */
+
+  .student-page-header {
+    margin-bottom: 17px;
+  }
+
+  .student-page-header h1 {
+    font-size: 23px;
+  }
+
+  .student-page-header p {
+    margin-top: 6px;
+
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* Grid */
+
+  .student-course-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+
+  /* Cards */
+
+  .student-course-card {
+    min-height: 0;
+
+    padding: 19px;
+
+    border-radius: 19px;
+
+    background: rgba(255, 255, 255, 0.40) !important;
+
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.70) !important;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.95) !important;
+
+    border-left:
+      1px solid rgba(255, 255, 255, 0.95) !important;
+
+    box-shadow:
+      0 16px 32px -8px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(37, 99, 235, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+
+    transform: none !important;
+  }
+
+
+  /* Mobile-এ card static */
+
+  .student-course-card:hover,
+  .student-course-card:active {
+    transform: none !important;
+
+    background: rgba(255, 255, 255, 0.40) !important;
+
+    box-shadow:
+      0 16px 32px -8px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(37, 99, 235, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  }
+
+
+  .student-course-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .student-course-card p {
+    margin-bottom: 11px;
+
+    font-size: 12px;
+  }
+
+  .student-course-card span {
+    padding: 7px 11px;
+
+    font-size: 10px;
+  }
+
+
+  /* Intro */
+
+  .student-course-intro-content {
+    width: 88vw;
+  }
+
+  .student-course-intro-icon {
+    width: 68px;
+    height: 68px;
+
+    border-radius: 20px;
+
+    font-size: 31px;
+  }
+
+  .student-course-intro-content h1 {
+    font-size: 28px;
+  }
+
+  .student-course-intro-content p {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .student-page {
+    padding:
+      15px
+      10px
+      85px !important;
+  }
+
+
+  .student-page-header {
+    margin-bottom: 15px;
+  }
+
+  .student-page-header h1 {
+    font-size: 21px;
+  }
+
+  .student-page-header p {
+    font-size: 11px;
+  }
+
+
+  .student-course-grid {
+    gap: 11px;
+  }
+
+
+  .student-course-card {
+    padding: 16px;
+
+    border-radius: 17px !important;
+  }
+
+  .student-course-card h3 {
+    font-size: 16px;
+  }
+
+  .student-course-card p {
+    font-size: 11px;
+  }
+
+  .student-course-card span {
+    padding: 7px 10px;
+
+    font-size: 9px;
+  }
+
+
+  /* Intro */
+
+  .student-course-intro-icon {
+    width: 61px;
+    height: 61px;
+
+    border-radius: 18px;
+
+    font-size: 28px;
+  }
+
+  .student-course-intro-content h1 {
+    font-size: 25px;
+  }
+
+  .student-course-intro-line {
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+
+  .student-course-intro-content p {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   320px - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .student-page {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+
+  .student-course-card {
+    padding: 14px;
+
+    border-radius: 15px !important;
+  }
+
+  .student-course-card h3 {
+    font-size: 15px;
+  }
+
+  .student-course-card p {
+    font-size: 10px;
+  }
+
+  .student-course-card span {
+    font-size: 8px;
+    padding: 6px 9px;
+  }
+
+
+  .student-course-intro-content h1 {
+    font-size: 23px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .student-page,
+  .student-course-card,
+  .student-course-intro-content,
+  .student-course-intro-icon,
+  .student-course-intro-line,
+  .student-course-intro {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
+
+/* =========================================================
+   ANIMATIONS (MOVED FROM APP.CSS)
+========================================================= */
+
+@keyframes studentCourseTitle {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes studentCourseSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

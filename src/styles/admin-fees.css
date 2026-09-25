@@ -1,0 +1,531 @@
+/* =========================================================
+   FEES PAGE
+========================================================= */
+
+.fees-kicker {
+  display: inline-block;
+  margin-bottom: 5px;
+
+  color: #4f46e5;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.fees-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* =========================================================
+   ANALYTICS
+========================================================= */
+
+.fees-analytics {
+  margin-top: 22px;
+}
+
+.fees-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.fees-stat-card {
+  position: relative;
+  min-height: 112px;
+  padding: 18px;
+  overflow: hidden;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(238, 242, 255, 0.52)
+    );
+
+  border: 1px solid rgba(99, 102, 241, 0.13);
+
+  box-shadow:
+    0 12px 30px rgba(30, 64, 175, 0.08);
+
+  backdrop-filter: blur(15px);
+}
+
+.fees-stat-card::after {
+  content: "";
+
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  right: -28px;
+  bottom: -32px;
+
+  border-radius: 50%;
+
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.fees-stat-card span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.fees-stat-card strong {
+  display: block;
+  margin-top: 8px;
+
+  color: #172554;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.fees-stat-card small {
+  display: block;
+  margin-top: 7px;
+
+  color: #94a3b8;
+  font-size: 9px;
+}
+
+.fees-stat-card.collected strong {
+  color: #16a34a;
+}
+
+.fees-stat-card.due strong {
+  color: #ea580c;
+}
+
+.fees-stat-card.rate strong {
+  color: #4f46e5;
+}
+
+.fees-stat-card.students strong {
+  color: #0891b2;
+}
+
+
+/* =========================================================
+   CHART GRID
+========================================================= */
+
+.fees-chart-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.85fr)
+    minmax(0, 1.45fr);
+
+  gap: 18px;
+}
+
+.fees-chart-card {
+  min-width: 0;
+
+  padding: 18px;
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.68),
+      rgba(239, 246, 255, 0.52)
+    );
+
+  border: 1px solid rgba(99, 102, 241, 0.12);
+
+  box-shadow:
+    0 12px 35px rgba(30, 64, 175, 0.08);
+
+  backdrop-filter: blur(16px);
+}
+
+.fees-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.fees-chart-header h3 {
+  margin: 0;
+
+  color: #172554;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.fees-chart-header p {
+  margin: 4px 0 0;
+
+  color: #64748b;
+  font-size: 10px;
+}
+
+.fees-chart-tag {
+  padding: 5px 9px;
+
+  border-radius: 8px;
+
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.12);
+
+  color: #4338ca;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PIE
+========================================================= */
+
+.fees-pie-area {
+  position: relative;
+  height: 285px;
+}
+
+.fees-pie-center {
+  position: absolute;
+
+  top: 47%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.fees-pie-center strong {
+  color: #172554;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.fees-pie-center span {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   LINE + BAR
+========================================================= */
+
+.fees-line-area {
+  height: 285px;
+}
+
+.yearly-fee-chart {
+  margin-top: 18px;
+}
+
+.fees-bar-area {
+  height: 310px;
+}
+
+
+/* =========================================================
+   FEE RECORDS
+========================================================= */
+
+.fee-records-container {
+  margin-top: 28px;
+  padding-top: 24px;
+
+  border-top: 1px solid rgba(99, 102, 241, 0.12);
+}
+
+.fee-status-filter {
+  display: flex;
+  gap: 7px;
+}
+
+.fee-status-filter button {
+  padding: 8px 13px;
+
+  border: 1px solid rgba(99, 102, 241, 0.13);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.fee-status-filter button.active {
+  background: #eef2ff;
+  color: #4338ca;
+  border-color: rgba(79, 70, 229, 0.25);
+}
+
+.fee-status-filter button.active.paid {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.fee-status-filter button.active.due {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.fees-searches {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(120px, 1fr));
+
+  gap: 12px;
+
+  margin: 18px 0;
+}
+
+.fees-searches .student-search {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.fees-table-scroll {
+  max-height: 330px;
+
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.fees-table-scroll .data-table {
+  min-width: 1100px;
+}
+
+.fees-table-scroll .data-table th,
+.fees-table-scroll .data-table td {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.fees-table-scroll .data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.fees-table-scroll .data-table thead,
+.fees-table-scroll .data-table thead tr,
+.fees-table-scroll .data-table thead th {
+  background: #dbeafe;
+}
+
+.fees-table-scroll .data-table thead th {
+  color: #172554;
+
+  box-shadow:
+    0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   ID + EYE
+========================================================= */
+
+.fee-id-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.fee-view-btn {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(79, 70, 229, 0.18);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  color: #4338ca;
+
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+}
+
+.fee-view-btn:hover {
+  background: #eef2ff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px rgba(79, 70, 229, 0.15);
+}
+
+
+/* =========================================================
+   PAID / DUE
+========================================================= */
+
+.paid-amount {
+  color: #15803d;
+  font-weight: 750;
+}
+
+.due-amount {
+  color: #c2410c;
+  font-weight: 750;
+}
+
+.fee-status-cell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.fee-status-cell small {
+  color: #ea580c;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .fees-stat-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .fees-chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .fees-stat-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .fees-stat-card {
+    min-height: 92px;
+    padding: 12px;
+  }
+
+  .fees-stat-card strong {
+    font-size: 20px;
+  }
+
+  .fees-chart-card {
+    padding: 13px;
+    border-radius: 15px;
+  }
+
+  .fees-pie-area {
+    height: 245px;
+  }
+
+  .fees-line-area {
+    height: 250px;
+  }
+
+  .fees-bar-area {
+    height: 270px;
+  }
+
+  .fees-header-actions {
+    width: 100%;
+  }
+
+  .fees-header-actions select {
+    width: 100%;
+  }
+
+  .fees-searches {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .fees-searches .student-search {
+    height: 38px;
+    padding: 0 9px;
+    font-size: 11px;
+  }
+
+  .fee-status-filter {
+    width: 100%;
+  }
+
+  .fee-status-filter button {
+    flex: 1;
+  }
+
+  .fees-table-scroll {
+    max-height: 330px;
+
+    overflow-y: auto;
+    overflow-x: auto;
+
+    border-radius: 12px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fees-table-scroll .data-table {
+    min-width: 1100px;
+  }
+
+  .fees-table-scroll .data-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  .fee-view-btn:hover {
+    transform: none;
+  }
+}
