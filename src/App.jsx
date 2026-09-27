@@ -39,6 +39,7 @@ import TeacherExams from "./pages/TeacherExams";
 import TeacherAssignments from "./pages/TeacherAssignments";
 import TeacherNotices from "./pages/TeacherNotices";
 import TeacherProfile from "./pages/TeacherProfile";
+import StudentResults from "./pages/StudentResults";
 function App() {
   return (
     <Routes>
@@ -100,6 +101,11 @@ function App() {
         <Route
           path="/student-fees"
           element={<StudentFees />}
+        />
+
+        <Route
+          path="/student-results"
+          element={<StudentResults />}
         />
 
       </Route>

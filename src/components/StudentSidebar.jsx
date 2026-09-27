@@ -69,6 +69,18 @@ function StudentSidebar({ open, onClose }) {
             <span className="student-nav-icon">✎</span>
             <span>Exams</span>
           </NavLink>
+          <NavLink 
+            to="/student-results" 
+            onClick={onClose} 
+            className={({ isActive }) => 
+              `student-nav-link ${
+                isActive ? "student-nav-link-active" : ""
+              }` 
+            } 
+          > 
+            <span className="student-nav-icon">▤</span> 
+            <span>Results</span> 
+          </NavLink>
 
           <NavLink
             to="/student-attendance"

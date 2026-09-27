@@ -42,7 +42,7 @@ function StudentExams() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 5000);
+    }, 3600);
 
     return () => clearTimeout(timer);
   }, []);

@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from "react";
 import "../styles/teacher-exams.css";
 
@@ -14,7 +13,21 @@ function getGrade(percentage) {
 
 function TeacherExams() {
   // =====================================================
-  // EXAMS
+  // SUBJECTS
+  // Admin থেকে পরে API দিয়ে আসবে
+  // =====================================================
+  const subjects = [
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Higher Math",
+    "Bangla",
+    "English",
+    "Mathematics",
+  ];
+
+  // =====================================================
+  // EXAM TYPES / EXAMS
   // Admin থেকে পরে API দিয়ে আসবে
   // =====================================================
   const exams = [
@@ -68,6 +81,25 @@ function TeacherExams() {
         { id: "C6", name: "Written", maxMarks: 60 },
       ],
     },
+
+    // Chemistry example
+    {
+      id: "EX-004",
+      name: "Chemistry Mid Term",
+      type: "Mid Term",
+      subject: "Chemistry",
+      className: "HSC 2027",
+      section: "A",
+      group: "Science",
+      shift: "Morning",
+      examDate: "2026-09-28",
+      totalMarks: 30,
+      components: [
+        { id: "C7", name: "MCQ", maxMarks: 10 },
+        { id: "C8", name: "Written", maxMarks: 15 },
+        { id: "C9", name: "Practical", maxMarks: 5 },
+      ],
+    },
   ];
 
   // =====================================================
@@ -82,7 +114,6 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
     {
       id: "ST-002",
@@ -92,7 +123,6 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
     {
       id: "ST-003",
@@ -102,7 +132,6 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
     {
       id: "ST-004",
@@ -112,7 +141,6 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
     {
       id: "ST-005",
@@ -122,7 +150,6 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
     {
       id: "ST-006",
@@ -132,26 +159,52 @@ function TeacherExams() {
       section: "A",
       group: "Science",
       shift: "Morning",
-      subject: "Physics",
     },
   ];
 
   // =====================================================
-  // SELECTED EXAM
+  // SELECTED SUBJECT
   // =====================================================
-  const [selectedExamId, setSelectedExamId] = useState("EX-002");
+  const [selectedSubject, setSelectedSubject] =
+    useState("Physics");
 
-  const selectedExam = exams.find(
-    (exam) => exam.id === selectedExamId
-  );
+  // =====================================================
+  // SELECTED EXAM TYPE
+  // =====================================================
+  const [selectedExamType, setSelectedExamType] =
+    useState("Mid Term");
+
+  // =====================================================
+  // SELECTED EXAM
+  // Subject + Exam Type অনুযায়ী exam খুঁজবে
+  // =====================================================
+  const selectedExam = useMemo(() => {
+    return exams.find(
+      (exam) =>
+        exam.subject === selectedSubject &&
+        exam.type === selectedExamType
+    );
+  }, [selectedSubject, selectedExamType]);
 
   // =====================================================
   // FILTERS
   // =====================================================
-  const [classFilter, setClassFilter] = useState("HSC 2027");
-  const [sectionFilter, setSectionFilter] = useState("A");
-  const [groupFilter, setGroupFilter] = useState("Science");
-  const [shiftFilter, setShiftFilter] = useState("Morning");
+  const [classFilter, setClassFilter] =
+    useState("HSC 2027");
+
+  const [sectionFilter, setSectionFilter] =
+    useState("A");
+
+  const [groupFilter, setGroupFilter] =
+    useState("Science");
+
+  const [shiftFilter, setShiftFilter] =
+    useState("Morning");
+
+  // =====================================================
+  // EDIT MODE
+  // =====================================================
+  const [isEditing, setIsEditing] = useState(false);
 
   // =====================================================
   // MARKS
@@ -195,13 +248,14 @@ function TeacherExams() {
   // FILTER STUDENTS
   // =====================================================
   const filteredStudents = useMemo(() => {
+    if (!selectedExam) return [];
+
     return students.filter(
       (student) =>
         student.className === classFilter &&
         student.section === sectionFilter &&
         student.group === groupFilter &&
-        student.shift === shiftFilter &&
-        student.subject === selectedExam?.subject
+        student.shift === shiftFilter
     );
   }, [
     classFilter,
@@ -214,10 +268,17 @@ function TeacherExams() {
   // =====================================================
   // UPDATE MARKS
   // =====================================================
-  const updateMarks = (studentId, componentName, value) => {
-    const component = selectedExam?.components.find(
-      (item) => item.name === componentName
-    );
+  const updateMarks = (
+    studentId,
+    componentName,
+    value
+  ) => {
+    if (!selectedExam || !isEditing) return;
+
+    const component =
+      selectedExam.components.find(
+        (item) => item.name === componentName
+      );
 
     if (!component) return;
 
@@ -229,7 +290,10 @@ function TeacherExams() {
 
     numericValue = Math.max(
       0,
-      Math.min(numericValue, component.maxMarks)
+      Math.min(
+        numericValue,
+        component.maxMarks
+      )
     );
 
     setMarks((prev) => ({
@@ -248,56 +312,124 @@ function TeacherExams() {
   // CALCULATE TOTAL
   // =====================================================
   const calculateTotal = (studentId) => {
+    if (!selectedExam) return 0;
+
     const studentMarks =
       marks[selectedExam.id]?.[studentId] || {};
 
-    return selectedExam.components.reduce((total, component) => {
-      return total + Number(studentMarks[component.name] || 0);
-    }, 0);
+    return selectedExam.components.reduce(
+      (total, component) => {
+        return (
+          total +
+          Number(
+            studentMarks[component.name] || 0
+          )
+        );
+      },
+      0
+    );
   };
+
+  // =====================================================
+  // RESULTS
+  // =====================================================
+  const results = filteredStudents.map(
+    (student) => {
+      const total = calculateTotal(student.id);
+
+      const percentage =
+        selectedExam?.totalMarks > 0
+          ? (total / selectedExam.totalMarks) *
+            100
+          : 0;
+
+      return {
+        ...student,
+        total,
+        percentage,
+        grade: getGrade(percentage),
+      };
+    }
+  );
 
   // =====================================================
   // SUMMARY
   // =====================================================
-  const results = filteredStudents.map((student) => {
-    const total = calculateTotal(student.id);
-
-    const percentage =
-      selectedExam.totalMarks > 0
-        ? (total / selectedExam.totalMarks) * 100
-        : 0;
-
-    return {
-      ...student,
-      total,
-      percentage,
-      grade: getGrade(percentage),
-    };
-  });
-
   const average =
     results.length > 0
-      ? results.reduce((sum, student) => sum + student.total, 0) /
-        results.length
+      ? results.reduce(
+          (sum, student) =>
+            sum + student.total,
+          0
+        ) / results.length
       : 0;
 
   const highest =
     results.length > 0
-      ? Math.max(...results.map((student) => student.total))
+      ? Math.max(
+          ...results.map(
+            (student) => student.total
+          )
+        )
       : 0;
 
   const passed = results.filter(
-    (student) => student.percentage >= 33
+    (student) =>
+      student.percentage >= 33
   ).length;
 
   // =====================================================
-  // SAVE
+  // SUBJECT CHANGE
+  // =====================================================
+  const handleSubjectChange = (value) => {
+    setSelectedSubject(value);
+
+    // নতুন subject এ প্রথম available exam type
+    const firstExam = exams.find(
+      (exam) => exam.subject === value
+    );
+
+    if (firstExam) {
+      setSelectedExamType(firstExam.type);
+    }
+
+    setIsEditing(false);
+  };
+
+  // =====================================================
+  // EXAM TYPE CHANGE
+  // =====================================================
+  const handleExamTypeChange = (value) => {
+    setSelectedExamType(value);
+    setIsEditing(false);
+  };
+
+  // =====================================================
+  // SAVE MARKS
   // =====================================================
   const handleSave = () => {
+    if (!selectedExam) return;
+
+    setIsEditing(false);
+
     alert(
       `${selectedExam.name} marks saved successfully.`
     );
   };
+
+  // =====================================================
+  // AVAILABLE EXAM TYPES FOR SUBJECT
+  // =====================================================
+  const availableExamTypes = [
+    ...new Set(
+      exams
+        .filter(
+          (exam) =>
+            exam.subject === selectedSubject
+        )
+        .map((exam) => exam.type)
+    ),
+  ];
 
   return (
     <div className="teacher-exams-page">
@@ -306,51 +438,117 @@ function TeacherExams() {
       ================================================= */}
       <div className="teacher-exams-header">
         <div>
-          <span className="page-eyebrow">Teacher Portal</span>
+          <span className="page-eyebrow">
+            Teacher Portal
+          </span>
 
           <h1>Exam Marks</h1>
 
           <p>
-            Enter and manage marks for your assigned exams.
+            Enter and manage marks for your
+            assigned subject exams.
           </p>
         </div>
       </div>
 
       {/* =================================================
-          EXAM SELECT
+          SUBJECT + EXAM TYPE
       ================================================= */}
       <section className="teacher-exam-card">
         <div className="teacher-section-title">
           <div>
-            <h2>Select Exam</h2>
-            <p>Choose an exam to enter student marks.</p>
+            <h2>Select Subject & Exam</h2>
+
+            <p>
+              Choose your subject and exam type
+              to view the result sheet.
+            </p>
           </div>
         </div>
 
         <div className="teacher-exam-select-row">
+          {/* SUBJECT */}
           <div className="teacher-field">
-            <label>Exam</label>
+            <label>Subject</label>
 
             <select
-              value={selectedExamId}
+              value={selectedSubject}
               onChange={(e) =>
-                setSelectedExamId(e.target.value)
+                handleSubjectChange(
+                  e.target.value
+                )
               }
             >
-              {exams.map((exam) => (
-                <option key={exam.id} value={exam.id}>
-                  {exam.name}
+              {subjects.map((subject) => (
+                <option
+                  key={subject}
+                  value={subject}
+                >
+                  {subject}
                 </option>
               ))}
             </select>
           </div>
 
+          {/* EXAM TYPE */}
+          <div className="teacher-field">
+            <label>Exam Type</label>
+
+            <select
+              value={selectedExamType}
+              onChange={(e) =>
+                handleExamTypeChange(
+                  e.target.value
+                )
+              }
+              disabled={
+                availableExamTypes.length === 0
+              }
+            >
+              {availableExamTypes.map(
+                (type) => (
+                  <option
+                    key={type}
+                    value={type}
+                  >
+                    {type}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+
+          {/* SELECTED EXAM INFO */}
           <div className="teacher-exam-info">
-            <span>{selectedExam.type}</span>
-            <strong>{selectedExam.subject}</strong>
-            <small>
-              Exam Date: {selectedExam.examDate}
-            </small>
+            {selectedExam ? (
+              <>
+                <span>
+                  {selectedExam.type}
+                </span>
+
+                <strong>
+                  {selectedExam.name}
+                </strong>
+
+                <small>
+                  Exam Date:{" "}
+                  {selectedExam.examDate}
+                </small>
+              </>
+            ) : (
+              <>
+                <span>No Exam</span>
+
+                <strong>
+                  No exam found
+                </strong>
+
+                <small>
+                  Admin has not created this
+                  subject/exam yet.
+                </small>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -362,7 +560,11 @@ function TeacherExams() {
         <div className="teacher-section-title">
           <div>
             <h2>Find Students</h2>
-            <p>Filter your assigned students.</p>
+
+            <p>
+              Filter students for this result
+              sheet.
+            </p>
           </div>
         </div>
 
@@ -386,7 +588,9 @@ function TeacherExams() {
             <select
               value={sectionFilter}
               onChange={(e) =>
-                setSectionFilter(e.target.value)
+                setSectionFilter(
+                  e.target.value
+                )
               }
             >
               <option>A</option>
@@ -400,11 +604,15 @@ function TeacherExams() {
             <select
               value={groupFilter}
               onChange={(e) =>
-                setGroupFilter(e.target.value)
+                setGroupFilter(
+                  e.target.value
+                )
               }
             >
               <option>Science</option>
-              <option>Business Studies</option>
+              <option>
+                Business Studies
+              </option>
               <option>Humanities</option>
             </select>
           </div>
@@ -415,7 +623,9 @@ function TeacherExams() {
             <select
               value={shiftFilter}
               onChange={(e) =>
-                setShiftFilter(e.target.value)
+                setShiftFilter(
+                  e.target.value
+                )
               }
             >
               <option>Morning</option>
@@ -428,220 +638,345 @@ function TeacherExams() {
       {/* =================================================
           EXAM INFO
       ================================================= */}
-      <section className="teacher-exam-info-bar">
-        <div>
-          <span>Exam</span>
-          <strong>{selectedExam.name}</strong>
-        </div>
+      {selectedExam && (
+        <section className="teacher-exam-info-bar">
+          <div>
+            <span>Exam</span>
 
-        <div>
-          <span>Subject</span>
-          <strong>{selectedExam.subject}</strong>
-        </div>
+            <strong>
+              {selectedExam.name}
+            </strong>
+          </div>
 
-        <div>
-          <span>Total Marks</span>
-          <strong>{selectedExam.totalMarks}</strong>
-        </div>
+          <div>
+            <span>Subject</span>
 
-        <div>
-          <span>Students</span>
-          <strong>{filteredStudents.length}</strong>
-        </div>
-      </section>
+            <strong>
+              {selectedExam.subject}
+            </strong>
+          </div>
+
+          <div>
+            <span>Total Marks</span>
+
+            <strong>
+              {selectedExam.totalMarks}
+            </strong>
+          </div>
+
+          <div>
+            <span>Students</span>
+
+            <strong>
+              {filteredStudents.length}
+            </strong>
+          </div>
+        </section>
+      )}
 
       {/* =================================================
           SUMMARY
       ================================================= */}
-      <section className="teacher-summary-grid">
-        <div className="teacher-summary-card">
-          <span>Highest</span>
-          <strong>
-            {highest}/{selectedExam.totalMarks}
-          </strong>
-        </div>
+      {selectedExam && (
+        <section className="teacher-summary-grid">
+          <div className="teacher-summary-card">
+            <span>Highest</span>
 
-        <div className="teacher-summary-card">
-          <span>Average</span>
-          <strong>{average.toFixed(1)}</strong>
-        </div>
+            <strong>
+              {highest}/
+              {selectedExam.totalMarks}
+            </strong>
+          </div>
 
-        <div className="teacher-summary-card">
-          <span>Passed</span>
-          <strong>
-            {passed}/{results.length}
-          </strong>
-        </div>
+          <div className="teacher-summary-card">
+            <span>Average</span>
 
-        <div className="teacher-summary-card">
-          <span>Components</span>
-          <strong>
-            {selectedExam.components.length}
-          </strong>
-        </div>
-      </section>
+            <strong>
+              {average.toFixed(1)}
+            </strong>
+          </div>
 
-     
-{/* =================================================
-    MARKS TABLE
-================================================= */}
-<section className="teacher-exam-card marks-entry-card">
-  <div className="teacher-section-title">
-    <div>
-      <h2>Enter Marks</h2>
+          <div className="teacher-summary-card">
+            <span>Passed</span>
 
-      <p>
-        Enter marks according to the exam mark
-        structure.
-      </p>
-    </div>
+            <strong>
+              {passed}/{results.length}
+            </strong>
+          </div>
 
-    <button
-      className="teacher-save-btn"
-      onClick={handleSave}
-    >
-      Save Marks
-    </button>
-  </div>
+          <div className="teacher-summary-card">
+            <span>Components</span>
 
-  <div className="teacher-table-wrapper">
-    <table className="teacher-marks-table">
-      <thead>
-        <tr>
-          {/* Roll first */}
-          <th>Roll</th>
-
-          {/* Dynamic Marks Components */}
-          {selectedExam.components.map(
-            (component) => (
-              <th key={component.id}>
-                {component.name}
-                <small>
-                  / {component.maxMarks}
-                </small>
-              </th>
-            )
-          )}
-
-          {/* Result */}
-          <th>Total</th>
-          <th>%</th>
-          <th>Grade</th>
-
-          {/* Student information on the right */}
-          <th>ID</th>
-          <th>Student</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {filteredStudents.length > 0 ? (
-          filteredStudents.map((student) => {
-            const total = calculateTotal(
-              student.id
-            );
-
-            const percentage =
-              selectedExam.totalMarks > 0
-                ? (total /
-                    selectedExam.totalMarks) *
-                  100
-                : 0;
-
-            return (
-              <tr key={student.id}>
-                {/* Roll */}
-                <td>
-                  <strong>{student.roll}</strong>
-                </td>
-
-                {/* Dynamic Marks Inputs */}
-                {selectedExam.components.map(
-                  (component) => (
-                    <td key={component.id}>
-                      <input
-                        type="number"
-                        min="0"
-                        max={component.maxMarks}
-                        value={
-                          marks[selectedExam.id]?.[
-                            student.id
-                          ]?.[component.name] ?? ""
-                        }
-                        onChange={(e) =>
-                          updateMarks(
-                            student.id,
-                            component.name,
-                            e.target.value
-                          )
-                        }
-                      />
-                    </td>
-                  )
-                )}
-
-                {/* Total */}
-                <td>
-                  <strong>
-                    {total}/{selectedExam.totalMarks}
-                  </strong>
-                </td>
-
-                {/* Percentage */}
-                <td>
-                  {percentage.toFixed(0)}%
-                </td>
-
-                {/* Grade */}
-                <td>
-                  <span className="teacher-grade">
-                    {getGrade(percentage)}
-                  </span>
-                </td>
-
-                {/* ID */}
-                <td>{student.id}</td>
-
-                {/* Student */}
-                <td>
-                  <div className="teacher-student-name">
-                    <strong>{student.name}</strong>
-                  </div>
-                </td>
-              </tr>
-            );
-          })
-        ) : (
-          <tr>
-            <td
-              colSpan={
-                selectedExam.components.length + 7
+            <strong>
+              {
+                selectedExam.components.length
               }
-              className="teacher-empty-state"
-            >
-              No students found for the selected
-              filters.
-            </td>
-          </tr>
+            </strong>
+          </div>
+        </section>
+      )}
+
+      {/* =================================================
+          RESULT SHEET
+      ================================================= */}
+      <section className="teacher-exam-card marks-entry-card">
+        <div className="teacher-section-title">
+          <div>
+            <h2>Result Sheet</h2>
+
+            <p>
+              {selectedExam
+                ? isEditing
+                  ? "You are editing student marks."
+                  : "Marks are read-only. Click Edit Marks to modify."
+                : "Select a valid subject and exam type."}
+            </p>
+          </div>
+
+          {/* EDIT / SAVE */}
+          {selectedExam && (
+            <div>
+              {!isEditing ? (
+                <button
+                  className="teacher-save-btn"
+                  onClick={() =>
+                    setIsEditing(true)
+                  }
+                >
+                  Edit Marks
+                </button>
+              ) : (
+                <button
+                  className="teacher-save-btn"
+                  onClick={handleSave}
+                >
+                  Save Marks
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="teacher-table-wrapper">
+          {selectedExam ? (
+            <table className="teacher-marks-table">
+              <thead>
+                <tr>
+                  {/* Roll */}
+                  <th>Roll</th>
+
+                  {/* Dynamic Components */}
+                  {selectedExam.components.map(
+                    (component) => (
+                      <th key={component.id}>
+                        {component.name}
+
+                        <small>
+                          {" "}
+                          /{" "}
+                          {component.maxMarks}
+                        </small>
+                      </th>
+                    )
+                  )}
+
+                  {/* Result */}
+                  <th>Total</th>
+                  <th>%</th>
+                  <th>Grade</th>
+
+                  {/* Student */}
+                  <th>ID</th>
+                  <th>Student</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {filteredStudents.length >
+                0 ? (
+                  filteredStudents.map(
+                    (student) => {
+                      const total =
+                        calculateTotal(
+                          student.id
+                        );
+
+                      const percentage =
+                        selectedExam.totalMarks >
+                        0
+                          ? (total /
+                              selectedExam.totalMarks) *
+                            100
+                          : 0;
+
+                      return (
+                        <tr
+                          key={student.id}
+                        >
+                          {/* Roll */}
+                          <td>
+                            <strong>
+                              {student.roll}
+                            </strong>
+                          </td>
+
+                          {/* Dynamic Marks */}
+                          {selectedExam.components.map(
+                            (component) => {
+                              const value =
+                                marks[
+                                  selectedExam
+                                    .id
+                                ]?.[
+                                  student.id
+                                ]?.[
+                                  component.name
+                                ];
+
+                              return (
+                                <td
+                                  key={
+                                    component.id
+                                  }
+                                >
+                                  {isEditing ? (
+                                    <input
+                                      type="number"
+                                      min="0"
+                                      max={
+                                        component.maxMarks
+                                      }
+                                      value={
+                                        value ??
+                                        ""
+                                      }
+                                      onChange={(
+                                        e
+                                      ) =>
+                                        updateMarks(
+                                          student.id,
+                                          component.name,
+                                          e
+                                            .target
+                                            .value
+                                        )
+                                      }
+                                    />
+                                  ) : (
+                                    <strong>
+                                      {value ??
+                                        0}
+                                    </strong>
+                                  )}
+                                </td>
+                              );
+                            }
+                          )}
+
+                          {/* Total */}
+                          <td>
+                            <strong>
+                              {total}/
+                              {
+                                selectedExam.totalMarks
+                              }
+                            </strong>
+                          </td>
+
+                          {/* Percentage */}
+                          <td>
+                            {percentage.toFixed(
+                              0
+                            )}
+                            %
+                          </td>
+
+                          {/* Grade */}
+                          <td>
+                            <span className="teacher-grade">
+                              {getGrade(
+                                percentage
+                              )}
+                            </span>
+                          </td>
+
+                          {/* ID */}
+                          <td>
+                            {student.id}
+                          </td>
+
+                          {/* Student */}
+                          <td>
+                            <div className="teacher-student-name">
+                              <strong>
+                                {student.name}
+                              </strong>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    }
+                  )
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={
+                        selectedExam
+                          .components
+                          .length + 7
+                      }
+                      className="teacher-empty-state"
+                    >
+                      No students found for
+                      the selected filters.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          ) : (
+            <div className="teacher-empty-state">
+              No exam is available for{" "}
+              <strong>
+                {selectedSubject}
+              </strong>{" "}
+              -{" "}
+              <strong>
+                {selectedExamType}
+              </strong>
+              .
+            </div>
+          )}
+        </div>
+
+        {/* FOOTER */}
+        {selectedExam && (
+          <div className="teacher-table-footer">
+            <span>
+              {filteredStudents.length}{" "}
+              students
+            </span>
+
+            {!isEditing ? (
+              <button
+                className="teacher-save-btn"
+                onClick={() =>
+                  setIsEditing(true)
+                }
+              >
+                Edit Marks
+              </button>
+            ) : (
+              <button
+                className="teacher-save-btn"
+                onClick={handleSave}
+              >
+                Save Marks
+              </button>
+            )}
+          </div>
         )}
-      </tbody>
-    </table>
-  </div>
-
-  <div className="teacher-table-footer">
-    <span>
-      {filteredStudents.length} students
-    </span>
-
-    <button
-      className="teacher-save-btn"
-      onClick={handleSave}
-    >
-      Save Marks
-    </button>
-  </div>
-</section>
-
+      </section>
     </div>
   );
 }
