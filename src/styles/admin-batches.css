@@ -1,15 +1,4 @@
-.page-block {
-  min-height: 100vh;
-  padding: 24px;
-  box-sizing: border-box;
 
-background-image: radial-gradient(circle at 15% 15%, rgba(165, 180, 252, 0.25) 0%, transparent 45%),
-                    radial-gradient(circle at 85% 75%, rgba(191, 219, 254, 0.3) 0%, transparent 50%),
-                    linear-gradient(135deg, #f5f7ff 0%, #edf2ff 100%) !important;
-  background-attachment: fixed;
-  background-size: cover;
-  box-sizing: border-box;
-}
 
 /* =========================================
    CONTAINER
