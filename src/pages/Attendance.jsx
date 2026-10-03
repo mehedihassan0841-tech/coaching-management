@@ -147,7 +147,7 @@ function Attendance() {
   ];
 
   return (
-    <div className="page-block">
+    <div className="att-page-block">
       <div className="students-container">
                 <section className="attendance-analytics">
 
@@ -445,10 +445,7 @@ function Attendance() {
             </div>
 
           </div>
-
-        </section>
-
-        {/* ================= HEADER ================= */}
+           {/* ================= HEADER ================= */}
 
         <div className="students-container-header">
           <div>
@@ -644,6 +641,11 @@ function Attendance() {
             </tbody>
           </table>
         </div>
+
+
+        </section>
+
+       
 
         {/* ================================================= */}
         {/*              ATTENDANCE ANALYTICS                 */}

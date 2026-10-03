@@ -27,13 +27,6 @@
   min-width: 0;
 }
 
-.app-content {
-  max-width: 1400px;
-  width: 100%;
-
-  padding: 20px;
-  margin: 0 auto;
-}
 
 .page-block {
   display: flex;
